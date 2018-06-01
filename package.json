@@ -13,8 +13,12 @@
     "type": "git",
     "url": "git+https://github.com/explooosion/AON-UI-React-Dva.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "AON",
+    "Unreal",
+    "UI"
+  ],
+  "author": "Robby <ta7382@gmail.com> (https://github.com/explooosion)",
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/explooosion/AON-UI-React-Dva/issues"
