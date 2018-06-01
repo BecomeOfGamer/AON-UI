@@ -1,4 +1,4 @@
-# AON-UI
+# AON-UI-React-Dva
 🌈 This is a AON UI Design for **Testing** build with react dva.
 
 ## Installation
@@ -26,4 +26,4 @@ npm run build
 export dist/ to UI/
 
 ## License
-AON-UI is BSD 2-Clause licensed. See [LICENSE](https://github.com/explooosion/AON-UI/blob/master/LICENSE).
+AON-UI-React-Dva is BSD 2-Clause licensed. See [LICENSE](https://github.com/explooosion/AON-UI/blob/master/LICENSE).
