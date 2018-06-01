@@ -1,9 +1,10 @@
 export default class UnrealAPI {
 
-  constructor(actions) {
+  constructor(dispatch) {
 
     // models actions
-    this.actions = actions
+    // this.actions = actions // this is for hyperapp framework
+    this.dispatch = dispatch
 
     if (!this.isValid()) return
 
@@ -23,7 +24,8 @@ export default class UnrealAPI {
   isValid() {
     let isvalid = false
     if (
-      typeof this.actions !== 'undefined' &&
+      // typeof this.actions !== 'undefined' &&
+      typeof this.dispatch !== 'undefined' &&
       typeof ue === 'object' &&
       typeof ue.interface === 'object'
     ) {
@@ -58,7 +60,7 @@ export default class UnrealAPI {
 
   /**
    * Update fps
-   * @param {Number} fps 
+   * @param {Number} fps
    */
   setFPS(fps) {
     this.FPS = fps.toFixed(1)
@@ -74,21 +76,22 @@ export default class UnrealAPI {
 
   /**
    * Setting progressbar
-   * @param {Number} val 
+   * @param {Number} val
    */
   setProgress(val) {
     if (!this.isValid()) return
-    this.actions.status.update
+    //this.actions.status.update
     //this.debug('setProgress')
   }
 
   /**
    * Update hero information
-   * @param {Object} val 
+   * @param {Object} val
    */
   setCurrentHero(val) {
     if (!this.isValid()) return
-    this.actions.player.update(val)
+    //this.actions.player.update(val)
+    this.dispatch({ type: 'example/greet', payload: val })
     //this.debug('setCurrentHero')
   }
 

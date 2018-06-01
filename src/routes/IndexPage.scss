@@ -1,9 +1,20 @@
 .btn {
-  margin: 1rem;
-  width: 120px;
-  height: 36px;
+  margin: 0 0.5rem;
+  width: 40px;
+  height: 40px;
   font-size: 1rem;
   border: none;
   color: #fff;
   background-color: #444;
+}
+
+.btn:hover {
+  background-color: #222;
+}
+
+.table {
+  margin-top: 2rem;
+  border-collapse: collapse;
+  background-color: #444;
+  color: #fff;
 }
