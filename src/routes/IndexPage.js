@@ -1,24 +1,53 @@
-import React from 'react';
-import { connect } from 'dva';
-import styles from './IndexPage.scss';
+import React from 'react'
+import { connect } from 'dva'
+import styles from './IndexPage.scss'
 
 import Example from '../components/Example'
 
-function IndexPage() {
-  return (
-    <div className={styles.normal}>
-      <h1 className={styles.title}>Yay! Welcome to dva!</h1>
-      <div className={styles.welcome} />
-      <Example />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/index.js</code> and save to reload.</li>
-        <li><a href="https://github.com/dvajs/dva-docs/blob/master/v1/en-us/getting-started.md">Getting Started</a></li>
-      </ul>
-    </div>
-  );
+// Old
+// function IndexPage(props, context) {
+//   const dispatch = props.dispatch
+//   return (
+//     <div>
+//       <Example />
+//       <h2>{props.count}</h2>
+//       <button type="button" className={styles.btn}
+//         onClick={() => { dispatch({ type: 'example/add', payload: { count: 2 } }) }}>+</button>
+//       <button type="button" className={styles.btn}
+//         onClick={() => { dispatch({ type: 'example/minus' }) }}>-</button>
+//     </div>
+//   )
+// }
+
+class IndexPage extends React.Component {
+  constructor(props, context) {
+    super(props, context)
+    this.dispatch = props.dispatch
+    this.state = {}
+  }
+
+  render() {
+    const props = this.props
+    return (
+      <div>
+        <Example />
+        <h2>{props.count}</h2>
+        <button type="button" className={styles.btn}
+          onClick={() => { this.dispatch({ type: 'example/add', payload: { count: 2 } }) }}>+</button>
+        <button type="button" className={styles.btn}
+          onClick={() => { this.dispatch({ type: 'example/minus' }) }}>-</button>
+      </div>
+    );
+  }
 }
 
 IndexPage.propTypes = {
-};
+}
 
-export default connect()(IndexPage);
+function mapStateToProps(state) {
+  return {
+    count: state.example.count,
+  }
+}
+
+export default connect(mapStateToProps)(IndexPage)

@@ -1,5 +1,5 @@
-import request from '../utils/request';
+import request from '../utils/request'
 
 export function query() {
-  return request('/api/users');
+  return request('/api/users')
 }
