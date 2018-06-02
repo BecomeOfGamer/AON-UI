@@ -71,7 +71,7 @@ export default class UnrealAPI {
    */
   hideProgress() {
     if (!this.isValid()) return
-    //this.debug('hideProgress')
+    // this.debug('hideProgress')
   }
 
   /**
@@ -80,8 +80,8 @@ export default class UnrealAPI {
    */
   setProgress(val) {
     if (!this.isValid()) return
-    //this.actions.status.update
-    //this.debug('setProgress')
+    // this.actions.status.update
+    // this.debug('setProgress')
   }
 
   /**
@@ -90,9 +90,9 @@ export default class UnrealAPI {
    */
   setCurrentHero(val) {
     if (!this.isValid()) return
-    //this.actions.player.update(val)
-    this.dispatch({ type: 'example/greet', payload: val })
-    //this.debug('setCurrentHero')
+    // this.actions.player.update(val)
+    this.dispatch({ type: 'player/update', payload: val })
+    // this.debug('setCurrentHero')
   }
 
 }

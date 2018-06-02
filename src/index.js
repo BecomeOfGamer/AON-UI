@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import dva from 'dva'
 import './index.scss'
 
@@ -9,6 +10,7 @@ const app = dva()
 
 // 3. Model
 app.model(require('./models/example').default)
+app.model(require('./models/player').default)
 
 // 4. Router
 app.router(require('./router').default)
