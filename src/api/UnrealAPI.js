@@ -19,7 +19,7 @@ export default class UnrealAPI {
   }
 
   /**
-   * check UE library
+   * Check UE library
    */
   isValid() {
     let isvalid = false
