@@ -2,7 +2,7 @@ import zhTW from '../locale/zh-TW'
 
 export default {
 
-  namespace: 'locale',
+  namespace: 'language',
 
   state: {
     locale: 'zh',
