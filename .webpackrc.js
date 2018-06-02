@@ -1,6 +1,6 @@
 const path = require('path')
 export default {
-  entry: './src/index.js',
+  entry: 'src/index.js',
   extraBabelPlugins: [], // if want to add antd lib, please add here
   env: {
     development: {
