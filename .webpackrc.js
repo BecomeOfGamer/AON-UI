@@ -1,8 +1,8 @@
-const path = require('path');
+const path = require('path')
 
 export default {
   entry: 'src/index.js',
-  extraBabelPlugins: [],
+  extraBabelPlugins: [], // if want to add antd lib, please add here
   env: {
     development: {
       extraBabelPlugins: ['dva-hmr'], // for debug
@@ -13,6 +13,6 @@ export default {
   },
   ignoreMomentLocale: true,
   disableDynamicImport: true,
-  publicPath: '/',
-  hash: true,
-};
+  publicPath: '/', // need to update public/index.html script and link path
+  hash: true, // http://localhost:8000/#/
+}

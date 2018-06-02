@@ -3,8 +3,17 @@
   .table {
     margin-top: 2rem;
     border-collapse: collapse;
-    background-color: #444;
-    color: #fff;
+    tr {
+      td {
+        color: #fff;
+        padding: 0.5rem 0.8rem;
+      }
+      &:nth-child(odd) td {
+        background-color: #888;
+      }
+      &:nth-child(even) td {
+        background-color: #666;
+      }
+    }
   }
 }
-

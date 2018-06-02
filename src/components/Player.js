@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'dva'
-
-const styles = require('./Player.scss')
+import styles from './Player.scss'
 
 class Player extends React.Component {
   constructor(props, context) {
@@ -26,6 +25,26 @@ class Player extends React.Component {
               <td>CurrentHP</td>
               <td>{this.props.CurrentHP}</td>
             </tr>
+            <tr>
+              <td>CurrentAttackSpeed</td>
+              <td>{this.props.CurrentAttackSpeed}</td>
+            </tr>
+            <tr>
+              <td>CurrentLevel</td>
+              <td>{this.props.CurrentLevel}</td>
+            </tr>
+            <tr>
+              <td>CurrentAttack</td>
+              <td>{this.props.CurrentAttack}</td>
+            </tr>
+            <tr>
+              <td>CurrentArmor</td>
+              <td>{this.props.CurrentArmor}</td>
+            </tr>
+            <tr>
+              <td>CurrentAttackRange</td>
+              <td>{this.props.CurrentAttackRange}</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -33,14 +52,18 @@ class Player extends React.Component {
   }
 }
 
-Player.propTypes = {
-}
+Player.propTypes = {}
 
 function mapStateToProps(state) {
   return {
     HeroName: state.player.HeroName,
     CurrentMoveSpeed: state.player.CurrentMoveSpeed,
     CurrentHP: state.player.CurrentHP,
+    CurrentAttackSpeed: state.player.CurrentAttackSpeed,
+    CurrentLevel: state.player.CurrentLevel,
+    CurrentAttack: state.player.CurrentAttack,
+    CurrentArmor: state.player.CurrentArmor,
+    CurrentAttackRange: state.player.CurrentAttackRange,
   }
 }
 

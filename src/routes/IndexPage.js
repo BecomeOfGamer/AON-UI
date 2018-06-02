@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'dva'
 import styles from './IndexPage.scss'
 
+import UnrealAPI from '../lib/UnrealAPI'
+
 import Example from '../components/Example'
 import Player from '../components/Player'
 
-import UnrealAPI from '../lib/UnrealAPI'
-
-// Old
+// Old - not good
 // function IndexPage(props, context) {
 //   const dispatch = props.dispatch
 //   return (
@@ -33,7 +33,7 @@ class IndexPage extends React.Component {
   render() {
     return (
       <div>
-        <Example />
+        {/* <Example /> */}
         <h2>{this.props.count}</h2>
         <button
           type="button"
@@ -53,8 +53,7 @@ class IndexPage extends React.Component {
   }
 }
 
-IndexPage.propTypes = {
-}
+IndexPage.propTypes = {}
 
 function mapStateToProps(state) {
   return {
