@@ -5,32 +5,41 @@ import styles from './IndexPage.scss'
 
 import UnrealAPI from '../api/UnrealAPI'
 
-import Example from '../components/Example'
 import Player from '../components/Player'
+import Skill from '../components/Skill'
 
-// Old - not good
-// function IndexPage(props, context) {
-//   const dispatch = props.dispatch
-//   return (
-//     <div>
-//       <Example />
-//       <h2>{props.count}</h2>
-//       <button type="button" className={styles.btn}
-//         onClick={() => { dispatch({ type: 'example/add', payload: { count: 2 } }) }}>+</button>
-//       <button type="button" className={styles.btn}
-//         onClick={() => { dispatch({ type: 'example/minus' }) }}>-</button>
-//     </div>
-//   )
-// }
+import zhTW from '../locale/zh-TW'
+import enUS from '../locale/en-US'
 
 class IndexPage extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.dispatch = props.dispatch
+    const { locale, UnitName } = props
     this.state = {
-      name: 'Robby',
+      unitname: UnitName,
+      'locale': locale,
     }
     this.unrealapi = new UnrealAPI(this.dispatch)
+  }
+
+  /**
+   * Change Locale
+   * @param {String} locale [en, zh]
+   */
+  changeLocale(locale) {
+    switch (locale) {
+      case 'en':
+        this.dispatch({ type: 'language/update', payload: { locale: 'en', key: 'en', messages: enUS } })
+        break;
+      case 'zh':
+        this.dispatch({ type: 'language/update', payload: { locale: 'zh', key: 'zh', messages: zhTW } })
+        break;
+      default:
+        this.dispatch({ type: 'language/update', payload: { locale: 'zh', key: 'zh', messages: zhTW } })
+        break;
+    }
+    this.setState({ 'locale': locale })
   }
 
   render() {
@@ -38,15 +47,25 @@ class IndexPage extends React.Component {
 
     // 渲染方法 1 - http://www.cnblogs.com/qiaojie/p/6411199.html
     const helloFormat = intl.formatMessage({ id: 'intl.hello' })
-    const nameFormat = intl.formatMessage({ id: 'intl.name' }, { name: this.state.name })
+    const nameFormat = intl.formatMessage({ id: 'intl.name' }, { name: this.state.unitname })
     // 渲染方法 2
     // <FormattedMessage />
 
     return (
       <div>
-        {/* <Example /> */}
-        <h1>{this.props.count}</h1>
-        <p>方法1-
+        <a
+          className={[styles.lang, this.state.locale === 'en' ? styles.select : null].join(' ')}
+          href="#"
+          onClick={() => this.changeLocale('en')}
+        >英文
+        </a>
+        <a
+          className={[styles.lang, this.state.locale === 'zh' ? styles.select : null].join(' ')}
+          href="#"
+          onClick={() => this.changeLocale('zh')}
+        >中文
+        </a>
+        <p>語系渲染方法 1 -
           <FormattedMessage
             id="intl.hello"
             defaultMessage={'hello'}
@@ -54,23 +73,12 @@ class IndexPage extends React.Component {
           <FormattedMessage
             id="intl.name"
             defaultMessage={'預設內容'}
-            values={{ name: this.state.name }}
+            values={{ name: this.state.unitname }}
           />.
         </p>
-        <p>方法2-{helloFormat},&nbsp;{nameFormat}.</p>
-        <button
-          type="button"
-          className={styles.btn}
-          onClick={() => { this.dispatch({ type: 'example/add', payload: { count: 2 } }) }}
-        >+
-        </button>
-        <button
-          type="button"
-          className={styles.btn}
-          onClick={() => { this.dispatch({ type: 'example/minus' }) }}
-        >-
-        </button>
+        <p>語系渲染方法 2 -{helloFormat},&nbsp;{nameFormat}.</p>
         <Player />
+        <Skill api={this.unrealapi} />
       </div>
     );
   }
@@ -80,7 +88,10 @@ IndexPage.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    count: state.example.count,
+    UnitName: state.player.UnitName,
+    locale: state.language.locale,
+    key: state.language.key,
+    messages: state.language.messages,
   }
 }
 

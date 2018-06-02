@@ -10,17 +10,12 @@ const app = dva()
 app.use(createLoading())
 
 // 3. Model
-app.model(require('./models/example').default)
-app.model(require('./models/locale').default)
+// app.model(require('./models/example').default)
+app.model(require('./models/language').default)
 app.model(require('./models/player').default)
 
 // 4. Router
 app.router(require('./router').default)
 
 // 5. Start
-const App = app.start()
-
-ReactDOM.render(
-  <App />
-  , document.getElementById('root')
-)
+app.start('#root')

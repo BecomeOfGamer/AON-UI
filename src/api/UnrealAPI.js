@@ -9,7 +9,7 @@ export default class UnrealAPI {
     if (!this.isValid()) return
 
     // testing
-    // this.debug('Hello AON')
+    this.debug('Hello AON')
 
     ue.interface.setFPS = this.setFPS.bind(this)
     ue.interface.setProgress = this.setProgress.bind(this)
@@ -36,6 +36,15 @@ export default class UnrealAPI {
   }
 
   /**
+   *
+   * @param {*} payload
+   */
+  run(payload) {
+    this.payload = payload
+    console.info(this.payload)
+  }
+
+  /**
    * Console Debug Message
    * @param {any} payload Message
    */
@@ -51,11 +60,16 @@ export default class UnrealAPI {
    * @param {Object} data Payload
    */
   emit(name, data) {
-    if (!this.isValid()) return
-    if (typeof data !== 'undefined')
-      ue.interface.broadcast(name, JSON.stringify(data))
-    else
-      ue.interface.broadcast(name, '')
+    try {
+      if (!this.isValid()) return
+      if (typeof data !== 'undefined')
+        ue.interface.broadcast(name, JSON.stringify(data))
+      else
+        ue.interface.broadcast(name, '')
+    } catch (e) {
+      console.error(e)
+      alert(e)
+    }
   }
 
   /**

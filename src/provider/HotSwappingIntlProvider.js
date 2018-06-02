@@ -12,16 +12,9 @@ class HotSwappingIntlProvider extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.dispatch = props.dispatch
-    this.state = {
-      locale: 'en',
-      key: 'en',
-      messages: enUS,
-    }
   }
 
   render() {
-    // dispatch for testing
-    this.dispatch({ type: 'locale/update', payload: this.state })
     return (
       <IntlProvider
         locale={this.props.locale}
@@ -38,9 +31,9 @@ HotSwappingIntlProvider.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    locale: state.locale.locale,
-    key: state.locale.key,
-    messages: state.locale.messages,
+    locale: state.language.locale,
+    key: state.language.key,
+    messages: state.language.messages,
   }
 }
 

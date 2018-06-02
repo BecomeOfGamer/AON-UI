@@ -1,18 +1,37 @@
 .player {
-  margin-top: 2rem;
   .table {
     margin-top: 2rem;
+    text-align: center;
     border-collapse: collapse;
     tr {
-      td {
-        color: #fff;
+      th {
         padding: 0.5rem 0.8rem;
+        color: #fff;
+        font-weight: normal;
       }
-      &:nth-child(odd) td {
-        background-color: #888;
+      td {
+        padding: 0.5rem 0.8rem;
+        color: #FEC200;
       }
-      &:nth-child(even) td {
-        background-color: #666;
+      &:nth-child(odd) td,
+      &:nth-child(odd) th {
+        background-color: #36485B;
+      }
+      &:nth-child(even) td,
+      &:nth-child(even) th {
+        background-color: #3D4C60;
+      }
+      &:first-child th {
+        border-top-left-radius: 6px;
+      }
+      &:first-child td {
+        border-top-right-radius: 6px;
+      }
+      &:last-child th {
+        border-bottom-left-radius: 6px;
+      }
+      &:last-child td {
+        border-bottom-right-radius: 6px;
       }
     }
   }

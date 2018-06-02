@@ -14,7 +14,7 @@ function RouterConfig({ history }) {
         </Switch>
       </Router>
     </HotSwappingIntlProvider>
-  );
+  )
 }
 
 export default RouterConfig
