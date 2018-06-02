@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'dva'
 import styles from './IndexPage.scss'
 
-import UnrealAPI from '../lib/UnrealAPI'
+import UnrealAPI from '../api/UnrealAPI'
 
 import Example from '../components/Example'
 import Player from '../components/Player'
