@@ -1,7 +1,6 @@
 const path = require('path')
-
 export default {
-  entry: 'src/index.js',
+  entry: './src/index.js',
   extraBabelPlugins: [], // if want to add antd lib, please add here
   env: {
     development: {
@@ -12,7 +11,10 @@ export default {
     components: path.resolve(__dirname, 'src/components/'),
   },
   ignoreMomentLocale: true,
+  html: {
+    template: './src/index.ejs',
+  },
   disableDynamicImport: true,
-  publicPath: '/', // need to update public/index.html script and link path
-  hash: true, // http://localhost:8000/#/
+  publicPath: '', // do not use '/' , prod will gg
+  hash: true, // http://localhost:8000/#/,
 }
