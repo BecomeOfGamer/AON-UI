@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'dva'
-import styles from './Player.scss'
+
+const styles = require('./Player.scss')
 
 class Player extends React.Component {
   constructor(props, context) {

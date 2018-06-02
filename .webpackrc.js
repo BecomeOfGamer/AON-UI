@@ -2,22 +2,16 @@ const path = require('path');
 
 export default {
   entry: 'src/index.js',
-  // extraBabelPlugins: [
-  //   'transform-decorators-legacy',
-  //   ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }],
-  // ],
+  extraBabelPlugins: [],
   env: {
     development: {
-      extraBabelPlugins: ['dva-hmr'],
+      extraBabelPlugins: ['dva-hmr'], // for debug
     },
   },
   alias: {
     components: path.resolve(__dirname, 'src/components/'),
   },
   ignoreMomentLocale: true,
-  html: {
-    template: './src/index.ejs',
-  },
   disableDynamicImport: true,
   publicPath: '/',
   hash: true,
