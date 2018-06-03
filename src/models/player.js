@@ -1,4 +1,7 @@
+import UnrealAPI from '../api/UnrealAPI'
 
+// 方便操作, 讓 player 可以在此檔直接調用 api
+const unrealapi = new UnrealAPI()
 const pathPrefix = 'assets/'
 
 export default {
@@ -6,6 +9,7 @@ export default {
   namespace: 'player',
 
   state: {
+    unrealapi: undefined,
     UnitName: '織田信長',
     CurrentMoveSpeed: 0,
     CurrentHP: 0,
@@ -57,6 +61,13 @@ export default {
     save(state, action) {
       return { ...state, ...action.payload }
     },
+    connectAPI(state, { payload }) {
+      unrealapi.connect(payload.dispatch)
+      return {
+        ...state,
+        'unrealapi': unrealapi,
+      }
+    },
     update(state, { payload }) {
       const Skill = []
       const SkillCanLevelUp = []
@@ -84,13 +95,11 @@ export default {
       }
     },
     skillLevelUp(state, { payload }) {
-      try {
-        payload.api.emit('skillupimg1', {})
-        // payload.api.debug(`${payload.target} skill up!`)
-      } catch (e) {
-        alert(e)
-      }
-      return { ...state }
+      // debug
+      // ue.interface.broadcast('skillupimg1', '')
+      // unrealapi.ue.interface.broadcast('skillupimg1', '')
+      unrealapi.emit('skillupimg1', '')
+      return state
     },
   },
 

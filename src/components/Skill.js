@@ -11,7 +11,7 @@ class Skill extends React.Component {
     this.state = {}
   }
   render() {
-    const { intl, api, SkillCanLevelUp, SkillDetail } = this.props
+    const { intl, unrealapi, SkillCanLevelUp, SkillDetail } = this.props
 
     // 到時候要改從 models 取得 [2018-06-03-ok]
     // const SkillDetail = [{
@@ -67,8 +67,7 @@ class Skill extends React.Component {
               <li key={`skillupimg${index}`}>
                 <a
                   className={[styles['skill-up'], SkillCanLevelUp[index] ? '' : styles.disable].join(' ')}
-                  href="#"
-                  onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { 'api': api } })}
+                  onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi } })}
                 >+
                 </a>
                 <div className={styles.skill} data-key={datakey} >
@@ -88,6 +87,7 @@ Skill.propTypes = {}
 
 function mapStateToProps(state) {
   return {
+    unrealapi: state.player.unrealapi,
     Skill: state.player.Skill,
     SkillCanLevelUp: state.player.SkillCanLevelUp,
     SkillDetail: state.player.SkillDetail,
