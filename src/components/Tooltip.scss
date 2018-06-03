@@ -1,0 +1,30 @@
+.tooltip {
+  margin: 0 auto !important;
+  text-align: center !important;
+  border-radius: 6px !important;
+  background-color: rgba($color: #000, $alpha: 1) !important;
+  .tool {
+    display: inline-block;
+    max-width: 200px;
+    .tip {
+      display: block;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 140%;
+      font-family: 'Microsoft JhengHei', sans-serif;
+      text-align: left;
+    }
+    .header {
+      color: #00CFBC;
+    }
+    .content {
+      color: #eee;
+    }
+    .num {
+      color: #FBFE01;
+    }
+    .unic {
+      color: #FF3CFE;
+    }
+  }
+}
