@@ -5,7 +5,7 @@
   background-color: rgba($color: #000, $alpha: 1) !important;
   .tool {
     display: inline-block;
-    max-width: 200px;
+    max-width: 250px;
     .tip {
       display: block;
       margin: 0 auto;
@@ -13,14 +13,13 @@
       line-height: 140%;
       font-family: 'Microsoft JhengHei', sans-serif;
       text-align: left;
+      color: #eee;
     }
     .header {
       color: #00CFBC;
     }
-    .content {
-      color: #eee;
-    }
     .num {
+      margin: 0 2px;
       color: #FBFE01;
     }
     .unic {
