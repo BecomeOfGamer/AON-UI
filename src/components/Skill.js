@@ -10,18 +10,56 @@ class Skill extends React.Component {
     this.state = {}
   }
   render() {
-    const { intl, api } = this.props
+    const { intl, api, SkillCanLevelUp } = this.props
     return (
       <div className={styles['skill-group']}>
-        {this.props.Skill.map((path, index) => (
-          <img
-            key={`skillupimg${index}`}
-            className={styles.skill}
-            src={path}
-            alt=""
-            onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { 'api': api } })}
-          />
-        ))}
+        <ul className={styles['skill-list']}>
+          {this.props.Skill.map((path, index) => {
+            let datakey = '?'
+            switch (index) {
+              case 0:
+                datakey = 'Q'
+                break
+              case 1:
+                datakey = 'W'
+                break
+              case 2:
+                datakey = 'E'
+                break
+              case 3:
+                datakey = 'R'
+                break
+              case 4:
+                datakey = 'T'
+                break
+              case 5:
+                datakey = 'D'
+                break
+              default:
+                break
+            }
+            return (
+              <li key={`skillupimg${index}`}>
+                <a
+                  className={[styles['skill-up'], SkillCanLevelUp[index] ? '' : styles.disable].join(' ')}
+                  href="#"
+                  onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { 'api': api } })}
+                >+
+                </a>
+                <div
+                  className={styles.skill}
+                  data-key={datakey}
+                >
+                  <img
+                    src={path}
+                    alt={path}
+                    title={path}
+                  />
+                </div>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     )
   }
@@ -32,6 +70,7 @@ Skill.propTypes = {}
 function mapStateToProps(state) {
   return {
     Skill: state.player.Skill,
+    SkillCanLevelUp: state.player.SkillCanLevelUp,
   }
 }
 

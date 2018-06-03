@@ -2,8 +2,7 @@ export default class UnrealAPI {
 
   constructor(dispatch) {
 
-    // models actions
-    // this.actions = actions // this is for hyperapp framework
+    // connect to models
     this.dispatch = dispatch
 
     if (!this.isValid()) return
@@ -24,7 +23,6 @@ export default class UnrealAPI {
   isValid() {
     let isvalid = false
     if (
-      // typeof this.actions !== 'undefined' &&
       typeof this.dispatch !== 'undefined' &&
       typeof ue === 'object' &&
       typeof ue.interface === 'object'
@@ -33,15 +31,6 @@ export default class UnrealAPI {
     }
     if (!isvalid) console.warn('You are not in unreal engine.')
     return isvalid
-  }
-
-  /**
-   *
-   * @param {*} payload
-   */
-  run(payload) {
-    this.payload = payload
-    console.info(this.payload)
   }
 
   /**
@@ -94,7 +83,6 @@ export default class UnrealAPI {
    */
   setProgress(val) {
     if (!this.isValid()) return
-    // this.actions.status.update
     // this.debug('setProgress')
   }
 
@@ -104,7 +92,6 @@ export default class UnrealAPI {
    */
   setCurrentHero(val) {
     if (!this.isValid()) return
-    // this.actions.player.update(val)
     this.dispatch({ type: 'player/update', payload: val })
     // this.debug('setCurrentHero')
   }

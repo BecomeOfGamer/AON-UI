@@ -21,6 +21,7 @@ class IndexPage extends React.Component {
       'locale': locale,
     }
     this.unrealapi = new UnrealAPI(this.dispatch)
+    this.unrealapi.emit('skillupimg1', {})
   }
 
   /**

@@ -18,6 +18,7 @@ export default {
     Buff_Amount: 0,
     Skill: ['assets/skill/a02/a02_1.png', 'assets/skill/a02/a02_2.png', 'assets/skill/a02/a02_3.png', 'assets/skill/a02/a02_4.png'],
     Buff: ['assets/buff/stun.png'],
+    SkillCanLevelUp: [true, false, true, false],
   },
 
   subscriptions: {
@@ -36,9 +37,14 @@ export default {
       return { ...state, ...action.payload }
     },
     update(state, { payload }) {
-      const skill = []
+      const Skill = []
+      const SkillCanLevelUp = []
       for (let i = 1; i <= payload.Skill_Amount; i += 1) {
-        skill.push(pathPrefix + payload[`Skill${i}_Webpath`])
+        Skill.push(pathPrefix + payload[`Skill${i}_Webpath`])
+        if (payload[`Skill${i}_CanLevelUp`])
+          SkillCanLevelUp.push(true)
+        else
+          SkillCanLevelUp.push(false)
       }
       return {
         ...state,
@@ -52,14 +58,14 @@ export default {
         CurrentAttackRange: payload.CurrentAttackRange,
         Skill_Amount: payload.Skill_Amount,
         Buff_Amount: payload.Buff_Amount,
-        Skill: skill,
+        'Skill': Skill,
+        'SkillCanLevelUp': SkillCanLevelUp,
       }
     },
     skillLevelUp(state, { payload }) {
-      alert('skill up')
       try {
         payload.api.emit('skillupimg1', {})
-        payload.api.debug('skill up')
+        // payload.api.debug(`${payload.target} skill up!`)
       } catch (e) {
         alert(e)
       }

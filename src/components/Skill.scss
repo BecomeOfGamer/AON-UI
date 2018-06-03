@@ -1,10 +1,41 @@
+@import '../scss/components/skill.scss';
 .skill-group {
-  margin-top: 1rem;
-  .skill {
-    margin-right: 0.4rem;
-    width: 50px;
-    height: 50px;
-    border: 1px solid #282A36;
-    border-radius: 6px;
+  margin-top: 3rem;
+  .skill-list {
+    li {
+      display: inline-block;
+      position: relative;
+      margin-right: 0.4rem;
+      width: 50px;
+      height: 90px;
+      .skill {
+        width: 50px;
+        height: 50px;
+      }
+      .skill-up {
+        position: absolute;
+        display: inline-block;
+        top: -35px;
+        left: 0;
+        right: 0;
+        color: #FCF091;
+        background: #100400;
+        border: 3px solid #FCF091;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 1.4rem;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 0 2px #978B34;
+        transition: all .2s ease;
+        &:hover {
+          color: #FEC200;
+          border: 3px solid #FEC200;
+        }
+        &.disable {
+          visibility: hidden;
+        }
+      }
+    }
   }
 }

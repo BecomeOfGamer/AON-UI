@@ -1,0 +1,49 @@
+.skill {
+  position: relative;
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  /* border: 1px solid #222; */
+  box-shadow: 0 0 2px #000;
+  border-radius: 8px;
+  img {
+    vertical-align: middle;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+  }
+  &[data-key=Q]::before {
+    content: 'Q';
+  }
+  &[data-key=W]::before {
+    content: 'W';
+  }
+  &[data-key=E]::before {
+    content: 'E';
+  }
+  &[data-key=R]::before {
+    content: 'R';
+  }
+  &[data-key=T]::before {
+    content: 'T';
+  }
+  &[data-key=D]::before {
+    content: 'D';
+  }
+  &::before {
+    content: '';
+    z-index: 999;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 40%;
+    width: 40%;
+    color: #eee;
+    border-bottom-right-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 90%;
+    line-height: 140%;
+    background-color: rgba(0, 0, 0, .6);
+  }
+}
