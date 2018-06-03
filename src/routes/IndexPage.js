@@ -18,9 +18,11 @@ class IndexPage extends React.Component {
     const { progress, fps } = this.props
 
     return (
-      <div>
-        <p>Loading: {progress}</p>
-        <p>Fps: {fps}</p>
+      <div className={styles.app}>
+        <div className={styles.info}>
+          <div>Loading: {progress}</div>
+          <div>Fps: {fps}</div>
+        </div>
         <Language />
         <Player />
         <Skill />

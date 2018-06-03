@@ -1,4 +1,7 @@
-.player {
+.player-group {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
   .table {
     margin-top: 2rem;
     text-align: center;
@@ -22,16 +25,20 @@
         background-color: #3D4C60;
       }
       &:first-child th {
-        border-top-left-radius: 6px;
+        /* 左上 */
+        /* border-top-left-radius: 6px; */
       }
       &:first-child td {
+        /* 右上 */
         border-top-right-radius: 6px;
       }
       &:last-child th {
-        border-bottom-left-radius: 6px;
+        /* 左下 */
+        /* border-bottom-left-radius: 6px; */
       }
       &:last-child td {
-        border-bottom-right-radius: 6px;
+        /* 右下 */
+        /* border-bottom-right-radius: 6px; */
       }
     }
   }

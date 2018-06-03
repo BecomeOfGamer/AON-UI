@@ -12,7 +12,7 @@ class Player extends React.Component {
   render() {
     const { intl } = this.props
     return (
-      <div className={styles.player}>
+      <div className={styles['player-group']}>
         <table className={styles.table}>
           <tbody>
             <tr>

@@ -1,7 +1,19 @@
 @import '../scss/components/skill.scss';
+/* 使用技能的樣式組件 */
+
 .skill-group {
-  margin-top: 3rem;
+  position: absolute;
+  bottom: 0%;
+  right: 40%;
+  left: 30%;
+  width: 30%;
+  background: #282A36;
+  padding: 0.6rem 0.4rem 0 0.4rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   .skill-list {
+    padding: 0;
+    margin: 0;
     li {
       display: inline-block;
       position: relative;
@@ -15,23 +27,12 @@
       .skill-up {
         position: absolute;
         display: inline-block;
-        top: -35px;
+        top: -68px;
         left: 0;
         right: 0;
-        color: #FCF091;
-        background: #100400;
-        border: 3px solid #FCF091;
+        width: 50px;
+        height: 50px;
         border-radius: 6px;
-        font-weight: bold;
-        font-size: 1.4rem;
-        text-align: center;
-        text-decoration: none;
-        box-shadow: 0 0 2px #978B34;
-        transition: all .2s ease;
-        &:hover {
-          color: #FEC200;
-          border: 3px solid #FEC200;
-        }
         &.disable {
           visibility: hidden;
         }

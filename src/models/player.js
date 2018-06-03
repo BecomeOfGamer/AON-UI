@@ -96,9 +96,10 @@ export default {
     },
     skillLevelUp(state, { payload }) {
       // debug
-      // ue.interface.broadcast('skillupimg1', '')
+      // ue.interface.broadcast(payload.id, '')
       // unrealapi.ue.interface.broadcast('skillupimg1', '')
-      unrealapi.emit('skillupimg1', '')
+      unrealapi.emit(payload.id, '')
+      unrealapi.debug(payload.id)
       return state
     },
   },
