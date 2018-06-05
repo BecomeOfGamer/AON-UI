@@ -1,9 +1,11 @@
-
 export default {
 
-  namespace: 'example',
+  namespace: 'status',
 
-  state: {},
+  state: {
+    progress: 0,
+    fps: 0,
+  },
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
@@ -19,6 +21,18 @@ export default {
   reducers: {
     save(state, action) {
       return { ...state, ...action.payload }
+    },
+    progress(state, { payload }) {
+      return {
+        ...state,
+        progress: payload.progress,
+      }
+    },
+    fps(state, { payload }) {
+      return {
+        ...state,
+        fps: payload.fps,
+      }
     },
   },
 

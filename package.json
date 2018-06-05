@@ -1,13 +1,15 @@
 {
   "name": "aon-ui",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "🌈 A AON UI based on react.js created by dvajs.",
   "main": ".roadhogrc.mock.js",
   "scripts": {
     "start": "roadhog server",
     "build": "roadhog build",
     "lint": "eslint --ext .js src test",
-    "precommit": "npm run lint"
+    "test": "roadhog test",
+    "precommit": "npm run lint",
+    "prettier": "prettier --write ./src/**/**/**/*"
   },
   "repository": {
     "type": "git",
@@ -28,7 +30,10 @@
     "dva": "^2.3.0",
     "dva-loading": "^2.0.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-intl": "^2.4.0",
+    "react-tooltip": "^3.6.0",
+    "reset-css": "^3.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
@@ -36,6 +41,7 @@
     "babel-plugin-import": "^1.7.0",
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "copy-webpack-plugin": "^4.5.1",
     "dotenv-webpack": "^1.5.5",
     "eslint": "^4.14.0",
     "eslint-config-airbnb": "^16.0.0",

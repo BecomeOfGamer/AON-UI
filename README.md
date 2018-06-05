@@ -28,6 +28,13 @@ yarn start
 yarn build
 ```
 
+## Log
+
+#### 2018-06-04
+
+- `click event` 會有不明失效問題 ( `lose focus` ) , 目前推估可能目標與鄰近元素的樣式 ( `margin`, `padding` ) 影響。
+- `scss/components/skill.scss` 元素樣式未知問題, 會影響 `click event` 失效 ( `lose focus` )。
+
 ## License
 
 AON-UI is BSD licensed. See [LICENSE](https://github.com/RemakeAONTeam/AON-UI/blob/master/LICENSE).

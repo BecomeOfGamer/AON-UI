@@ -1,13 +1,8 @@
-.btn {
-  margin: 0 0.5rem;
-  width: 40px;
-  height: 40px;
-  font-size: 1rem;
-  border: none;
-  color: #fff;
-  background-color: #444;
-}
-
-.btn:hover {
-  background-color: #222;
+.app {
+  .info {
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    color: #FEEE15;
+  }
 }

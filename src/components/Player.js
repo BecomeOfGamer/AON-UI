@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'dva'
+import { injectIntl, FormattedMessage } from 'react-intl'
 import styles from './Player.scss'
 
 class Player extends React.Component {
@@ -9,40 +10,41 @@ class Player extends React.Component {
     this.state = {}
   }
   render() {
+    const { intl } = this.props
     return (
-      <div className={styles.player}>
+      <div className={styles['player-group']}>
         <table className={styles.table}>
           <tbody>
             <tr>
-              <td>HeroName</td>
-              <td>{this.props.HeroName}</td>
+              <th>{intl.formatMessage({ id: 'intl.player.UnitName' })}</th>
+              <td>{this.props.UnitName}</td>
             </tr>
             <tr>
-              <td>CurrentMoveSpeed</td>
+              <th>{intl.formatMessage({ id: 'intl.player.CurrentMoveSpeed' })}</th>
               <td>{this.props.CurrentMoveSpeed}</td>
             </tr>
             <tr>
-              <td>CurrentHP</td>
+              <th>{intl.formatMessage({ id: 'intl.player.CurrentHP' })}</th>
               <td>{this.props.CurrentHP}</td>
             </tr>
             <tr>
-              <td>CurrentAttackSpeed</td>
+              <th>{intl.formatMessage({ id: 'intl.player.CurrentAttackSpeed' })}</th>
               <td>{this.props.CurrentAttackSpeed}</td>
             </tr>
             <tr>
-              <td>CurrentLevel</td>
+              <th>{intl.formatMessage({ id: 'intl.player.CurrentLevel' })}</th>
               <td>{this.props.CurrentLevel}</td>
             </tr>
             <tr>
-              <td>CurrentAttack</td>
+              <th>{intl.formatMessage({ id: 'intl.player.CurrentAttack' })}</th>
               <td>{this.props.CurrentAttack}</td>
             </tr>
             <tr>
-              <td>CurrentArmor</td>
+              <th>{intl.formatMessage({ id: 'intl.player.CurrentArmor' })}</th>
               <td>{this.props.CurrentArmor}</td>
             </tr>
             <tr>
-              <td>CurrentAttackRange</td>
+              <th>{intl.formatMessage({ id: 'intl.player.CurrentAttackRange' })}</th>
               <td>{this.props.CurrentAttackRange}</td>
             </tr>
           </tbody>
@@ -56,7 +58,7 @@ Player.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    HeroName: state.player.HeroName,
+    UnitName: state.player.UnitName,
     CurrentMoveSpeed: state.player.CurrentMoveSpeed,
     CurrentHP: state.player.CurrentHP,
     CurrentAttackSpeed: state.player.CurrentAttackSpeed,
@@ -67,4 +69,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Player)
+export default connect(mapStateToProps)(injectIntl(Player))

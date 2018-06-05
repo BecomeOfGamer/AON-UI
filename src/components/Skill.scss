@@ -1,0 +1,37 @@
+@import '../scss/components/skill.scss';
+/* 使用技能的樣式組件 */
+
+.skill-group {
+  position: absolute;
+  bottom: 0;
+  right: 40%;
+  left: 35%;
+  width: 30%;
+  background: #282A36;
+  padding: 0.6rem 0.6rem 2rem 0.6rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  .skill-list {
+    margin-bottom: 0.6rem;
+    padding: 0.6rem;
+    background-color: #44475A;
+    border-radius: 6px;
+    &>div {
+      display: inline-block;
+      position: relative;
+      margin-right: 0.4rem;
+      width: 50px;
+      cursor: pointer;
+      .skill-up {
+        margin-right: 0.4rem;
+        margin-bottom: 0.4rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 6px;
+        &.disable {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}

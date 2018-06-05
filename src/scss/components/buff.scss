@@ -1,0 +1,23 @@
+/*
+buff
+說明: 英雄的增減益狀態圖案
+範例:
+<img
+  className={styles.buff} // class 綁定 buff 可複寫
+  src={path}    // 圖片路徑
+  alt={'path}   // (建議留空)
+  data-tip   // 如果需要滑過的時候出現 tooltip
+  data-for={`bufftip${index}`} // tooltip 綁定的 ID
+/>
+<Tooltip id={`bufftip${index}`} tooltip={BuffDetail[index]} /> // BuffDetail 請參考 models/player
+*/
+
+.buff {
+  position: relative;
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  /* border: 1px solid #222; */
+  box-shadow: 0 0 2px #000;
+  border-radius: 100%;
+}
