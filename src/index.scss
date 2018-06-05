@@ -16,9 +16,9 @@ body,
   background-color: transparent;
 }
 
-// 如果覺得背景太白可以用
-// body {
-//   background-image: url('/assets/background.png');
-//   background-repeat: no-repeat;
-//   background-position: center;
-// }
+body {
+  /* 如果覺得背景太白可以用 */
+  background-image: url('/assets/background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
