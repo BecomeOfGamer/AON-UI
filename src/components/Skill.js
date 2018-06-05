@@ -55,6 +55,7 @@ class Skill extends React.Component {
                       alt={path}
                       data-tip
                       data-for={`skilltip${index}`}
+                      onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}` } })}
                     />
                     <Tooltip id={`skilltip${index}`} tooltip={SkillTips[index]} />
                   </div>
