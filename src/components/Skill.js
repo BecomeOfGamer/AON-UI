@@ -11,7 +11,7 @@ class Skill extends React.Component {
     this.state = {}
   }
   render() {
-    const { intl, unrealapi, SkillCanLevelUp, SkillTips } = this.props
+    const { intl, unrealapi, SkillCanLevelUp, SkillCDPercent, SkillTips } = this.props
 
     return (
       <div className={styles['skill-group']}>
@@ -47,15 +47,16 @@ class Skill extends React.Component {
                     className={[styles['skill-up'], SkillCanLevelUp[index] ? '' : styles.disable].join(' ')}
                     src={'assets/plus.png'}
                     alt={''}
-                    onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}` } })}
+                    onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: SkillCanLevelUp[index] } })}
                   />
+                  {SkillCDPercent[index]}
                   <div className={styles.skill} data-key={datakey} >
                     <img
                       src={path}
-                      alt={path}
+                      alt={''}
                       data-tip
                       data-for={`skilltip${index}`}
-                      onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}` } })}
+                      onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: SkillCanLevelUp[index] } })}
                     />
                     <Tooltip id={`skilltip${index}`} tooltip={SkillTips[index]} />
                   </div>
@@ -76,6 +77,7 @@ function mapStateToProps(state) {
     unrealapi: state.player.unrealapi,
     Skill: state.player.Skill,
     SkillCanLevelUp: state.player.SkillCanLevelUp,
+    SkillCDPercent: state.player.SkillCDPercent,
     SkillTips: state.player.SkillTips,
   }
 }

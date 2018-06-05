@@ -84,20 +84,19 @@ export default {
     update(state, { payload }) {
       const Skill = []
       const SkillCanLevelUp = []
+      const SkillCDPercent = []
       for (let i = 1; i <= payload.Skill_Amount; i += 1) {
         Skill.push(pathPrefix + payload[`Skill${i}_Webpath`])
-        if (payload[`Skill${i}_CanLevelUp`])
-          SkillCanLevelUp.push(true)
-        else
-          SkillCanLevelUp.push(false)
+        SkillCanLevelUp.push(payload[`Skill${i}_CanLevelUp`] ? true : false)
+        SkillCDPercent.push(payload[`Skill${i}_CDPercent`])
       }
       const Buff = []
       const BuffName = []
       const BuffTips = []
       for (let i = 1; i <= payload.Buff_Amount; i += 1) {
         Buff.push(pathPrefix + payload[`Buff${i}_Webpath`])
-        BuffName.push(payload[`Buff${i}_Name`])
-        // BuffTips.push(payload[`Buff${i}_BuffTips`])
+        BuffName.push(payload[`Buff${i}_Name`])         // 暫時用不到
+        // BuffTips.push(payload[`Buff${i}_BuffTips`])  // 暫時用不到
         BuffTips.push({
           header: payload[`Buff${i}_Name`],
           content: payload[`Buff${i}_BuffTips`],
@@ -117,6 +116,7 @@ export default {
         CurrentAttackRange: payload.CurrentAttackRange,
         Skill_Amount: payload.Skill_Amount,
         'Skill': Skill,
+        'SkillCDPercent': SkillCDPercent,
         'SkillCanLevelUp': SkillCanLevelUp,
         Buff_Amount: payload.Buff_Amount,
         'Buff': Buff,
@@ -125,8 +125,12 @@ export default {
       }
     },
     skillLevelUp(state, { payload }) {
-      unrealapi.emit(payload.id, '')
-      unrealapi.debug(`skill level up - ${payload.id}`)
+      if (payload.canup) {
+        unrealapi.emit(payload.id, '')
+        unrealapi.debug(`skill level up - ${payload.id}`)
+      } else {
+        unrealapi.debug(`skill can not level up - ${payload.id}`)
+      }
       // debug
       // ue.interface.broadcast(payload.id, '')
       // unrealapi.ue.interface.broadcast('skillupimg1', '')
