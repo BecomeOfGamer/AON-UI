@@ -6,6 +6,7 @@ import styles from './IndexPage.scss'
 import Language from '../components/Language'
 import Player from '../components/Player'
 import Skill from '../components/Skill'
+import Buff from '../components/Buff'
 
 class IndexPage extends React.Component {
   constructor(props, context) {
@@ -25,6 +26,7 @@ class IndexPage extends React.Component {
         </div>
         <Language />
         <Player />
+        <Buff />
         <Skill />
       </div>
     );
