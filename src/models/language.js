@@ -7,7 +7,7 @@ export default {
   state: {
     locale: 'zh',
     key: 'zh',
-    messages: zhTW,
+    messages: zhTW, // default
   },
 
   subscriptions: {
