@@ -11,7 +11,7 @@ class Skill extends React.Component {
     this.state = {}
   }
   render() {
-    const { intl, unrealapi, SkillCanLevelUp, SkillDetail } = this.props
+    const { intl, unrealapi, SkillCanLevelUp, SkillTips } = this.props
 
     return (
       <div className={styles['skill-group']}>
@@ -56,7 +56,7 @@ class Skill extends React.Component {
                       data-tip
                       data-for={`skilltip${index}`}
                     />
-                    <Tooltip id={`skilltip${index}`} tooltip={SkillDetail[index]} />
+                    <Tooltip id={`skilltip${index}`} tooltip={SkillTips[index]} />
                   </div>
                 </div>
               )
@@ -75,7 +75,7 @@ function mapStateToProps(state) {
     unrealapi: state.player.unrealapi,
     Skill: state.player.Skill,
     SkillCanLevelUp: state.player.SkillCanLevelUp,
-    SkillDetail: state.player.SkillDetail,
+    SkillTips: state.player.SkillTips,
   }
 }
 

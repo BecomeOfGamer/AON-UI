@@ -9,7 +9,7 @@ skill
     data-tip   // 如果需要滑過的時候出現 tooltip
     data-for={`skilltip${index}`} // tooltip 綁定的 ID
   />
-  <Tooltip id={`skilltip${index}`} tooltip={SkillDetail[index]} /> // SkillDetail 請參考 models/player
+  <Tooltip id={`skilltip${index}`} tooltip={SkillTips[index]} /> // SkillTips 請參考 models/player
 </div>
 備註: 如果不要顯示快捷鍵請拔掉 data-key
 */
