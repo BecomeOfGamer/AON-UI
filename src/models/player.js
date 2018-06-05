@@ -97,7 +97,13 @@ export default {
       for (let i = 1; i <= payload.Buff_Amount; i += 1) {
         Buff.push(pathPrefix + payload[`Buff${i}_Webpath`])
         BuffName.push(payload[`Buff${i}_Name`])
-        BuffTips.push(payload[`Buff${i}_BuffTips`])
+        // BuffTips.push(payload[`Buff${i}_BuffTips`])
+        BuffTips.push({
+          header: payload[`Buff${i}_Name`],
+          content: payload[`Buff${i}_BuffTips`],
+          unic: '',
+          nums: [],
+        })
       }
       return {
         ...state,

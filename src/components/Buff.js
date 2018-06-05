@@ -11,7 +11,7 @@ class Buff extends React.Component {
     this.state = {}
   }
   render() {
-    const { intl, unrealapi, BuffTips } = this.props
+    const { intl, unrealapi, BuffName, BuffTips } = this.props
 
     return (
       <div className={styles['buff-group']}>
