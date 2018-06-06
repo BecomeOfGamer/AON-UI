@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'dva'
 import { injectIntl, FormattedMessage } from 'react-intl'
-import Tooltip from './Tooltip'
 import styles from './Skill.scss'
+import Tooltip from './Tooltip'
+import SkillCD from './SkillCD'
 
 class Skill extends React.Component {
   constructor(props, context) {
@@ -49,7 +50,7 @@ class Skill extends React.Component {
                     alt={''}
                     onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: SkillCanLevelUp[index] } })}
                   />
-                  {SkillCDPercent[index]}
+                  {Number.parseFloat(SkillCDPercent[index]).toFixed(2)}
                   <div className={styles.skill} data-key={datakey} >
                     <img
                       src={path}
@@ -60,6 +61,7 @@ class Skill extends React.Component {
                     />
                     <Tooltip id={`skilltip${index}`} tooltip={SkillTips[index]} />
                   </div>
+                  <SkillCD img={path} skillupimg={`skillupimg${index + 1}`} canup={SkillCanLevelUp[index]} />
                 </div>
               )
             })
