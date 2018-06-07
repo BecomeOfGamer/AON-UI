@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
   margin-top: 2rem;
 }
 
@@ -13,7 +12,8 @@ $percent-color:rgba(0, 0, 0, 0.5);
 .pie {
   position: absolute;
   width: $size;
-  height: $size; // background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5p1WTa-qGe9j1ing7-jtdyfgIBvo24YeWU39Wah4Af9hDFLhH");
+  height: $size;
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5p1WTa-qGe9j1ing7-jtdyfgIBvo24YeWU39Wah4Af9hDFLhH"); */
   background-repeat: no-repeat;
   background-size: $size/2;
   background-position: center;

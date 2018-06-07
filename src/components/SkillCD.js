@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'dva'
 import styles from './SkillCD.scss'
+import Tooltip from './Tooltip'
 
 class SkillCD extends React.Component {
   constructor(props, context) {
@@ -15,6 +16,7 @@ class SkillCD extends React.Component {
       during: Math.floor(Math.random() * 9) + 2,
     }
     this.start = this.start.bind(this)
+    console.log(this.props.percent)
   }
 
   componentDidMount() {
@@ -131,14 +133,16 @@ class SkillCD extends React.Component {
   }
 
   render() {
-    const { unrealapi, skillupimg, canup } = this.props
+    const { unrealapi, index, canup, src, tooltip, percent } = this.props
     return (
       <div
         className={styles['skill-cd-group']}
-        onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: skillupimg, 'canup': canup } })
+        data-tip
+        data-for={`skilltip${index}`}
+        onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, 'canup': canup } })
         }
       >
-        <div className={styles.pie} style={{ 'backgroundImage': `url(${this.props.img}` }}>
+        <div className={styles.pie} style={{ 'backgroundImage': `url(${src}` }}>
           <div className={styles.clip1}>
             <div className={styles.slice1} style={this.state.slice1style}></div>
           </div>
@@ -146,9 +150,11 @@ class SkillCD extends React.Component {
             <div className={styles.slice2} style={this.state.slice2style}></div>
           </div>
           <div className={styles.status}>
-            {`${Number.parseFloat(this.state.finish / 10).toFixed(0)} %`}
+            {/* `${Number.parseFloat(this.state.finish / 10).toFixed(0)} %` */}
+            {`${percent} %`}
           </div>
         </div>
+        {tooltip ? <Tooltip id={`skilltip${index}`} tooltip={tooltip} /> : null}
       </div >
     )
   }

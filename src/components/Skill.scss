@@ -29,7 +29,8 @@
         height: 50px;
         border-radius: 6px;
         &.disable {
-          visibility: hidden;
+          /* visibility: hidden; */
+          display: none;
         }
       }
     }

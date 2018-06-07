@@ -14,7 +14,7 @@ class Buff extends React.Component {
     const { intl, unrealapi, BuffName, BuffTips } = this.props
 
     return (
-      <div className={styles['buff-group']}>
+      <div className={[styles['buff-group'], Buff.length === 0 ? styles.disable : ''].join(' ')}>
         <div className={styles['buff-list']}>
           {
             this.props.Buff.map((path, index) => {
@@ -32,7 +32,7 @@ class Buff extends React.Component {
             })
           }
         </div>
-      </div>
+      </div >
     )
   }
 }

@@ -43,16 +43,16 @@ class Skill extends React.Component {
                   break
               }
               return (
-                <div key={`skill-up-${index}`}>
+                <div key={`skill-${index}`}>
                   <img
                     className={[styles['skill-up'], SkillCanLevelUp[index] ? '' : styles.disable].join(' ')}
                     src={'assets/plus.png'}
                     alt={''}
                     onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: SkillCanLevelUp[index] } })}
                   />
-                  {Number.parseFloat(SkillCDPercent[index]).toFixed(2)}
+                  {/*
                   <div className={styles.skill} data-key={datakey} >
-                    <img
+                      <img
                       src={path}
                       alt={''}
                       data-tip
@@ -61,7 +61,14 @@ class Skill extends React.Component {
                     />
                     <Tooltip id={`skilltip${index}`} tooltip={SkillTips[index]} />
                   </div>
-                  <SkillCD img={path} skillupimg={`skillupimg${index + 1}`} canup={SkillCanLevelUp[index]} />
+                  */}
+                  <SkillCD
+                    src={path}
+                    index={index}
+                    tooltip={SkillTips[index]}
+                    percent={Number.parseFloat(SkillCDPercent[index] * 100).toFixed(0)}
+                    canup={SkillCanLevelUp[index]}
+                  />
                 </div>
               )
             })
