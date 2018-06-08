@@ -20,14 +20,12 @@ body,
 
 body {
   /* 如果覺得背景太白可以用 */
-  background-image: url('/assets/background.png');
+  background-image: url('./assets/background.png');
   background-repeat: no-repeat;
   background-position: center;
 }
 
 * {
-  /* Convert http://icoconvert.com/ */
-  cursor: url('/assets/pointer.ico'), auto;
   /* 讓所有物件無法被選取或反白 */
   -webkit-touch-callout: none;
   /* iOS Safari */
