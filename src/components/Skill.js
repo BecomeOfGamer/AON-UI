@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'dva'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import styles from './Skill.scss'
-import Tooltip from './Tooltip'
 import SkillCD from './SkillCD'
 
 class Skill extends React.Component {
@@ -11,20 +10,30 @@ class Skill extends React.Component {
     this.dispatch = props.dispatch
     this.state = {}
   }
+
+  /**
+   * 計算當前血量或魔力比例
+   * @param {Number} now
+   * @param {Number} all
+   */
+  percentCaculate(now, all) {
+    return `${Number.parseFloat(now / all * 100).toFixed(2)}%`
+  }
+
   render() {
     const { intl, unrealapi, SkillCanLevelUp, SkillCDPercent, SkillTips } = this.props
 
     return (
       <div className={styles['skill-group']}>
         <div className={styles.progress}>
-          <div className={styles['progress-text']} >800 / 1000</div>
-          <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': '80%' }}>
+          <div className={styles['progress-text']} >{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div>
+          <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': `${this.percentCaculate(this.props.CurrentHP, this.props.CurrentMaxHP)}` }}>
           </div>
         </div>
         <div className={styles.progress}>
-          <div className={styles['progress-bar']} style={{ 'width': '50%' }}>
+          <div className={styles['progress-bar']} style={{ 'width': `${this.percentCaculate(this.props.CurrentMP, this.props.CurrentMaxMP)}` }}>
           </div>
-          <div className={styles['progress-text']} >200 / 400</div>
+          <div className={styles['progress-text']} >{this.props.CurrentMP} / {this.props.CurrentMaxMP}</div>
         </div>
         <div className={styles['skill-list']}>
           {
@@ -96,6 +105,10 @@ function mapStateToProps(state) {
   return {
     unrealapi: state.player.unrealapi,
     Skill: state.player.Skill,
+    CurrentMaxHP: state.player.CurrentMaxHP,
+    CurrentHP: state.player.CurrentHP,
+    CurrentMaxMP: state.player.CurrentMaxMP,
+    CurrentMP: state.player.CurrentMP,
     SkillCanLevelUp: state.player.SkillCanLevelUp,
     SkillCDPercent: state.player.SkillCDPercent,
     SkillTips: state.player.SkillTips,
