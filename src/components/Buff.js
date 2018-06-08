@@ -20,12 +20,13 @@ class Buff extends React.Component {
             this.props.Buff.map((path, index) => {
               return (
                 <div key={`buff-${index}`}>
-                  <img
+                  <div
                     className={styles.buff}
-                    src={path}
+                    style={{ 'backgroundImage': `url(${path})` }}
                     data-tip
                     data-for={`bufftip${index}`}
-                  />
+                  >
+                  </div>
                   <Tooltip id={`bufftip${index}`} tooltip={BuffTips[index]} />
                 </div>
               )

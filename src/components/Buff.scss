@@ -25,6 +25,9 @@
       width: 50px;
       text-align: center;
       .buff {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
         height: 40px;
         width: 40px;
       }

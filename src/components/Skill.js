@@ -44,12 +44,13 @@ class Skill extends React.Component {
               }
               return (
                 <div key={`skill-${index}`}>
-                  <img
+                  <div
                     className={[styles['skill-up'], SkillCanLevelUp[index] ? '' : styles.disable].join(' ')}
-                    src={'assets/plus.png'}
+                    style={{ 'backgroundImage': 'url(assets/plus.png)' }}
                     alt={''}
                     onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: SkillCanLevelUp[index] } })}
-                  />
+                  >
+                  </div>
                   {/*
                   <div className={styles.skill} data-key={datakey} >
                       <img
