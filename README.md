@@ -34,6 +34,11 @@ yarn build
 
 - `click event` 會有不明失效問題 ( `lose focus` ) , 似乎是因為 UE4 對於滑鼠座標的轉換異常。
 
+## Design Pattern
+
+- 請勿使用 `button`
+- 所有圖片請使用 `backgroundImage`, 避免有拖曳問題
+
 ## License
 
 AON-UI is BSD licensed. See [LICENSE](https://github.com/RemakeAONTeam/AON-UI/blob/master/LICENSE).
