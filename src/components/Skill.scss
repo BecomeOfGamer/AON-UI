@@ -1,4 +1,5 @@
 @import '../scss/components/skill.scss';
+@import '../scss/components/progress-bars.scss';
 /* 使用技能的樣式組件 */
 
 .skill-group {
@@ -8,11 +9,15 @@
   left: 35%;
   width: 30%;
   background: #282A36;
-  padding: 0.6rem 0.6rem 2rem 0.6rem;
+  padding: 0.6rem;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  .skill-list {
+  .progress {
+    /* overwrite progress-bars.scss */
     margin-bottom: 0.6rem;
+  }
+  .skill-list {
+    // margin-bottom: 0.6rem;
     padding: 0.6rem;
     background-color: #44475A;
     border-radius: 6px;
@@ -21,15 +26,18 @@
       position: relative;
       margin-right: 0.4rem;
       width: 50px;
-      cursor: pointer;
       .skill-up {
         margin-right: 0.4rem;
         margin-bottom: 0.4rem;
         width: 50px;
         height: 50px;
         border-radius: 6px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
         &.disable {
-          visibility: hidden;
+          /* visibility: hidden; */
+          display: none;
         }
       }
     }

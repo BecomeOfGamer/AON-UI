@@ -4,6 +4,7 @@ const en_US = { // eslint-disable-line
   'intl.player.UnitName': 'UnitName',
   'intl.player.CurrentMoveSpeed': 'CurrentMoveSpeed',
   'intl.player.CurrentHP': 'HP',
+  'intl.player.CurrentMP': 'MP',
   'intl.player.CurrentAttackSpeed': 'CurrentAttackSpeed',
   'intl.player.CurrentLevel': 'CurrentLevel',
   'intl.player.CurrentAttack': 'CurrentAttack',

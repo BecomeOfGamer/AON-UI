@@ -8,9 +8,12 @@
   left: 35%;
   /* align to skill */
   padding: 0 0.6rem;
-  height: 230px;
+  height: 250px;
   /* align to skill */
   width: 30%;
+  &.disable {
+    display: none;
+  }
   .buff-list {
     /* align to skill */
     padding: 0 0.6rem;
@@ -22,6 +25,9 @@
       width: 50px;
       text-align: center;
       .buff {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
         height: 40px;
         width: 40px;
       }

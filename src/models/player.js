@@ -11,10 +11,16 @@ export default {
   state: {
     unrealapi: undefined,
     UnitName: '織田信長',
+    TeamId: 0,
+    IsAlive: 0,
     CurrentMoveSpeed: 0,
-    CurrentHP: 0,
+    CurrentMaxHP: 1000,
+    CurrentHP: 890,
+    CurrentMaxMP: 400,
+    CurrentMP: 180,
     CurrentAttackSpeed: 0,
     CurrentLevel: 0,
+    CurrentEXP: 0,
     CurrentAttack: 0,
     CurrentArmor: 0,
     CurrentAttackRange: 0,
@@ -84,20 +90,19 @@ export default {
     update(state, { payload }) {
       const Skill = []
       const SkillCanLevelUp = []
+      const SkillCDPercent = []
       for (let i = 1; i <= payload.Skill_Amount; i += 1) {
         Skill.push(pathPrefix + payload[`Skill${i}_Webpath`])
-        if (payload[`Skill${i}_CanLevelUp`])
-          SkillCanLevelUp.push(true)
-        else
-          SkillCanLevelUp.push(false)
+        SkillCanLevelUp.push(payload[`Skill${i}_CanLevelUp`] ? true : false)
+        SkillCDPercent.push(payload[`Skill${i}_CDPercent`])
       }
       const Buff = []
       const BuffName = []
       const BuffTips = []
       for (let i = 1; i <= payload.Buff_Amount; i += 1) {
         Buff.push(pathPrefix + payload[`Buff${i}_Webpath`])
-        BuffName.push(payload[`Buff${i}_Name`])
-        // BuffTips.push(payload[`Buff${i}_BuffTips`])
+        BuffName.push(payload[`Buff${i}_Name`])         // 暫時用不到
+        // BuffTips.push(payload[`Buff${i}_BuffTips`])  // 暫時用不到
         BuffTips.push({
           header: payload[`Buff${i}_Name`],
           content: payload[`Buff${i}_BuffTips`],
@@ -109,24 +114,33 @@ export default {
         ...state,
         UnitName: payload.UnitName,
         CurrentMoveSpeed: payload.CurrentMoveSpeed,
+        CurrentMaxHP: payload.CurrentMaxHP,
         CurrentHP: payload.CurrentHP,
+        CurrentMaxMP: payload.CurrentMaxMP,
+        CurrentMP: payload.CurrentMP,
         CurrentAttackSpeed: Math.floor(payload.CurrentAttackSpeed * 100),
         CurrentLevel: payload.CurrentLevel,
+        CurrentEXP: payload.CurrentEXP,
         CurrentAttack: payload.CurrentAttack,
         CurrentArmor: payload.CurrentArmor,
         CurrentAttackRange: payload.CurrentAttackRange,
         Skill_Amount: payload.Skill_Amount,
-        'Skill': Skill,
-        'SkillCanLevelUp': SkillCanLevelUp,
+        Skill: Skill,
+        SkillCDPercent: SkillCDPercent,
+        SkillCanLevelUp: SkillCanLevelUp,
         Buff_Amount: payload.Buff_Amount,
-        'Buff': Buff,
-        'BuffName': BuffName,
-        'BuffTips': BuffTips,
+        Buff: Buff,
+        BuffName: BuffName,
+        BuffTips: BuffTips,
       }
     },
     skillLevelUp(state, { payload }) {
-      unrealapi.emit(payload.id, '')
-      unrealapi.debug(`skill level up - ${payload.id}`)
+      if (payload.canup) {
+        unrealapi.emit(payload.id, '')
+        unrealapi.debug(`skill level up - ${payload.id}`)
+      } else {
+        unrealapi.debug(`skill can not level up - ${payload.id}`)
+      }
       // debug
       // ue.interface.broadcast(payload.id, '')
       // unrealapi.ue.interface.broadcast('skillupimg1', '')

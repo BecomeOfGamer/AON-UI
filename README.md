@@ -30,10 +30,14 @@ yarn build
 
 ## Log
 
-#### 2018-06-04
+#### 2018-06-08
 
-- `click event` 會有不明失效問題 ( `lose focus` ) , 目前推估可能目標與鄰近元素的樣式 ( `margin`, `padding` ) 影響。
-- `scss/components/skill.scss` 元素樣式未知問題, 會影響 `click event` 失效 ( `lose focus` )。
+- `click event` 會有不明失效問題 ( `lose focus` ) , 似乎是因為 UE4 對於滑鼠座標的轉換異常。
+
+## Design Pattern
+
+- 請勿使用 `button`
+- 所有圖片請使用 `backgroundImage`, 避免有拖曳問題
 
 ## License
 

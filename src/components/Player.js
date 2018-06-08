@@ -28,6 +28,10 @@ class Player extends React.Component {
               <td>{this.props.CurrentHP}</td>
             </tr>
             <tr>
+              <th>{intl.formatMessage({ id: 'intl.player.CurrentMP' })}</th>
+              <td>{this.props.CurrentMP}</td>
+            </tr>
+            <tr>
               <th>{intl.formatMessage({ id: 'intl.player.CurrentAttackSpeed' })}</th>
               <td>{this.props.CurrentAttackSpeed}</td>
             </tr>
@@ -61,6 +65,7 @@ function mapStateToProps(state) {
     UnitName: state.player.UnitName,
     CurrentMoveSpeed: state.player.CurrentMoveSpeed,
     CurrentHP: state.player.CurrentHP,
+    CurrentMP: state.player.CurrentMP,
     CurrentAttackSpeed: state.player.CurrentAttackSpeed,
     CurrentLevel: state.player.CurrentLevel,
     CurrentAttack: state.player.CurrentAttack,

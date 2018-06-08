@@ -14,25 +14,26 @@ class Buff extends React.Component {
     const { intl, unrealapi, BuffName, BuffTips } = this.props
 
     return (
-      <div className={styles['buff-group']}>
+      <div className={[styles['buff-group'], Buff.length === 0 ? styles.disable : ''].join(' ')}>
         <div className={styles['buff-list']}>
           {
             this.props.Buff.map((path, index) => {
               return (
                 <div key={`buff-${index}`}>
-                  <img
+                  <div
                     className={styles.buff}
-                    src={path}
+                    style={{ 'backgroundImage': `url(${path})` }}
                     data-tip
                     data-for={`bufftip${index}`}
-                  />
+                  >
+                  </div>
                   <Tooltip id={`bufftip${index}`} tooltip={BuffTips[index]} />
                 </div>
               )
             })
           }
         </div>
-      </div>
+      </div >
     )
   }
 }
