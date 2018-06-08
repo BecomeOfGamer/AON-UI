@@ -16,20 +16,18 @@ class SkillCD extends React.Component {
       during: Math.floor(Math.random() * 9) + 2,
     }
     this.start = this.start.bind(this)
-    console.log(this.props.percent)
   }
 
   componentDidMount() {
-    // const slice1 = document.querySelector(`.${styles.slice1}`)
     this.setState({ // eslint-disable-line
       slice1style: this.runReversal(1, this.state.finish, this.state.total),
       slice2style: this.runReversal(2, this.state.finish, this.state.total),
     })
-    if (typeof this.timer === 'undefined') {
-      this.setState({ // eslint-disable-line
-        timer: setInterval(this.start, 50),
-      })
-    }
+    // if (typeof this.timer === 'undefined') {
+    //   this.setState({ // eslint-disable-line
+    //     timer: setInterval(this.start, 50),
+    //   })
+    // }
   }
 
   componentWillUnmount() {
@@ -40,7 +38,6 @@ class SkillCD extends React.Component {
     this.setState({
       finish: this.state.finish + (50 / this.state.during),
     })
-    // finish = finish + (50 / limit)
     // millisecond = millisecond + 50
     // if (millisecond >= 1000) {
     //   millisecond = 0;
@@ -50,7 +47,7 @@ class SkillCD extends React.Component {
       this.setState({
         finish: 0,
       })
-      // clearInterval(this.state.timer)
+      clearInterval(this.state.timer)
     }
     this.setState({ // eslint-disable-line
       slice1style: this.runReversal(1, this.state.finish, this.state.total),
@@ -73,7 +70,6 @@ class SkillCD extends React.Component {
       default:
         return {}
     }
-    // this.status.innerHTML = `${Number.parseFloat(finish / 10).toFixed(0)} % `
   }
 
   /**
@@ -139,7 +135,16 @@ class SkillCD extends React.Component {
         className={styles['skill-cd-group']}
         data-tip
         data-for={`skilltip${index}`}
-        onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, 'canup': canup } })
+        onClick={() => {
+          if (this.state.finish > 0) {
+            console.warn('skill cd not yet.')
+            return
+          }
+          this.setState({
+            timer: setInterval(this.start, 50),
+          })
+          this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, 'canup': canup } })
+        }
         }
       >
         <div className={styles.pie} style={{ 'backgroundImage': `url(${src}` }}>

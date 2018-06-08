@@ -1,0 +1,60 @@
+/*!
+ * progress-bars v2.2.2: A small bit of CSS for adding progress bars to your website
+ * (c) 2015 Chris Ferdinandi
+ * MIT License
+ * http://github.com/cferdinandi/progress-bars
+ */
+
+$default:#1E7EEC;
+$secondary:#808080;
+$success:#00B707;
+$danger:#880e14;
+$warning:#dba909;
+/* theme */
+
+.progress {
+  position: relative;
+  overflow: hidden;
+  /* margin: 0.5em 0; please edit in parent css */
+  height: 1rem;
+  background-color: #222;
+  border-radius: 4px;
+  text-align: center;
+  .progress-text {
+    position: absolute;
+    width: 100%;
+    line-height: 1rem;
+    font-size: 0.8rem;
+    text-align: center;
+    color: #e5e5e5;
+    text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444;
+  }
+  .progress-bar {
+    float: left;
+    width: 0;
+    height: 100%;
+    color: #ffffff;
+    box-sizing: border-box;
+    /* background-color: $default; */
+    background: linear-gradient(90deg, #01438E 26%, #149DF1 100%);
+    background: -moz-linear-gradient(90deg, #01438E 26%, #149DF1 100%);
+    background: -webkit-linear-gradient(90deg, #01438E 26%, #149DF1 100%);
+    background: -o-linear-gradient(90deg, #01438E 26%, #149DF1 100%);
+  }
+  .progress-bar-secondary {
+    background-color: $secondary;
+  }
+  .progress-bar-success {
+    /* background-color: $success; */
+    background: linear-gradient(90deg, #006A05 26%, #00BB00 100%);
+    background: -moz-linear-gradient(90deg, #006A05 26%, #00BB00 100%);
+    background: -webkit-linear-gradient(90deg, #006A05 26%, #00BB00 100%);
+    background: -o-linear-gradient(90deg, #006A05 26%, #00BB00 100%);
+  }
+  .progress-bar-danger {
+    background-color: $danger;
+  }
+  .progress-bar-warning {
+    background-color: $warning;
+  }
+}

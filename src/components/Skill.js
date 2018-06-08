@@ -74,7 +74,17 @@ class Skill extends React.Component {
             })
           }
         </div>
-      </div>
+        <div className={styles.progress}>
+          <div className={styles['progress-text']} >800 / 1000</div>
+          <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': '80%' }}>
+          </div>
+        </div>
+        <div className={styles.progress}>
+          <div className={styles['progress-bar']} style={{ 'width': '50%' }}>
+          </div>
+          <div className={styles['progress-text']} >200 / 400</div>
+        </div>
+      </div >
     )
   }
 }
