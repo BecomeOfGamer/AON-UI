@@ -26,6 +26,8 @@ body {
 }
 
 * {
+  /* Convert http://icoconvert.com/ */
+  cursor: url('/assets/pointer.ico'), auto;
   /* 讓所有物件無法被選取或反白 */
   -webkit-touch-callout: none;
   /* iOS Safari */

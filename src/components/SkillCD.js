@@ -9,11 +9,11 @@ class SkillCD extends React.Component {
     this.dispatch = props.dispatch
     this.state = {
       total: 1000,
-      finish: 0,
+      finish: 1000,
       slice1style: {},
       slice2style: {},
       timer: undefined,
-      during: Math.floor(Math.random() * 9) + 2,
+      during: Math.floor(Math.random() * 9) + 2, // 待 UE4 發送技能持續時間
     }
     this.start = this.start.bind(this)
   }
@@ -136,11 +136,12 @@ class SkillCD extends React.Component {
         data-tip
         data-for={`skilltip${index}`}
         onClick={() => {
-          if (this.state.finish > 0) {
+          if (this.state.finish > 0 && this.state.finish < 1000) {
             console.warn('skill cd not yet.')
             return
           }
           this.setState({
+            finish: 0,
             timer: setInterval(this.start, 50),
           })
           this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, 'canup': canup } })
@@ -156,7 +157,7 @@ class SkillCD extends React.Component {
           </div>
           <div className={styles.status}>
             {/* `${Number.parseFloat(this.state.finish / 10).toFixed(0)} %` */}
-            {`${percent} %`}
+            {`${percent < 100 && percent > 0 ? `${percent}` : ''}`}
           </div>
         </div>
         {tooltip ? <Tooltip id={`skilltip${index}`} tooltip={tooltip} /> : null}
