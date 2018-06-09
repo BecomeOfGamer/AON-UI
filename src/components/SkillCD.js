@@ -133,10 +133,8 @@ class SkillCD extends React.Component {
   }
 
   render() {
-    const { unrealapi, index, canup, src, tooltip, percent } = this.props
-
-    unrealapi.debug(unrealapi)
-    if (Number(percent) !== 100 && !this.state.isRun && this.state.finish === 1000) {
+    const { unrealapi, src, index, tooltip, percent, canup } = this.props
+    if (Number(percent) < 100 && !this.state.isRun && this.state.finish === 1000) {
       // this.setState({
       //   finish: 0,
       //   timer: setInterval(this.start, 50),
@@ -150,17 +148,16 @@ class SkillCD extends React.Component {
         data-tip
         data-for={`skilltip${index}`}
         onClick={() => {
-          if (this.state.finish > 0 && this.state.finish < 1000 && this.state.isRun) {
+          if (!canup) {
             console.warn('skill cd not yet.')
-            return
+          } else {
+            this.setState({
+              finish: 0,
+              timer: setInterval(this.start, 50),
+            })
+            this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: canup } })
           }
-          this.setState({
-            finish: 0,
-            timer: setInterval(this.start, 50),
-          })
-          this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, 'canup': canup } })
-        }
-        }
+        }}
       >
         <div className={styles.pie} style={{ 'backgroundImage': `url(${src}` }}>
           <div className={styles.clip1}>
@@ -170,8 +167,8 @@ class SkillCD extends React.Component {
             <div className={styles.slice2} style={this.state.slice2style}></div>
           </div>
           <div className={styles.status}>
-            {/* `${Number.parseFloat(this.state.finish / 10).toFixed(0)} %` */}
-            {Number(percent) === 100 ? '' : percent}
+            {/* {Number(percent) === 100 ? '' : percent} */}
+            {Number(percent)}
           </div>
         </div>
         {tooltip ? <Tooltip id={`skilltip${index}`} tooltip={tooltip} /> : null}
