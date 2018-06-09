@@ -13,9 +13,11 @@ class SkillCD extends React.Component {
       slice1style: {},
       slice2style: {},
       timer: undefined,
-      during: Math.floor(Math.random() * 9) + 2, // 待 UE4 發送技能持續時間
+      during: Math.floor(Math.random() * 9) + 2, // 待 UE4 發送技能持續時間,
+      isRun: false,
     }
     this.start = this.start.bind(this)
+
   }
 
   componentDidMount() {
@@ -37,6 +39,7 @@ class SkillCD extends React.Component {
   start() {
     this.setState({
       finish: this.state.finish + (50 / this.state.during),
+      isRun: true,
     })
     // millisecond = millisecond + 50
     // if (millisecond >= 1000) {
@@ -44,10 +47,11 @@ class SkillCD extends React.Component {
     //   console.log('1 second')
     // }
     if (this.state.finish >= 1000) {
-      this.setState({
-        finish: 0,
-      })
       clearInterval(this.state.timer)
+      this.setState({
+        finish: 1000,
+        isRun: false,
+      })
     }
     this.setState({ // eslint-disable-line
       slice1style: this.runReversal(1, this.state.finish, this.state.total),
@@ -130,13 +134,23 @@ class SkillCD extends React.Component {
 
   render() {
     const { unrealapi, index, canup, src, tooltip, percent } = this.props
+
+    unrealapi.debug(unrealapi)
+    if (Number(percent) !== 100 && !this.state.isRun && this.state.finish === 1000) {
+      // this.setState({
+      //   finish: 0,
+      //   timer: setInterval(this.start, 50),
+      //   isRun:true,
+      // })
+    }
+
     return (
       <div
         className={styles['skill-cd-group']}
         data-tip
         data-for={`skilltip${index}`}
         onClick={() => {
-          if (this.state.finish > 0 && this.state.finish < 1000) {
+          if (this.state.finish > 0 && this.state.finish < 1000 && this.state.isRun) {
             console.warn('skill cd not yet.')
             return
           }
@@ -157,7 +171,7 @@ class SkillCD extends React.Component {
           </div>
           <div className={styles.status}>
             {/* `${Number.parseFloat(this.state.finish / 10).toFixed(0)} %` */}
-            {`${percent < 100 && percent > 0 ? `${percent}` : ''}`}
+            {Number(percent) === 100 ? '' : percent}
           </div>
         </div>
         {tooltip ? <Tooltip id={`skilltip${index}`} tooltip={tooltip} /> : null}

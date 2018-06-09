@@ -48,7 +48,7 @@ export default {
       unic: '',
       nums: [],
     }],
-    SkillCDPercent: [0, 0, 0, 0],
+    SkillCDPercent: [1, 1, 1, 1],
     Buff_Amount: 2,
     Buff: ['assets/buff/stun.png', 'assets/buff/stun.png'],
     BuffName: ['暈車', '暈船'],

@@ -86,7 +86,7 @@ class Skill extends React.Component {
                     src={path}
                     index={index}
                     tooltip={SkillTips[index]}
-                    percent={Number.parseFloat(SkillCDPercent[index] * 100).toFixed(0)}
+                    percent={Number(Number.parseFloat(SkillCDPercent[index] * 100).toFixed(0))}
                     canup={SkillCanLevelUp[index]}
                   />
                 </div>
