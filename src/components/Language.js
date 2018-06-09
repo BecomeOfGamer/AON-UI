@@ -2,13 +2,14 @@ import React from 'react'
 import { connect } from 'dva'
 import { injectIntl, FormattedMessage } from 'react-intl'
 
+// https://wmira.github.io/react-icons-kit
+import { Icon } from 'react-icons-kit'
+import { cog } from 'react-icons-kit/fa/cog'
+
 // http://flag-icon-css.lip.is/
 import 'flag-icon-css/css/flag-icon.css'
 
-import Dropdown, {
-  MenuItem,
-} from '@trendmicro/react-dropdown'
-
+import Dropdown, { MenuItem } from '@trendmicro/react-dropdown'
 import '@trendmicro/react-buttons/dist/react-buttons.css'
 import '@trendmicro/react-dropdown/dist/react-dropdown.css'
 
@@ -61,7 +62,10 @@ class Language extends React.Component {
       <div className={styles['lan-group']}>
         <Dropdown>
           <Dropdown.Toggle iconOnly noCaret>
-            {intl.formatMessage({ id: 'intl.lang' })}
+            <span style={{ display: 'flex' }}>
+              <Icon icon={cog} style={{ marginRight: 6 }} />
+              {intl.formatMessage({ id: 'intl.lang' })}
+            </span>
           </Dropdown.Toggle>
           <Dropdown.Menu>
             {

@@ -31,6 +31,7 @@
     "flag-icon-css": "^3.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-icons-kit": "^1.1.5",
     "react-intl": "^2.4.0",
     "react-tooltip": "^3.6.0",
     "reset-css": "^3.0.0"
