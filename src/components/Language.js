@@ -1,79 +1,86 @@
 import React from 'react'
 import { connect } from 'dva'
 import { injectIntl, FormattedMessage } from 'react-intl'
-import styles from './Language.scss'
 
-import zhTW from '../locale/zh-TW'
-import enUS from '../locale/en-US'
+// http://flag-icon-css.lip.is/
+import 'flag-icon-css/css/flag-icon.css'
+
+import Dropdown, {
+  MenuItem,
+} from '@trendmicro/react-dropdown'
+
+import '@trendmicro/react-buttons/dist/react-buttons.css'
+import '@trendmicro/react-dropdown/dist/react-dropdown.css'
+
+import styles from './Language.scss'
 
 class Language extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.dispatch = props.dispatch
-    const { UnitName, locale } = this.props
+    const { UnitName, locale, type } = this.props
     this.state = {
-      'UnitName': UnitName,
-      'locale': locale,
+      UnitName: UnitName,
+      locale: locale,
     }
   }
 
   /**
    * Change Locale
-   * @param {String} locale [en, zh]
+   * @param {String} locale 地區設定, 參見 models
+   * @param {Object} locale 語系檔, 參見 models
    */
-  changeLocale(locale) {
-    switch (locale) {
-      case 'en':
-        this.dispatch({ type: 'language/update', payload: { locale: 'en', key: 'en', messages: enUS } })
-        break;
-      case 'zh':
-        this.dispatch({ type: 'language/update', payload: { locale: 'zh', key: 'zh', messages: zhTW } })
-        break;
-      default:
-        this.dispatch({ type: 'language/update', payload: { locale: 'zh', key: 'zh', messages: zhTW } })
-        break;
-    }
-    this.setState({ 'locale': locale })
+  changeLocale(locale, message) {
+    this.setState({ locale: locale })
+    this.dispatch({ type: 'language/update', payload: { locale: locale, key: locale, messages: message } })
   }
 
   render() {
-    const { intl } = this.props
+    const { intl, lans } = this.props
 
     // 渲染方法 1 - http://www.cnblogs.com/qiaojie/p/6411199.html
-    const helloFormat = intl.formatMessage({ id: 'intl.hello' })
-    const nameFormat = intl.formatMessage({ id: 'intl.name' }, { name: this.state.UnitName })
+    // const helloFormat = intl.formatMessage({ id: 'intl.hello' })
+    // const nameFormat = intl.formatMessage({ id: 'intl.name' }, { name: this.state.UnitName })
+    // <p>語系渲染方法 1 -{helloFormat},&nbsp;{nameFormat}.</p>
+
     // 渲染方法 2
     // <FormattedMessage />
+    // <p>語系渲染方法 1 -
+    //   <FormattedMessage
+    //     id="intl.hello"
+    //     defaultMessage={'hello'}
+    //   />,&nbsp;
+    //   <FormattedMessage
+    //     id="intl.name"
+    //     defaultMessage={'預設內容'}
+    //     values={{ name: this.state.unitname }}
+    //   />.
+    // </p>
 
     return (
       <div className={styles['lan-group']}>
-        <a
-          className={[styles.lang, this.state.locale === 'zh' ? styles.select : null].join(' ')}
-          onClick={() => this.changeLocale('zh')}
-        >中文
-        </a>
-        <a
-          className={[styles.lang, this.state.locale === 'en' ? styles.select : null].join(' ')}
-          onClick={() => this.changeLocale('en')}
-        >英文
-        </a>
-        {
-          /**
-
-          <p>語系渲染方法 1 -
-            <FormattedMessage
-              id="intl.hello"
-              defaultMessage={'hello'}
-            />,&nbsp;
-            <FormattedMessage
-              id="intl.name"
-              defaultMessage={'預設內容'}
-              values={{ name: this.state.unitname }}
-            />.
-          </p>
-          <p>語系渲染方法 2 -{helloFormat},&nbsp;{nameFormat}.</p>
-          */
-        }
+        <Dropdown>
+          <Dropdown.Toggle iconOnly noCaret>
+            {intl.formatMessage({ id: 'intl.lang' })}
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {
+              // 欲增加語系請到 models / language.js
+              lans.map((lan, index) => {
+                return (
+                  <MenuItem
+                    key={`lan-${lan.locale}-${index}`}
+                    active={this.state.locale === lan.locale}
+                    onSelect={() => this.changeLocale(lan.locale, lan.messages)}
+                  >
+                    <span className={['flag-icon', `flag-icon-${lan.icon}`].join(' ')} style={{ marginRight: 6 }}></span>
+                    {intl.formatMessage({ id: `intl.lang.${lan.locale}` })}
+                  </MenuItem>
+                )
+              })
+            }
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     )
   }
@@ -83,9 +90,11 @@ Language.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    locale: state.language.locale,
     key: state.language.key,
+    locale: state.language.locale,
     messages: state.language.messages,
+    type: state.language.type,
+    lans: state.language.lans,
     UnitName: state.player.UnitName,
   }
 }

@@ -3,8 +3,8 @@ export default {
   namespace: 'status',
 
   state: {
-    progress: 0,
-    fps: 0,
+    progress: 100,
+    fps: 36,
   },
 
   subscriptions: {

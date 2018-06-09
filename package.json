@@ -1,6 +1,6 @@
 {
   "name": "aon-ui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "🌈 A AON UI based on react.js created by dvajs.",
   "main": ".roadhogrc.mock.js",
   "scripts": {
@@ -25,8 +25,10 @@
   },
   "homepage": "https://github.com/RemakeAONTeam/AON-UI#readme",
   "dependencies": {
+    "@trendmicro/react-dropdown": "^1.2.3",
     "dva": "^2.3.0",
     "dva-loading": "^2.0.2",
+    "flag-icon-css": "^3.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-intl": "^2.4.0",
