@@ -8,9 +8,6 @@ import MockBuffs from '../../mock/MockBuffs'
 
 // 方便操作, 讓 player 可以在此檔直接調用 api
 const unrealapi = new UnrealAPI()
-const skill = new Skill()
-const buff = new Buff()
-
 const pathPrefix = 'assets/'
 
 export default {
@@ -35,8 +32,8 @@ export default {
     CurrentAttackRange: 0,
     Skill_Amount: 4,
     Buff_Amount: 2,
-    Skills: MockSkills || [Skill],
-    Buffs: MockBuffs || [Buff],
+    Skills: [],
+    Buffs: [],
   },
 
   subscriptions: {
@@ -65,6 +62,7 @@ export default {
 
       const Skills = []
       for (let i = 1; i <= payload.Skill_Amount; i += 1) {
+        const skill = new Skill()
         skill.Name = payload[`Skill${i}_Name`]
         skill.Enabled = payload[`Skill${i}_Enabled`]
         skill.Display = payload[`Skill${i}_Display`]
@@ -85,6 +83,7 @@ export default {
 
       const Buffs = []
       for (let i = 1; i <= payload.Buff_Amount; i += 1) {
+        const buff = new Buff()
         buff.Name = payload[`Buff${i}_Name`]
         buff.Webpath = pathPrefix + payload[`Buff${i}_Webpath`]
         buff.Friendly = payload[`Buff${i}_Friendly`]
