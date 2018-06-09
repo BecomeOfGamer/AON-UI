@@ -2,7 +2,7 @@ const en_US = { // eslint-disable-line
   'intl.lang': 'Language',
   'intl.lang.en': 'English',
   'intl.lang.zh-tw': 'Traditional Chinese',
-  'intl.lang.zh-cn': 'Simple Chinese',
+  'intl.lang.zh-cn': 'Simplified Chinese',
   'intl.hello': 'Hello',
   'intl.name': 'my name is {name}',
   'intl.player.UnitName': 'UnitName',
