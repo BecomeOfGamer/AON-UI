@@ -1,7 +1,13 @@
 import UnrealAPI from '../api/UnrealAPI'
+import Skill from '../interface/Skill'
+import Buff from '../interface/Buff'
 
 // 方便操作, 讓 player 可以在此檔直接調用 api
 const unrealapi = new UnrealAPI()
+
+const skill = new Skill()
+const buff = new Buff()
+
 const pathPrefix = 'assets/'
 
 export default {
@@ -25,8 +31,13 @@ export default {
     CurrentArmor: 0,
     CurrentAttackRange: 0,
     Skill_Amount: 4,
+    Buff_Amount: 2,
+    Skills: [new Skill()],
+    Buffs: [new Buff()],
     Skill: ['assets/skill/a02/a02_1.png', 'assets/skill/a02/a02_2.png', 'assets/skill/a02/a02_3.png', 'assets/skill/a02/a02_4.png'],
     SkillCanLevelUp: [true, false, true, false],
+    SKillEnabled: [true, true, true, true],
+    SKillDisplay: [true, true, true, true],
     SkillTips: [{
       header: '褶裙',
       content: '移動速度+45。',
@@ -49,7 +60,8 @@ export default {
       nums: [],
     }],
     SkillCDPercent: [1, 1, 1, 1],
-    Buff_Amount: 2,
+    SkillCurrentCD: [0, 0, 0, 0],
+    Skilld_MaxCD: [0, 0, 0, 0],
     Buff: ['assets/buff/stun.png', 'assets/buff/stun.png'],
     BuffName: ['暈車', '暈船'],
     BuffTips: [{
@@ -88,15 +100,63 @@ export default {
       }
     },
     update(state, { payload }) {
-      const Skill = []
+      const Skills = []
+      for (let i = 1; i <= payload.Skill_Amount; i += 1) {
+        skill.Name = payload[`Skill${i}_Name`]
+        skill.Enabled = payload[`Skill${i}_Enabled`]
+        skill.Display = payload[`Skill${i}_Display`]
+        skill.Webpath = pathPrefix + payload[`Skill${i}_Webpath`]
+        skill.Description = payload[`Skill${i}_Description`]
+        skill.CDPercent = payload[`Skill${i}_CDPercent`]
+        skill.CurrentCD = payload[`Skill${i}_CurrentCD`]
+        skill.MaxCD = payload[`Skill${i}_MaxCD`]
+        skill.CanLevelUp = payload[`Skill${i}_CanLevelUp`]
+        skill.CurrentLevel = payload[`Skill${i}_CurrentLevel`]
+        skill.MaxLevel = payload[`Skill${i}_MaxLevel`]
+        skill.Tips.header = payload[`Skill${i}_Name`]
+        skill.Tips.content = payload[`Skill${i}_Description`]
+        skill.Tips.unic = ''
+        skill.Tips.nums = []
+        Skills.push(skill)
+      }
+
+      const Buffs = []
+      for (let i = 1; i <= payload.Buff_Amount; i += 1) {
+        buff.Name = payload[`Buff${i}_Name`]
+        buff.Webpath = pathPrefix + payload[`Buff${i}_Webpath`]
+        buff.Friendly = payload[`Buff${i}_Friendly`]
+        buff.BuffTips = payload[`Buff${i}_BuffTips`]
+        buff.Stacks = payload[`Buff${i}_Stacks`]
+        buff.Duration = payload[`Buff${i}_Duration`]
+        buff.MaxDuration = payload[`Buff${i}_MaxDuration`]
+        buff.CanStacks = payload[`Buff${i}_CanStacks`]
+        buff.Tips.header = payload[`Buff${i}_Name`]
+        buff.Tips.content = payload[`Buff${i}_BuffTips`]
+        buff.Tips.unic = ''
+        buff.Tips.nums = []
+        Buffs.push(buff)
+      }
+
+      // ====== 待刪除
+      const Skill = []  // eslint-disable-line
+      const SkillName = []
       const SkillCanLevelUp = []
       const SkillCDPercent = []
+      const SkillTips = []
       for (let i = 1; i <= payload.Skill_Amount; i += 1) {
         Skill.push(pathPrefix + payload[`Skill${i}_Webpath`])
         SkillCanLevelUp.push(payload[`Skill${i}_CanLevelUp`] ? true : false)
         SkillCDPercent.push(payload[`Skill${i}_CDPercent`])
+        SkillName.push(payload[`Skill${i}_Name`]) // 暫時用不到
+        SkillTips.push({
+          header: payload[`Skill${i}_Name`],
+          content: payload[`Skill${i}_Description`],
+          unic: '',
+          nums: [],
+        })
       }
-      const Buff = []
+
+      const Buff = []  // eslint-disable-line
       const BuffName = []
       const BuffTips = []
       for (let i = 1; i <= payload.Buff_Amount; i += 1) {
@@ -110,6 +170,8 @@ export default {
           nums: [],
         })
       }
+      // ====== 待刪除
+
       return {
         ...state,
         UnitName: payload.UnitName,
@@ -125,13 +187,18 @@ export default {
         CurrentArmor: payload.CurrentArmor,
         CurrentAttackRange: payload.CurrentAttackRange,
         Skill_Amount: payload.Skill_Amount,
+        Buff_Amount: payload.Buff_Amount,
+        Skills: Skills,
+        Buffs: Buffs,
+        // ====== 待刪除
         Skill: Skill,
+        SkillTips: SkillTips,
         SkillCDPercent: SkillCDPercent,
         SkillCanLevelUp: SkillCanLevelUp,
-        Buff_Amount: payload.Buff_Amount,
         Buff: Buff,
         BuffName: BuffName,
         BuffTips: BuffTips,
+        // ====== 待刪除
       }
     },
     skillLevelUp(state, { payload }) {
