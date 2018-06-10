@@ -4,7 +4,7 @@ import { injectIntl, FormattedMessage } from 'react-intl'
 import styles from './Skill.scss'
 import SkillCD from './SkillCD'
 
-import InterSkill from '../interface/Skill'
+import InterfaceSkill from '../interface/Skill'
 
 class Skill extends React.Component {
   constructor(props, context) {
@@ -38,25 +38,19 @@ class Skill extends React.Component {
         </div>
         <div className={styles['skill-list']}>
           {
-            Skills.map((skill, index) => {
-              let sk = new InterSkill()
-              sk = skill
+            Skills.map((sk, index) => {
+              let skill = new InterfaceSkill()
+              skill = sk
               return (
                 <div key={`skill-${index}`}>
                   <div
-                    className={[styles['skill-up'], sk.CanLevelUp ? '' : styles.disable].join(' ')}
+                    className={[styles['skill-up'], skill.CanLevelUp ? '' : styles.disable].join(' ')}
                     style={{ 'backgroundImage': 'url(assets/plus.png)' }}
                     alt={''}
-                    onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: sk.CanLevelUp } })}
+                    onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })}
                   >
                   </div>
-                  <SkillCD
-                    src={sk.Webpath}
-                    index={index}
-                    tooltip={sk.Tips}
-                    percent={Number(Number.parseFloat(sk.CDPercent * 100).toFixed(0))}
-                    canup={sk.CanLevelUp}
-                  />
+                  <SkillCD index={index} />
                 </div>
               )
             })

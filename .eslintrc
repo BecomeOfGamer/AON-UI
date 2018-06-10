@@ -56,10 +56,12 @@
     "no-bitwise": [0],
     "no-console": [0],
     "no-alert": [0],
+    "no-empty-function": [0],
     "no-undef": [0],
     "no-unused-vars": [0],
     "no-unneeded-ternary": [0],
     "no-useless-return": 0,
+    "no-useless-constructor": [0],
     "no-cond-assign": [0],
     "no-restricted-globals": [0],
     "comma-dangle": [

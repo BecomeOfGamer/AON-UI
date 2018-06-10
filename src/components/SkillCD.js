@@ -13,23 +13,17 @@ class SkillCD extends React.Component {
       slice1style: {},
       slice2style: {},
       timer: undefined,
-      during: Math.floor(Math.random() * 9) + 2, // 待 UE4 發送技能持續時間,
+      during: 0,// Math.floor(Math.random() * 9) + 2,
       isRun: false,
     }
     this.start = this.start.bind(this)
-
   }
 
   componentDidMount() {
-    this.setState({ // eslint-disable-line
-      slice1style: this.runReversal(1, this.state.finish, this.state.total),
-      slice2style: this.runReversal(2, this.state.finish, this.state.total),
-    })
-    // if (typeof this.timer === 'undefined') {
-    //   this.setState({ // eslint-disable-line
-    //     timer: setInterval(this.start, 50),
-    //   })
-    // }
+    // this.setState({ // eslint-disable-line
+    //   slice1style: this.runReversal(1, this.state.finish, this.state.total),
+    //   slice2style: this.runReversal(2, this.state.finish, this.state.total),
+    // })
   }
 
   componentWillUnmount() {
@@ -37,26 +31,32 @@ class SkillCD extends React.Component {
   }
 
   start() {
+    const { index, Skills } = this.props
+    const skill = Skills[index]
+
+    // 到時候要調整, 切換角色回來後的CD顯示
     this.setState({
       finish: this.state.finish + (50 / this.state.during),
-      isRun: true,
     })
-    // millisecond = millisecond + 50
-    // if (millisecond >= 1000) {
-    //   millisecond = 0;
-    //   console.log('1 second')
-    // }
-    if (this.state.finish >= 1000) {
+    // 執行完畢 或是 可能切換角色
+    if (this.state.finish >= 1000 || skill.CurrentCD === skill.MaxCD) {
       clearInterval(this.state.timer)
       this.setState({
         finish: 1000,
         isRun: false,
       })
     }
+
     this.setState({ // eslint-disable-line
       slice1style: this.runReversal(1, this.state.finish, this.state.total),
       slice2style: this.runReversal(2, this.state.finish, this.state.total),
     })
+    // 每秒換算範例
+    // millisecond = millisecond + 50
+    // if (millisecond >= 1000) {
+    //   millisecond = 0;
+    //   console.log('1 second')
+    // }
   }
 
   /**
@@ -133,13 +133,18 @@ class SkillCD extends React.Component {
   }
 
   render() {
-    const { unrealapi, src, index, tooltip, percent, canup } = this.props
-    if (Number(percent) < 100 && !this.state.isRun && this.state.finish === 1000) {
-      // this.setState({
-      //   finish: 0,
-      //   timer: setInterval(this.start, 50),
-      //   isRun:true,
-      // })
+    const { unrealapi, index, Skills } = this.props
+    const skill = Skills[index]
+    const percent = Number(Number.parseFloat(skill.CDPercent * 100).toFixed(0))
+
+    // 判斷 UE4 是否使用鍵盤觸發技能
+    if (this.state.isRun === false && skill.CurrentCD !== skill.MaxCD) {
+      this.setState({
+        during: skill.MaxCD,
+        finish: 0,
+        isRun: true,
+        timer: setInterval(this.start, 50),
+      })
     }
 
     return (
@@ -148,18 +153,13 @@ class SkillCD extends React.Component {
         data-tip
         data-for={`skilltip${index}`}
         onClick={() => {
-          if (!canup) {
-            console.warn('skill cd not yet.')
-          } else {
-            this.setState({
-              finish: 0,
-              timer: setInterval(this.start, 50),
-            })
-            this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: canup } })
+          if (skill.CanLevelUp) {
+            unrealapi.debug(`升級技能 - skillupimg${index + 1}`)
+            this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })
           }
         }}
       >
-        <div className={styles.pie} style={{ 'backgroundImage': `url(${src}` }}>
+        <div className={styles.pie} style={{ 'backgroundImage': `url(${skill.Webpath}` }}>
           <div className={styles.clip1}>
             <div className={styles.slice1} style={this.state.slice1style}></div>
           </div>
@@ -167,11 +167,12 @@ class SkillCD extends React.Component {
             <div className={styles.slice2} style={this.state.slice2style}></div>
           </div>
           <div className={styles.status}>
-            {/* {Number(percent) === 100 ? '' : percent} */}
-            {Number(percent)}
+            {percent === 100 || percent === 0 ? '' : `${percent}%`}
+            <br />
+            Lv.{skill.CurrentLevel}/{skill.MaxLevel}
           </div>
         </div>
-        {tooltip ? <Tooltip id={`skilltip${index}`} tooltip={tooltip} /> : null}
+        {skill.Tips ? <Tooltip id={`skilltip${index}`} tooltip={skill.Tips} /> : null}
       </div >
     )
   }
@@ -182,6 +183,7 @@ SkillCD.propTypes = {}
 function mapStateToProps(state) {
   return {
     unrealapi: state.player.unrealapi,
+    Skills: state.player.Skills,
   }
 }
 

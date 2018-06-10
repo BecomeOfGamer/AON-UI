@@ -32,8 +32,10 @@ export default {
     CurrentAttackRange: 0,
     Skill_Amount: 4,
     Buff_Amount: 2,
-    Skills: MockSkills || [],
-    Buffs: MockBuffs || [],
+    Skills: [],
+    Buffs: [],
+    // Skills: MockSkills,
+    // Buffs: MockBuffs,
   },
 
   subscriptions: {
