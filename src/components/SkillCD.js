@@ -155,7 +155,6 @@ class SkillCD extends React.Component {
         data-for={`skilltip${index}`}
         onClick={() => {
           if (skill.CanLevelUp) {
-            unrealapi.debug(`升級技能 - skillupimg${index + 1}`)
             this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })
           }
         }}

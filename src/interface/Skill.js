@@ -40,12 +40,12 @@ class Skill {
   /**
    * 目前CD時間
    */
-  CurrentCD = 3
+  CurrentCD = 0
 
   /**
    * 目前最大CD時間
    */
-  MaxCD = 3
+  MaxCD = 0
 
   /**
    * 該技能目前可不可以升級
@@ -60,7 +60,7 @@ class Skill {
   /**
    * 技能最大等級
    */
-  MaxLevel = 5
+  MaxLevel = 0
 
   /**
    * 技能提示(重新組合)

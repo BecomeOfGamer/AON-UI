@@ -16,22 +16,22 @@ export default {
 
   state: {
     unrealapi: undefined,
-    UnitName: '織田信長',
+    UnitName: '',
     TeamId: 0,
     IsAlive: 0,
     CurrentMoveSpeed: 0,
-    CurrentMaxHP: 1000,
-    CurrentHP: 890,
-    CurrentMaxMP: 400,
-    CurrentMP: 180,
+    CurrentMaxHP: 0,
+    CurrentHP: 0,
+    CurrentMaxMP: 0,
+    CurrentMP: 0,
     CurrentAttackSpeed: 0,
     CurrentLevel: 0,
     CurrentEXP: 0,
     CurrentAttack: 0,
     CurrentArmor: 0,
     CurrentAttackRange: 0,
-    Skill_Amount: 4,
-    Buff_Amount: 2,
+    Skill_Amount: 0,
+    Buff_Amount: 0,
     Skills: [],
     Buffs: [],
     // Skills: MockSkills,
@@ -124,9 +124,7 @@ export default {
     skillLevelUp(state, { payload }) {
       if (payload.canup) {
         unrealapi.emit(payload.id, '')
-        unrealapi.debug(`skill level up - ${payload.id}`)
-      } else {
-        unrealapi.debug(`skill can not level up - ${payload.id}`)
+        unrealapi.debug(`技能升級 - ${payload.id}`)
       }
       // debug
       // ue.interface.broadcast(payload.id, '')
