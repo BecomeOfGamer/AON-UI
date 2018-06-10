@@ -34,10 +34,10 @@ class SkillCD extends React.Component {
     const { index, Skills } = this.props
     const skill = Skills[index]
 
-    // 到時候要調整, 切換角色回來後的CD顯示
     this.setState({
       finish: this.state.finish + (50 / this.state.during),
     })
+
     // 執行完畢 或是 可能切換角色
     if (this.state.finish >= 1000 || skill.CurrentCD === skill.MaxCD) {
       clearInterval(this.state.timer)
@@ -51,6 +51,7 @@ class SkillCD extends React.Component {
       slice1style: this.runReversal(1, this.state.finish, this.state.total),
       slice2style: this.runReversal(2, this.state.finish, this.state.total),
     })
+
     // 每秒換算範例
     // millisecond = millisecond + 50
     // if (millisecond >= 1000) {
@@ -141,7 +142,7 @@ class SkillCD extends React.Component {
     if (this.state.isRun === false && skill.CurrentCD !== skill.MaxCD) {
       this.setState({
         during: skill.MaxCD,
-        finish: 0,
+        finish: percent * 10, // 要判斷當前的進度, 決定初始值 (0/1000) 度量衡使用千
         isRun: true,
         timer: setInterval(this.start, 50),
       })
