@@ -1,3 +1,17 @@
+/*
+progress-bars
+說明: 英雄的血條魔力顯示
+範例:
+<div className={styles.progress}>
+  <div className={styles['progress-text']} >{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div> // 文字
+  <div
+    className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')}
+    style={{ 'width': `${this.percentCaculate(this.props.CurrentHP, this.props.CurrentMaxHP)}` }} // 進度
+  >
+  </div>
+</div>
+*/
+
 /*!
  * progress-bars v2.2.2: A small bit of CSS for adding progress bars to your website
  * (c) 2015 Chris Ferdinandi
