@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'dva'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import styles from './Player.scss'
+import HeroCharacter from '../interface/HeroCharacter'
 
 class Player extends React.Component {
   constructor(props, context) {
@@ -10,7 +11,9 @@ class Player extends React.Component {
     this.state = {}
   }
   render() {
-    const { intl } = this.props
+    const { intl, Hero } = this.props
+    let hero = new HeroCharacter()
+    hero = Hero
     return (
       <div className={styles['player-group']}>
         <table className={styles.table}>
@@ -36,10 +39,6 @@ class Player extends React.Component {
               <td>{this.props.CurrentAttackSpeed}</td>
             </tr>
             <tr>
-              <th>{intl.formatMessage({ id: 'intl.player.CurrentLevel' })}</th>
-              <td>{this.props.CurrentLevel}</td>
-            </tr>
-            <tr>
               <th>{intl.formatMessage({ id: 'intl.player.CurrentAttack' })}</th>
               <td>{this.props.CurrentAttack}</td>
             </tr>
@@ -50,6 +49,38 @@ class Player extends React.Component {
             <tr>
               <th>{intl.formatMessage({ id: 'intl.player.CurrentAttackRange' })}</th>
               <td>{this.props.CurrentAttackRange}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table className={styles['table-hero']}>
+          <tbody>
+            <tr>
+              <th>{intl.formatMessage({ id: 'intl.player.Strength' })}</th>
+              <td>{hero.Strength}({hero.AdditionStrength})</td>
+            </tr>
+            <tr>
+              <th>{intl.formatMessage({ id: 'intl.player.Agility' })}</th>
+              <td>{hero.Agility}({hero.AdditionAgility})</td>
+            </tr>
+            <tr>
+              <th>{intl.formatMessage({ id: 'intl.player.Intelligence' })}</th>
+              <td>{hero.Intelligence}({hero.AdditionIntelligence})</td>
+            </tr>
+            <tr>
+              <th>{intl.formatMessage({ id: 'intl.player.CurrentLevel' })}</th>
+              <td>{hero.CurrentLevel}</td>
+            </tr>
+            <tr>
+              <th>{intl.formatMessage({ id: 'intl.player.CurrentEXP' })}</th>
+              <td>{hero.CurrentEXP}</td>
+            </tr>
+            <tr>
+              <th>{intl.formatMessage({ id: 'intl.player.BountyEXP' })}</th>
+              <td>{hero.BountyEXP}</td>
+            </tr>
+            <tr>
+              <th>{intl.formatMessage({ id: 'intl.player.DeadTime' })}</th>
+              <td>{hero.DeadTime}</td>
             </tr>
           </tbody>
         </table>
@@ -71,6 +102,7 @@ function mapStateToProps(state) {
     CurrentAttack: state.player.CurrentAttack,
     CurrentArmor: state.player.CurrentArmor,
     CurrentAttackRange: state.player.CurrentAttackRange,
+    Hero: state.player.Hero,
   }
 }
 
