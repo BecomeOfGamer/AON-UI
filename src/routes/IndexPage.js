@@ -42,7 +42,6 @@ class IndexPage extends React.Component {
           <div>Loading: {progress}</div>
           <div>Fps: {fps}</div>
         </div>
-        {this.props.Elements}
         <Language />
         <Player />
         <Buff />

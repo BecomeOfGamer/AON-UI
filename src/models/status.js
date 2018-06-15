@@ -37,24 +37,36 @@ export default {
       }
     },
     rect(state, { payload }) {
-      // const data = [
-      //   { id: 'menu', x: 250, y: 200, w: 120, h: 100 },
-      //   { id: 'skill', x: 650, y: 800, w: 600, h: 400 },
-      // ]
       // const data = JSON.stringify({ data: payload.elements })
+      // const dataJSON = {
+      //   data: [
+      //     { id: 'skill', x: 588, y: 701, w: 523, h: 215 },
+      //     { id: 'player', x: 0, y: 661, w: 427, h: 256 },
+      //   ],
+      // }
 
-      const data = []
+      const dataJSON = { data: [] }
       payload.elements.forEach((element, index) => {
-        const { x, y, height, width } = element.rect
-        data.push(new Element(element.id, x, y, height, width))
+        // const { x, y, width, height } = element.rect
+        const rect = element.rect
+        // dataJSON.data.push(new Element(element.id, rect.x, rect.y, rect.width, rect.height))
+        URAPI.debug(`${typeof rect.x} - ${rect.x}`)
+        console.log(`${typeof rect.x} - ${rect.x}`)
+        dataJSON.data[index] = {
+          id: String(element.id),
+          x: Math.round(Number(rect.x)),
+          y: Math.round(Number(701)),
+          w: Math.round(rect.width * 2),
+          h: Math.round(rect.height * 1.5),
+        }
       })
 
-      const dataJSONString = JSON.stringify({ data: data })
-      URAPI.emit('UpdateUIRegion', dataJSONString);
+      console.log(dataJSON)
+      // URAPI.emit('UpdateUIRegion', JSON.stringify(dataJSON))
 
       return {
         ...state,
-        Elements: dataJSONString,
+        Elements: dataJSON,
       }
     },
     progress(state, { payload }) {

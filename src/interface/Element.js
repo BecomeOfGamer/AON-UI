@@ -32,10 +32,10 @@ class Element {
 
   constructor(id, x, y, w, h) {
     this.id = id
-    this.x = x
-    this.y = y
-    this.w = w
-    this.h = h
+    this.x = Math.round(x)
+    this.y = Math.round(y)
+    this.w = Math.round(w)
+    this.h = Math.round(h)
   }
 }
 
