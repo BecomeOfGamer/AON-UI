@@ -31,7 +31,7 @@ class Tooltip extends React.Component {
           // 檢查是不是沒有找到應該填入的替代文字
           const num = tooltip.nums[index - 1]
           if (!num) console.error('Tooltip error, can not find {0} at:', tooltip.content)
-          if (!num) this.props.unrealapi.debug(`Tooltip error, can not find {0} at: ${tooltip.content}`)
+          if (!num) this.props.URAPI.debug(`Tooltip error, can not find {0} at: ${tooltip.content}`)
           return (
             <span key={`tip-content-${index}`}>
               <span className={styles.num}>{num || '{0}'}</span>
@@ -68,7 +68,7 @@ Tooltip.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    unrealapi: state.player.unrealapi,
+    URAPI: state.status.URAPI,
   }
 }
 

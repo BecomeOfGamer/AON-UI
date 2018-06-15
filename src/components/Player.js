@@ -15,7 +15,7 @@ class Player extends React.Component {
     let hero = new HeroCharacter()
     hero = Hero
     return (
-      <div className={styles['player-group']}>
+      <div id="player" className={styles['player-group']}>
         <table className={styles.table}>
           <tbody>
             <tr>
@@ -98,7 +98,6 @@ function mapStateToProps(state) {
     CurrentHP: state.player.CurrentHP,
     CurrentMP: state.player.CurrentMP,
     CurrentAttackSpeed: state.player.CurrentAttackSpeed,
-    CurrentLevel: state.player.CurrentLevel,
     CurrentAttack: state.player.CurrentAttack,
     CurrentArmor: state.player.CurrentArmor,
     CurrentAttackRange: state.player.CurrentAttackRange,

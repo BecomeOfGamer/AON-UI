@@ -134,7 +134,7 @@ class SkillCD extends React.Component {
   }
 
   render() {
-    const { unrealapi, index, Skills } = this.props
+    const { URAPI, index, Skills } = this.props
     const skill = Skills[index]
     const percent = Number(Number.parseFloat(skill.CDPercent * 100).toFixed(0))
 
@@ -155,7 +155,7 @@ class SkillCD extends React.Component {
         data-for={`skilltip${index}`}
         onClick={() => {
           if (skill.CanLevelUp) {
-            this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })
+            this.dispatch({ type: 'player/skillLevelUp', payload: { URAPI: URAPI, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })
           }
         }}
       >
@@ -182,7 +182,7 @@ SkillCD.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    unrealapi: state.player.unrealapi,
+    URAPI: state.status.URAPI,
     Skills: state.player.Skills,
   }
 }

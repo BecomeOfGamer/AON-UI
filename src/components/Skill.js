@@ -5,30 +5,12 @@ import styles from './Skill.scss'
 import SkillCD from './SkillCD'
 
 import InterfaceSkill from '../interface/Skill'
-import Element from '../interface/Element';
 
 class Skill extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.dispatch = props.dispatch
     this.state = {}
-  }
-
-  componentDidMount() {
-    const els = []
-    const objs = document.querySelectorAll(`.${styles['skill-up']}`)
-    objs.forEach(obj => {
-      const DOMRect = obj.getBoundingClientRect()
-      els.push(
-        new Element(
-          obj.className,
-          DOMRect.height,
-          DOMRect.width,
-          DOMRect.x,
-          DOMRect.y
-        ))
-    });
-    console.log(els)
   }
 
   /**
@@ -41,9 +23,9 @@ class Skill extends React.Component {
   }
 
   render() {
-    const { intl, unrealapi, Skills } = this.props
+    const { intl, URAPI, Skills } = this.props
     return (
-      <div className={styles['skill-group']}>
+      <div id="skill" className={styles['skill-group']}>
         <div className={styles.progress}>
           <div className={styles['progress-text']}>{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div>
           <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': `${this.percentCaculate(this.props.CurrentHP, this.props.CurrentMaxHP)}` }}>
@@ -65,7 +47,7 @@ class Skill extends React.Component {
                     className={[styles['skill-up'], skill.CanLevelUp ? '' : styles.disable].join(' ')}
                     style={{ 'backgroundImage': 'url(assets/plus.png)' }}
                     alt={''}
-                    onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })}
+                    onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { URAPI: URAPI, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })}
                   >
                   </div>
 
@@ -103,13 +85,12 @@ Skill.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    unrealapi: state.player.unrealapi,
+    URAPI: state.status.URAPI,
     CurrentMaxHP: state.player.CurrentMaxHP,
-    CurrentHP: state.player.CurrentHP,
     CurrentMaxMP: state.player.CurrentMaxMP,
+    CurrentHP: state.player.CurrentHP,
     CurrentMP: state.player.CurrentMP,
     Skills: state.player.Skills,
-    Elements: state.elements.Elements,
   }
 }
 

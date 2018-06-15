@@ -8,11 +8,29 @@ import Player from '../components/Player'
 import Skill from '../components/Skill'
 import Buff from '../components/Buff'
 
+import Element from '../interface/Element'
+
 class IndexPage extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.dispatch = props.dispatch
-    this.dispatch({ type: 'player/connectAPI', payload: { dispatch: this.dispatch } })
+  }
+
+  componentWillMount() {
+    this.dispatch({ type: 'status/connectAPI', payload: { dispatch: this.dispatch } })
+  }
+
+  componentDidMount() {
+
+    // 設定 UE4 可觸及區域
+    const elements = []
+
+    // 技能資訊面板
+    elements.push({ id: 'skill', rect: document.querySelector('#skill').getBoundingClientRect() })
+    // 玩家狀態面板
+    elements.push({ id: 'player', rect: document.querySelector('#player').getBoundingClientRect() })
+
+    this.dispatch({ type: 'status/rect', payload: { URAPI: this.props.URAPI, elements: elements } })
   }
 
   render() {
@@ -24,6 +42,7 @@ class IndexPage extends React.Component {
           <div>Loading: {progress}</div>
           <div>Fps: {fps}</div>
         </div>
+        {this.props.Elements}
         <Language />
         <Player />
         <Buff />
@@ -37,8 +56,10 @@ IndexPage.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    progress: state.status.progress,
     fps: state.status.fps,
+    progress: state.status.progress,
+    URAPI: state.status.URAPI,
+    Elements: state.status.Elements,
   }
 }
 

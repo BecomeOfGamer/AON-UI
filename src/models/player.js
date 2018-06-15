@@ -1,4 +1,3 @@
-import UnrealAPI from '../api/UnrealAPI'
 import Skill from '../interface/Skill'
 import Buff from '../interface/Buff'
 import HeroCharacter from '../interface/HeroCharacter'
@@ -8,8 +7,6 @@ import MockSkills from '../../mock/MockSkills'
 import MockBuffs from '../../mock/MockBuffs'
 import MockHeroCharacter from '../../mock/MockHeroCharacter'
 
-// 方便操作, 讓 player 可以在此檔直接調用 api
-const unrealapi = new UnrealAPI()
 const pathPrefix = 'assets/'
 
 export default {
@@ -17,7 +14,6 @@ export default {
   namespace: 'player',
 
   state: {
-    unrealapi: undefined,
     UnitName: '',
     TeamId: 0,
     IsAlive: 0,
@@ -57,15 +53,7 @@ export default {
     save(state, action) {
       return { ...state, ...action.payload }
     },
-    connectAPI(state, { payload }) {
-      unrealapi.connect(payload.dispatch)
-      return {
-        ...state,
-        'unrealapi': unrealapi,
-      }
-    },
     update(state, { payload }) {
-
       const Skills = []
       for (let i = 1; i <= payload.Skill_Amount; i += 1) {
         const skill = new Skill()
@@ -114,7 +102,7 @@ export default {
       hero.AdditionIntelligence = payload.AdditionIntelligence
       hero.DeadTime = payload.DeadTime
       hero.BountyEXP = payload.BountyEXP
-      hero.CurrentLevel = payload.CanLevelUp
+      hero.CurrentLevel = payload.CurrentLevel
       hero.CurrentEXP = payload.CurrentEXP
 
       return {
@@ -139,13 +127,11 @@ export default {
       }
     },
     skillLevelUp(state, { payload }) {
+      const URAPI = payload.URAPI
       if (payload.canup) {
-        unrealapi.emit(payload.id, '')
-        unrealapi.debug(`技能升級 - ${payload.id}`)
+        URAPI.emit(payload.id, '')
+        URAPI.debug(`技能升級 - ${payload.id}`)
       }
-      // debug
-      // ue.interface.broadcast(payload.id, '')
-      // unrealapi.ue.interface.broadcast('skillupimg1', '')
       return state
     },
   },
