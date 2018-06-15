@@ -24,11 +24,12 @@ class IndexPage extends React.Component {
 
     // 設定 UE4 可觸及區域
     const elements = []
+    // element.getBoundingClientRect() -> UE4 失效
 
-    // 技能資訊面板
-    elements.push({ id: 'skill', rect: document.querySelector('#skill').getBoundingClientRect() })
+    // 技能資訊面板 
+    elements.push({ id: 'skill', property: document.querySelector('#skill') })
     // 玩家狀態面板
-    elements.push({ id: 'player', rect: document.querySelector('#player').getBoundingClientRect() })
+    elements.push({ id: 'skill', property: document.querySelector('#player') })
 
     this.dispatch({ type: 'status/rect', payload: { URAPI: this.props.URAPI, elements: elements } })
   }

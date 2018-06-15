@@ -47,22 +47,12 @@ export default {
 
       const dataJSON = { data: [] }
       payload.elements.forEach((element, index) => {
-        // const { x, y, width, height } = element.rect
-        const rect = element.rect
-        // dataJSON.data.push(new Element(element.id, rect.x, rect.y, rect.width, rect.height))
-        URAPI.debug(`${typeof rect.x} - ${rect.x}`)
-        console.log(`${typeof rect.x} - ${rect.x}`)
-        dataJSON.data[index] = {
-          id: String(element.id),
-          x: Math.round(Number(rect.x)),
-          y: Math.round(Number(701)),
-          w: Math.round(rect.width * 2),
-          h: Math.round(rect.height * 1.5),
-        }
+        const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = element.property
+        dataJSON.data.push(new Element(element.id, offsetLeft, offsetTop, offsetWidth, offsetHeight))
       })
 
-      console.log(dataJSON)
-      // URAPI.emit('UpdateUIRegion', JSON.stringify(dataJSON))
+      // console.log(dataJSON)
+      URAPI.emit('UpdateUIRegion', JSON.stringify(dataJSON))
 
       return {
         ...state,
