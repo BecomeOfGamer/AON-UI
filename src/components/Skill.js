@@ -5,12 +5,30 @@ import styles from './Skill.scss'
 import SkillCD from './SkillCD'
 
 import InterfaceSkill from '../interface/Skill'
+import Element from '../interface/Element';
 
 class Skill extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.dispatch = props.dispatch
     this.state = {}
+  }
+
+  componentDidMount() {
+    const els = []
+    const objs = document.querySelectorAll(`.${styles['skill-up']}`)
+    objs.forEach(obj => {
+      const DOMRect = obj.getBoundingClientRect()
+      els.push(
+        new Element(
+          obj.className,
+          DOMRect.height,
+          DOMRect.width,
+          DOMRect.x,
+          DOMRect.y
+        ))
+    });
+    console.log(els)
   }
 
   /**
@@ -27,7 +45,7 @@ class Skill extends React.Component {
     return (
       <div className={styles['skill-group']}>
         <div className={styles.progress}>
-          <div className={styles['progress-text']} >{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div>
+          <div className={styles['progress-text']}>{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div>
           <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': `${this.percentCaculate(this.props.CurrentHP, this.props.CurrentMaxHP)}` }}>
           </div>
         </div>
@@ -91,6 +109,7 @@ function mapStateToProps(state) {
     CurrentMaxMP: state.player.CurrentMaxMP,
     CurrentMP: state.player.CurrentMP,
     Skills: state.player.Skills,
+    Elements: state.elements.Elements,
   }
 }
 

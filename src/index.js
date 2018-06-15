@@ -14,6 +14,7 @@ app.use(createLoading())
 app.model(require('./models/language').default)
 app.model(require('./models/status').default)
 app.model(require('./models/player').default)
+app.model(require('./models/elements').default)
 
 // 4. Router
 app.router(require('./router').default)
