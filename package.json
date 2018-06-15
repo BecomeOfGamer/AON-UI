@@ -1,6 +1,6 @@
 {
   "name": "aon-ui",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "🌈 A AON UI based on react.js created by dvajs.",
   "main": ".roadhogrc.mock.js",
   "scripts": {
