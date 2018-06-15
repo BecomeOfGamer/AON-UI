@@ -1,10 +1,12 @@
 import UnrealAPI from '../api/UnrealAPI'
 import Skill from '../interface/Skill'
 import Buff from '../interface/Buff'
+import HeroCharacter from '../interface/HeroCharacter'
 
 // Mock 假資料
 import MockSkills from '../../mock/MockSkills'
 import MockBuffs from '../../mock/MockBuffs'
+import MockHeroCharacter from '../../mock/MockHeroCharacter'
 
 // 方便操作, 讓 player 可以在此檔直接調用 api
 const unrealapi = new UnrealAPI()
@@ -32,10 +34,12 @@ export default {
     CurrentAttackRange: 0,
     Skill_Amount: 0,
     Buff_Amount: 0,
-    Skills: [],
-    Buffs: [],
-    // Skills: MockSkills,
-    // Buffs: MockBuffs,
+    // Skills: [],
+    // Buffs: [],
+    // Hero: [],
+    Skills: MockSkills,
+    Buffs: MockBuffs,
+    Hero: MockHeroCharacter,
   },
 
   subscriptions: {
@@ -101,6 +105,18 @@ export default {
         Buffs.push(buff)
       }
 
+      const hero = new HeroCharacter()
+      hero.Strength = payload.Strength
+      hero.Agility = payload.Agility
+      hero.Intelligence = payload.Intelligence
+      hero.AdditionStrength = payload.AdditionStrength
+      hero.AdditionAgility = payload.AdditionAgility
+      hero.AdditionIntelligence = payload.AdditionIntelligence
+      hero.DeadTime = payload.DeadTime
+      hero.BountyEXP = payload.BountyEXP
+      hero.CurrentLevel = payload.CanLevelUp
+      hero.CurrentEXP = payload.CurrentEXP
+
       return {
         ...state,
         UnitName: payload.UnitName,
@@ -119,6 +135,7 @@ export default {
         Buff_Amount: payload.Buff_Amount,
         Skills: Skills,
         Buffs: Buffs,
+        Hero: hero,
       }
     },
     skillLevelUp(state, { payload }) {

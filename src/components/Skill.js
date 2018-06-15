@@ -50,7 +50,27 @@ class Skill extends React.Component {
                     onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { api: unrealapi, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })}
                   >
                   </div>
-                  <SkillCD index={index} />
+
+                  {skill.Display ? <SkillCD index={index} /> : null}
+
+                  <div className={[styles['skill-level']]}>
+                    {
+                      // 技能等級格子
+                      [0].map(level => {
+                        const levelArr = []
+                        for (let i = 1; i <= skill.MaxLevel; i += 1) {
+                          levelArr.push(
+                            <div
+                              key={`skill-level-${i}`}
+                              className={[styles['skill-level-current'], skill.CurrentLevel >= i ? styles.valid : ''].join(' ')}
+                            >
+                            </div>
+                          )
+                        }
+                        return (levelArr)
+                      })
+                    }
+                  </div>
                 </div>
               )
             })

@@ -39,6 +39,28 @@
           display: none;
         }
       }
+      .skill-level {
+        margin-top: 1.8rem;
+        max-width: 50px;
+        height: 12px;
+        border-radius: 2px;
+        border: 1px solid #2D3032;
+        background-color: #2D3032;
+        display: flex;
+        padding: 0.6px;
+        .skill-level-current {
+          flex: 4;
+          margin: 0 1px;
+          height: inherit;
+          background-color: #00001B;
+          &.valid {
+            background: linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
+            background: -moz-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
+            background: -webkit-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
+            background: -o-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
+          }
+        }
+      }
     }
   }
 }

@@ -2,8 +2,8 @@
   position: absolute;
   bottom: 0%;
   left: 0%;
+  display: flex;
   .table {
-    margin-top: 2rem;
     text-align: center;
     border-collapse: collapse;
     tr {
@@ -40,6 +40,31 @@
       &:last-child td {
         /* 右下 */
         /* border-bottom-right-radius: 6px; */
+      }
+    }
+  }
+  .table-hero {
+    margin-left: 2rem;
+    text-align: center;
+    border-collapse: collapse;
+    tr {
+      th {
+        padding: 0.5rem 0.8rem;
+        min-width: 120px;
+        color: #fff;
+        font-weight: normal;
+      }
+      td {
+        padding: 0.5rem 0.8rem;
+        color: #FEC200;
+      }
+      &:nth-child(odd) td,
+      &:nth-child(odd) th {
+        background-color: #36485B;
+      }
+      &:nth-child(even) td,
+      &:nth-child(even) th {
+        background-color: #3D4C60;
       }
     }
   }

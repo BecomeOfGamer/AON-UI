@@ -7,6 +7,8 @@ skill = new Skill()
 skill.Name = '褶裙'
 skill.Webpath = 'assets/skill/a02/a02_1.png'
 skill.CanLevelUp = true
+skill.MaxLevel = 4
+skill.CurrentLevel = 1
 skill.Description = '移動速度+45。'
 skill.Tips = {
   header: '褶裙',
@@ -20,6 +22,8 @@ skill = new Skill()
 skill.Name = '三河魂'
 skill.Webpath = 'assets/skill/a02/a02_2.png'
 skill.CanLevelUp = false
+skill.MaxLevel = 4
+skill.CurrentLevel = 4
 skill.Description = '施放自身的王者之氣，能增加周圍1500友軍15的防禦和20的跑速。'
 skill.Tips = {
   header: '三河魂',
@@ -33,6 +37,8 @@ skill = new Skill()
 skill.Name = '變硬'
 skill.Webpath = 'assets/skill/a02/a02_3.png'
 skill.CanLevelUp = true
+skill.MaxLevel = 3
+skill.CurrentLevel = 2
 skill.Description = '遇到異性友軍變硬，能增加自身5的精神力和10的傷害力，持續5秒。'
 skill.Tips = {
   header: '變硬',
@@ -45,6 +51,10 @@ mockSkills.push(skill)
 skill = new Skill()
 skill.Name = '長槍'
 skill.CanLevelUp = false
+skill.MaxLevel = 4
+skill.CurrentLevel = 3
+skill.MaxLevel = 3
+skill.CurrentLevel = 1
 skill.Webpath = 'assets/skill/a02/a02_4.png'
 skill.Description = '攻擊傷害+14。'
 skill.Tips = {
