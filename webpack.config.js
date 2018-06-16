@@ -5,5 +5,13 @@ module.exports = (webpackConfig) => {
     from: './src/assets',
     to: 'assets',
   }]))
+  webpackConfig.plugins.push(new CopyWebpackPlugin([{
+    from: './src/skill',
+    to: 'skill',
+  }]))
+  webpackConfig.plugins.push(new CopyWebpackPlugin([{
+    from: './src/buff',
+    to: 'buff',
+  }]))
   return webpackConfig
 }
