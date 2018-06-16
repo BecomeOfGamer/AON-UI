@@ -44,7 +44,7 @@
     }
   }
   .table-hero {
-    margin-left: 2rem;
+    margin-top: 2rem;
     text-align: center;
     border-collapse: collapse;
     tr {
@@ -60,11 +60,11 @@
       }
       &:nth-child(odd) td,
       &:nth-child(odd) th {
-        background-color: #36485B;
+        background-color: #3D4C60;
       }
       &:nth-child(even) td,
       &:nth-child(even) th {
-        background-color: #3D4C60;
+        background-color: #36485B;
       }
     }
   }

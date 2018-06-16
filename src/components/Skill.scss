@@ -6,58 +6,68 @@
   bottom: 0;
   right: 40%;
   left: 35%;
+  padding-top: 1.5rem;
   width: 30%;
-  background: #282A36;
-  padding: 0.6rem;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  .progress {
-    /* overwrite progress-bars.scss */
-    margin-bottom: 0.6rem;
-  }
-  .skill-list {
-    // margin-bottom: 0.6rem;
+  /* Debug */
+  // background-color: red;
+  /* Debug */
+  .skill-panel {
     padding: 0.6rem;
-    background-color: #44475A;
-    border-radius: 6px;
-    &>div {
-      display: inline-block;
-      position: relative;
-      margin-right: 0.4rem;
-      width: 50px;
-      .skill-up {
+    background-color: #282A36;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    .progress {
+      /* overwrite progress-bars.scss */
+      margin-top: 0.6rem;
+    }
+    .skill-list {
+      padding: 0.6rem 0.6rem 0.4rem;
+      background-color: #44475A;
+      border-radius: 6px;
+      &>div {
+        display: inline-block;
+        position: relative;
         margin-right: 0.4rem;
-        margin-bottom: 0.4rem;
         width: 50px;
-        height: 50px;
-        border-radius: 6px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        &.disable {
-          /* visibility: hidden; */
-          display: none;
+        .skill-up {
+          position: absolute;
+          top: -60%;
+          width: 40px;
+          height: 40px;
+          border-radius: 4px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          opacity: 1;
+          z-index: 1;
+          transition: all .2s ease-in-out;
+          &.disable {
+            /* visibility: hidden; */
+            display: none;
+            top: -50%;
+            opacity: 0;
+          }
         }
-      }
-      .skill-level {
-        margin-top: 1.8rem;
-        max-width: 50px;
-        height: 12px;
-        border-radius: 2px;
-        border: 1px solid #2D3032;
-        background-color: #2D3032;
-        display: flex;
-        padding: 0.6px;
-        .skill-level-current {
-          flex: 4;
-          margin: 0 1px;
-          height: inherit;
-          background-color: #00001B;
-          &.valid {
-            background: linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
-            background: -moz-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
-            background: -webkit-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
-            background: -o-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
+        .skill-level {
+          display: flex;
+          margin-top: 0.4rem;
+          padding: 0.6px;
+          max-width: 50px;
+          height: 12px;
+          border-radius: 2px;
+          border: 1px solid #2D3032;
+          background-color: #2D3032;
+          .skill-level-current {
+            flex: 4;
+            margin: 0 1px;
+            height: inherit;
+            background-color: #00001B;
+            &.valid {
+              background: linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
+              background: -moz-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
+              background: -webkit-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
+              background: -o-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
+            }
           }
         }
       }

@@ -8,9 +8,8 @@
   left: 35%;
   /* align to skill */
   padding: 0 0.6rem;
-  height: 250px;
+  height: 220px;
   /* align to skill */
-  width: 30%;
   &.disable {
     display: none;
   }
@@ -18,18 +17,17 @@
     /* align to skill */
     padding: 0 0.6rem;
     /* align to skill */
+    display: flex;
     &>div {
-      display: inline-block;
-      position: relative;
-      margin-right: 0.4rem;
-      width: 50px;
-      text-align: center;
+      margin-right: 0.3rem;
+      width: 30px;
+      height: 30px;
       .buff {
+        width: inherit;
+        height: inherit;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        height: 40px;
-        width: 40px;
       }
     }
   }

@@ -26,55 +26,58 @@ class Skill extends React.Component {
     const { intl, URAPI, Skills } = this.props
     return (
       <div id="skill" className={styles['skill-group']}>
-        <div className={styles.progress}>
-          <div className={styles['progress-text']}>{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div>
-          <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': `${this.percentCaculate(this.props.CurrentHP, this.props.CurrentMaxHP)}` }}>
-          </div>
-        </div>
-        <div className={styles.progress}>
-          <div className={styles['progress-bar']} style={{ 'width': `${this.percentCaculate(this.props.CurrentMP, this.props.CurrentMaxMP)}` }}>
-          </div>
-          <div className={styles['progress-text']} >{this.props.CurrentMP} / {this.props.CurrentMaxMP}</div>
-        </div>
-        <div className={styles['skill-list']}>
-          {
-            Skills.map((sk, index) => {
-              let skill = new InterfaceSkill()
-              skill = sk
-              return (
-                <div key={`skill-${index}`}>
-                  <div
-                    className={[styles['skill-up'], skill.CanLevelUp ? '' : styles.disable].join(' ')}
-                    style={{ 'backgroundImage': 'url(assets/plus.png)' }}
-                    alt={''}
-                    onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { URAPI: URAPI, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })}
-                  >
-                  </div>
+        <div className={styles['skill-panel']}>
+          <div className={styles['skill-list']}>
+            {
+              Skills.map((sk, index) => {
+                let skill = new InterfaceSkill()
+                skill = sk
+                return (
+                  <div key={`skill-${index}`}>
+                    <div
+                      className={[styles['skill-up'], skill.CanLevelUp ? '' : styles.disable].join(' ')}
+                      style={{ 'backgroundImage': 'url(assets/plus.png)' }}
+                      alt={''}
+                      onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { URAPI: URAPI, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })}
+                    >
+                    </div>
 
-                  {skill.Display ? <SkillCD index={index} /> : null}
+                    {skill.Display ? <SkillCD index={index} /> : null}
 
-                  <div className={[styles['skill-level']]}>
-                    {
-                      // 技能等級格子
-                      [0].map(level => {
-                        const levelArr = []
-                        for (let i = 1; i <= skill.MaxLevel; i += 1) {
-                          levelArr.push(
-                            <div
-                              key={`skill-level-${i}`}
-                              className={[styles['skill-level-current'], skill.CurrentLevel >= i ? styles.valid : ''].join(' ')}
-                            >
-                            </div>
-                          )
-                        }
-                        return (levelArr)
-                      })
-                    }
+                    <div className={[styles['skill-level']]}>
+                      {
+                        // 技能等級格子
+                        [0].map(level => {
+                          const levelArr = []
+                          for (let i = 1; i <= skill.MaxLevel; i += 1) {
+                            levelArr.push(
+                              <div
+                                key={`skill-level-${i}`}
+                                className={[styles['skill-level-current'], skill.CurrentLevel >= i ? styles.valid : ''].join(' ')}
+                              >
+                              </div>
+                            )
+                          }
+                          return (levelArr)
+                        })
+                      }
+                    </div>
+
                   </div>
-                </div>
-              )
-            })
-          }
+                )
+              })
+            }
+          </div>
+          <div className={styles.progress}>
+            <div className={styles['progress-text']}>{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div>
+            <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': `${this.percentCaculate(this.props.CurrentHP, this.props.CurrentMaxHP)}` }}>
+            </div>
+          </div>
+          <div className={styles.progress}>
+            <div className={styles['progress-bar']} style={{ 'width': `${this.percentCaculate(this.props.CurrentMP, this.props.CurrentMaxMP)}` }}>
+            </div>
+            <div className={styles['progress-text']} >{this.props.CurrentMP} / {this.props.CurrentMaxMP}</div>
+          </div>
         </div>
       </div >
     )

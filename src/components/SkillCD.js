@@ -134,7 +134,7 @@ class SkillCD extends React.Component {
   }
 
   render() {
-    const { URAPI, index, Skills } = this.props
+    const { index, Skills } = this.props
     const skill = Skills[index]
     const percent = Number(Number.parseFloat(skill.CDPercent * 100).toFixed(0))
 
@@ -153,11 +153,6 @@ class SkillCD extends React.Component {
         className={styles['skill-cd-group']}
         data-tip
         data-for={`skilltip${index}`}
-        onClick={() => {
-          if (skill.CanLevelUp) {
-            this.dispatch({ type: 'player/skillLevelUp', payload: { URAPI: URAPI, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })
-          }
-        }}
       >
         <div className={styles.pie} style={{ 'backgroundImage': `url(${skill.Webpath}` }}>
           <div className={styles.clip1}>
@@ -182,7 +177,6 @@ SkillCD.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    URAPI: state.status.URAPI,
     Skills: state.player.Skills,
   }
 }
