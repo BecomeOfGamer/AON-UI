@@ -5,7 +5,7 @@ let skill
 
 skill = new Skill()
 skill.Name = '褶裙'
-skill.Webpath = 'assets/skill/a02/a02_1.png'
+skill.Webpath = 'skill/a02/a02_1.png'
 skill.CanLevelUp = true
 skill.MaxLevel = 4
 skill.CurrentLevel = 1
@@ -20,7 +20,7 @@ mockSkills.push(skill)
 
 skill = new Skill()
 skill.Name = '三河魂'
-skill.Webpath = 'assets/skill/a02/a02_2.png'
+skill.Webpath = 'skill/a02/a02_2.png'
 skill.CanLevelUp = false
 skill.MaxLevel = 4
 skill.CurrentLevel = 4
@@ -35,7 +35,7 @@ mockSkills.push(skill)
 
 skill = new Skill()
 skill.Name = '變硬'
-skill.Webpath = 'assets/skill/a02/a02_3.png'
+skill.Webpath = 'skill/a02/a02_3.png'
 skill.CanLevelUp = true
 skill.MaxLevel = 3
 skill.CurrentLevel = 2
@@ -55,7 +55,7 @@ skill.MaxLevel = 4
 skill.CurrentLevel = 3
 skill.MaxLevel = 3
 skill.CurrentLevel = 1
-skill.Webpath = 'assets/skill/a02/a02_4.png'
+skill.Webpath = 'skill/a02/a02_4.png'
 skill.Description = '攻擊傷害+14。'
 skill.Tips = {
   header: '長槍',

@@ -7,7 +7,9 @@ import MockSkills from '../../mock/MockSkills'
 import MockBuffs from '../../mock/MockBuffs'
 import MockHeroCharacter from '../../mock/MockHeroCharacter'
 
-const pathPrefix = 'assets/'
+// 將 skill & buff 移至根目錄, 暫時用不到
+// const pathPrefix = 'assets/'
+const pathPrefix = ''
 
 export default {
 

@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/src/skill
+/src/buff
 
 # production
 /dist

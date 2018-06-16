@@ -26,10 +26,10 @@ class IndexPage extends React.Component {
     const elements = []
     // element.getBoundingClientRect() -> UE4 失效
 
-    // 技能資訊面板 
+    // 技能資訊面板
     elements.push({ id: 'skill', property: document.querySelector('#skill') })
     // 玩家狀態面板
-    elements.push({ id: 'skill', property: document.querySelector('#player') })
+    elements.push({ id: 'player', property: document.querySelector('#player') })
 
     this.dispatch({ type: 'status/rect', payload: { URAPI: this.props.URAPI, elements: elements } })
   }
