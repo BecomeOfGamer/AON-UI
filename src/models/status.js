@@ -37,6 +37,8 @@ export default {
       }
     },
     rect(state, { payload }) {
+
+      // Payload Example
       // const data = JSON.stringify({ data: payload.elements })
       // const dataJSON = {
       //   data: [
@@ -48,6 +50,7 @@ export default {
       const dataJSON = { data: [] }
       payload.elements.forEach((element, index) => {
         const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = element.property
+        console.log(`${offsetLeft}, ${offsetTop}, ${offsetWidth}, ${offsetHeight}`)
         dataJSON.data.push(new Element(element.id, offsetLeft, offsetTop, offsetWidth, offsetHeight))
       })
 
