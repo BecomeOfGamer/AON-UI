@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/src/assets/skill
+/src/assets/buff
 
 # production
 /dist
