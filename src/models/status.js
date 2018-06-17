@@ -8,8 +8,8 @@ export default {
   namespace: 'status',
 
   state: {
-    progress: 100,
-    fps: 36,
+    progress: 0,
+    fps: 0,
     URAPI: undefined,
     Elements: [],
   },

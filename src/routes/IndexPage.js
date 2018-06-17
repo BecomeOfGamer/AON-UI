@@ -8,12 +8,13 @@ import Player from '../components/Player'
 import Skill from '../components/Skill'
 import Buff from '../components/Buff'
 
-import Element from '../interface/Element'
+let RectTimer = null
 
 class IndexPage extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.dispatch = props.dispatch
+    this.update = this.update.bind(this)
   }
 
   componentWillMount() {
@@ -21,16 +22,19 @@ class IndexPage extends React.Component {
   }
 
   componentDidMount() {
+    RectTimer = setInterval(this.update, 1000)
+  }
 
+  componentWillUnmount() {
+    clearInterval(RectTimer)
+  }
+
+  update() {
     // 設定 UE4 可觸及區域
     const elements = []
     // element.getBoundingClientRect() -> UE4 失效
-
-    // 技能資訊面板
-    elements.push({ id: 'skill', property: document.querySelector('#skill') })
-    // 玩家狀態面板
-    elements.push({ id: 'player', property: document.querySelector('#player') })
-
+    elements.push({ id: 'skill', property: document.querySelector('#skill') })    // 技能資訊面板
+    elements.push({ id: 'player', property: document.querySelector('#player') })  // 玩家狀態面板
     this.dispatch({ type: 'status/rect', payload: { URAPI: this.props.URAPI, elements: elements } })
   }
 
