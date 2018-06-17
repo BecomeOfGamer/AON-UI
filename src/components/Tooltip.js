@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'dva'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import ReactTooltip from 'react-tooltip'
+// https://github.com/wwayne/react-tooltip
 import styles from './Tooltip.scss'
 
 class Tooltip extends React.Component {
@@ -49,7 +50,7 @@ class Tooltip extends React.Component {
   render() {
     const { id, tooltip } = this.props
     return (
-      <ReactTooltip id={id} className={styles.tooltip} effect="solid">
+      <ReactTooltip id={id} className={styles.tooltip} effect="solid" offset={{ top: 20, left: 10 }}>
         <div className={styles.tool}>
           <div className={[styles.tip, styles.header].join(' ')}>{tooltip.header}</div>
           <span className={styles.tip}>
