@@ -15,6 +15,7 @@ export default class UnrealAPI {
     ue.interface.setProgress = this.setProgress.bind(this)
     ue.interface.hideProgress = this.hideProgress.bind(this)
     ue.interface.setCurrentHero = this.setCurrentHero.bind(this)
+    ue.interface.lostFocusUnit = this.lostFocusUnit.bind(this)
     this.debug('Connect to Unreal API')
   }
 
@@ -99,6 +100,13 @@ export default class UnrealAPI {
     if (!this.isValid()) return
     this.dispatch({ type: 'player/update', payload: val })
     // this.debug('setCurrentHero')
+  }
+
+  /**
+   * Emit event when lost focus
+   */
+  lostFocusUnit() {
+    this.debug('lost focus')
   }
 
 }
