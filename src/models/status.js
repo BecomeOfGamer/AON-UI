@@ -10,7 +10,7 @@ export default {
   state: {
     URAPI: undefined,
     Elements: [],
-    PanelVisible: false,
+    PanelVisible: true,
   },
 
   subscriptions: {

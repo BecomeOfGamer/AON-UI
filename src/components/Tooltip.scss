@@ -1,29 +1,58 @@
 .tooltip {
-  margin: 0 auto;
-  text-align: center;
-  border-radius: 6px;
-  background-color: rgba($color: #000, $alpha: 1) !important;
-  .tool {
-    display: inline-block;
-    max-width: 250px;
-    .tip {
-      display: block;
-      margin: 0 auto;
-      font-size: 1rem;
-      line-height: 140%;
-      font-family: 'Microsoft JhengHei', sans-serif;
-      text-align: left;
-      color: #eee;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 6px;
+    background-color: rgba($color: #000, $alpha: 1) !important;
+    .tool {
+        display: inline-block;
+        max-width: 460px;
+        .tip {
+            display: block;
+            margin: 0 auto;
+            font-size: 1rem;
+            line-height: 140%;
+            font-family: 'Microsoft JhengHei', sans-serif;
+            text-align: left;
+            color: #eee;
+            /* 數值 */
+            num {
+                margin: 0 2px;
+                color: #FBFE01;
+            }
+            /* 註解 */
+            comment {
+                margin: 0 2px;
+                color: #BF1A20;
+            }
+            /* 唯一 */
+            unique {
+                /*  display: block; */
+                margin-top: 1rem;
+                color: #FF3CFE;
+            }
+            /* 重點 */
+            heavy {
+                margin: 0 2px;
+                color: #FBFE01;
+            }
+            /* 力量附加 */
+            str {
+                margin: 0 2px;
+                color: #e9290f;
+            }
+            /* 敏捷附加 */
+            agi {
+                margin: 0 2px;
+                color: #6a9c78;
+            }
+            /* 智慧附加 */
+            int {
+                margin: 0 2px;
+                color: #0074e4;
+            }
+        }
+        .header {
+            color: #00CFBC;
+        }
     }
-    .header {
-      color: #00CFBC;
-    }
-    .num {
-      margin: 0 2px;
-      color: #FBFE01;
-    }
-    .unic {
-      color: #FF3CFE;
-    }
-  }
 }

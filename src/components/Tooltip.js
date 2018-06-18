@@ -19,32 +19,22 @@ class Tooltip extends React.Component {
    */
   createContent() {
     const { tooltip } = this.props
-    const tags = typeof tooltip.nums !== 'undefined' ? String(tooltip.content).split('{0}') : []
 
-    let render = null
-    if (tags.length > 0) {
-      render = tags.map((tag, index) => {
-        if (index === 0) {
-          return (
-            <span key={`tip-content-${index}`}>{tag}</span>
-          )
-        } else {
-          // 檢查是不是沒有找到應該填入的替代文字
-          const num = tooltip.nums[index - 1]
-          if (!num) console.error('Tooltip error, can not find {0} at:', tooltip.content)
-          if (!num) this.props.URAPI.debug(`Tooltip error, can not find {0} at: ${tooltip.content}`)
-          return (
-            <span key={`tip-content-${index}`}>
-              <span className={styles.num}>{num || '{0}'}</span>
-              <span>{tag}</span>
-            </span>
-          )
-        }
-      })
-    } else {
-      render = <span key={`tip-content-1`}>{tooltip.content}</span>
-    }
-    return render
+    /**
+     * TAG 說明
+     *
+     * num      - 數值
+     * comment  - 註解
+     * unique   - 唯一性
+     * heavy    - 重點
+     * str      - 力量附加
+     * agi      - 敏捷附加
+     * int      - 智慧附加
+     */
+
+    // 直接使用 UE4 給的樣板
+    return <div dangerouslySetInnerHTML={{ __html: tooltip.content || '' }} /> // eslint-disable-line
+
   }
 
   render() {
@@ -58,7 +48,7 @@ class Tooltip extends React.Component {
               this.createContent()
             }
           </span>
-          <span className={[styles.tip, styles.unic].join(' ')}>{tooltip.unic}</span>
+          {/* <span className={[styles.tip, styles.unique].join(' ')}>{tooltip.unic}</span> */}
         </div>
       </ReactTooltip>
     )
