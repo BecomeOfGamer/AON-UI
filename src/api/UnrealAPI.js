@@ -5,15 +5,12 @@ export default class UnrealAPI {
   }
 
   /**
-   * Connect to ue4
-   * @param {Object} dispatch player models
+   * Connect to UE4
+   * @param {Object} dispatch models
    */
   connect(dispatch) {
     this.dispatch = dispatch
     if (!this.isValid()) return
-    ue.interface.setFPS = this.setFPS.bind(this)
-    ue.interface.setProgress = this.setProgress.bind(this)
-    ue.interface.hideProgress = this.hideProgress.bind(this)
     ue.interface.setCurrentHero = this.setCurrentHero.bind(this)
     ue.interface.lostFocusUnit = this.lostFocusUnit.bind(this)
     this.debug('Connect to Unreal API')
@@ -31,7 +28,6 @@ export default class UnrealAPI {
     ) {
       isvalid = typeof ue.interface.broadcast === 'function' ? true : false
     }
-    // if (!isvalid) alert('You are not in unreal engine.')
     if (!isvalid) console.warn('You are not in unreal engine.')
     return isvalid
   }
@@ -61,35 +57,7 @@ export default class UnrealAPI {
       }
     } catch (e) {
       console.error(e)
-      alert(e)
     }
-  }
-
-  /**
-   * Update fps
-   * @param {Number} fps
-   */
-  setFPS(fps) {
-    if (!this.isValid()) return
-    this.dispatch({ type: 'status/ftp', payload: { ftp: fps.toFixed(1) } })
-  }
-
-  /**
-   * Hidden progressbar
-   */
-  hideProgress() {
-    if (!this.isValid()) return
-    // this.debug('hideProgress')
-  }
-
-  /**
-   * Setting progressbar
-   * @param {Number} val
-   */
-  setProgress(val) {
-    if (!this.isValid()) return
-    this.dispatch({ type: 'status/progress', payload: { progress: val } })
-    // this.debug('setProgress')
   }
 
   /**
@@ -98,6 +66,7 @@ export default class UnrealAPI {
    */
   setCurrentHero(val) {
     if (!this.isValid()) return
+    this.dispatch({ type: 'status/setPanelVisible', payload: { show: true } })
     this.dispatch({ type: 'player/update', payload: val })
     // this.debug('setCurrentHero')
   }
@@ -106,7 +75,9 @@ export default class UnrealAPI {
    * Emit event when lost focus
    */
   lostFocusUnit() {
-    this.debug('lost focus')
+    if (!this.isValid()) return
+    this.dispatch({ type: 'status/setPanelVisible', payload: { show: false } })
+    // this.debug('lostFocusUnit')
   }
 
 }

@@ -18,10 +18,12 @@ class IndexPage extends React.Component {
   }
 
   componentWillMount() {
+    // 連線至 UE4
     this.dispatch({ type: 'status/connectAPI', payload: { dispatch: this.dispatch } })
   }
 
   componentDidMount() {
+    // 每秒偵測面板可觸區域
     RectTimer = setInterval(this.update, 1000)
   }
 
@@ -29,28 +31,29 @@ class IndexPage extends React.Component {
     clearInterval(RectTimer)
   }
 
+  /**
+   * 設定面板可觸區域
+   */
   update() {
-    // 設定 UE4 可觸及區域
     const elements = []
-    // element.getBoundingClientRect() -> UE4 失效
-    elements.push({ id: 'skill', property: document.querySelector('#skill') })    // 技能資訊面板
-    elements.push({ id: 'player', property: document.querySelector('#player') })  // 玩家狀態面板
+    if (this.props.PanelVisible) {
+      // element.getBoundingClientRect() -> 在 UE4 中, 此 JS 涵式失效, 請勿使用
+      elements.push({ id: 'skill', property: document.querySelector('#skill') })    // 技能資訊面板
+      elements.push({ id: 'player', property: document.querySelector('#player') })  // 玩家狀態面板
+    }
     this.dispatch({ type: 'status/rect', payload: { URAPI: this.props.URAPI, elements: elements } })
   }
 
   render() {
-    const { progress, fps } = this.props
-
+    const { PanelVisible } = this.props
     return (
       <div className={styles.app}>
-        <div className={styles.info}>
-          <div>Loading: {progress}</div>
-          <div>Fps: {fps}</div>
-        </div>
         <Language />
-        <Player />
-        <Buff />
-        <Skill />
+        {/* 待考量效能問題 是否改使用 display or visibility */}
+        {PanelVisible ? <Player /> : null}
+        {PanelVisible ? <Buff /> : null}
+        {PanelVisible ? <Skill /> : null}
+        {/* 待考量效能問題 是否改使用 display or visibility */}
       </div>
     );
   }
@@ -60,10 +63,9 @@ IndexPage.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    fps: state.status.fps,
-    progress: state.status.progress,
     URAPI: state.status.URAPI,
     Elements: state.status.Elements,
+    PanelVisible: state.status.PanelVisible,
   }
 }
 

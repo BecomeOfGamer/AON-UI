@@ -8,10 +8,9 @@ export default {
   namespace: 'status',
 
   state: {
-    progress: 0,
-    fps: 0,
     URAPI: undefined,
     Elements: [],
+    PanelVisible: false,
   },
 
   subscriptions: {
@@ -50,8 +49,8 @@ export default {
       const dataJSON = { data: [] }
       payload.elements.forEach((element, index) => {
         const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = element.property
-        console.log(`${offsetLeft}, ${offsetTop}, ${offsetWidth}, ${offsetHeight}`)
         dataJSON.data.push(new Element(element.id, offsetLeft, offsetTop, offsetWidth, offsetHeight))
+        // console.log(`${offsetLeft}, ${offsetTop}, ${offsetWidth}, ${offsetHeight}`)
       })
 
       // console.log(dataJSON)
@@ -62,16 +61,11 @@ export default {
         Elements: dataJSON,
       }
     },
-    progress(state, { payload }) {
+    setPanelVisible(state, { payload }) {
       return {
         ...state,
-        progress: payload.progress,
-      }
-    },
-    fps(state, { payload }) {
-      return {
-        ...state,
-        fps: payload.fps,
+        // Lost hero focus then hide panel.
+        PanelVisible: payload.show,
       }
     },
   },
