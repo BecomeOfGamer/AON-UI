@@ -4,6 +4,15 @@ $font-size: 0.6rem;
 $percent-color:rgba(0, 0, 0, 0.5);
 /* 技能圖片大小與文字屬性 */
 
+.skill-active{
+  width: $size;
+  height: $size;
+  background-repeat: no-repeat;
+  background-size: $size/2;
+  background-position: center;
+  z-index: 1;
+}
+
 .skill-cd-group {
   display: flex;
   justify-content: center;
