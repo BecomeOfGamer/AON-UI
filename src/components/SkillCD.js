@@ -20,6 +20,7 @@ class SkillCD extends React.Component {
   }
 
   componentDidMount() {
+    // Create fake data
     // this.setState({ // eslint-disable-line
     //   slice1style: this.runReversal(1, this.state.finish, this.state.total),
     //   slice2style: this.runReversal(2, this.state.finish, this.state.total),
