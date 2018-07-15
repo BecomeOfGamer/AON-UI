@@ -12,22 +12,22 @@ class Buff extends React.Component {
     this.dispatch = props.dispatch
     this.state = {
       total: 1000,
-      finish: 700,
+      finish: 1000,
       slice1style: {},
       slice2style: {},
       timer: undefined,
-      during: 0,// Math.floor(Math.random() * 9) + 2,
+      during: 0, // Math.floor(Math.random() * 9) + 2,
       isRun: false,
     }
-    // this.start = this.start.bind(this)
+    this.start = this.start.bind(this)
   }
 
   componentDidMount() {
     // Create fake data
-    this.setState({ // eslint-disable-line
-      slice1style: this.runReversal(1, this.state.finish, this.state.total),
-      slice2style: this.runReversal(2, this.state.finish, this.state.total),
-    })
+    // this.setState({ // eslint-disable-line
+    //   slice1style: this.runReversal(1, this.state.finish, this.state.total),
+    //   slice2style: this.runReversal(2, this.state.finish, this.state.total),
+    // })
   }
 
   componentWillUnmount() {
@@ -36,14 +36,15 @@ class Buff extends React.Component {
 
   start() {
     const { index, Buffs } = this.props
-    const buff = Buffs[index]
+    let buff = new InterfaceBuff()
+    buff = Buffs[index]
 
     this.setState({
       finish: this.state.finish + (50 / this.state.during),
     })
 
     // 執行完畢 或是 可能切換角色
-    if (this.state.finish >= 1000 || buff.CurrentCD === buff.MaxCD) {
+    if (this.state.finish >= 1000 || buff.Duration === 0) {
       clearInterval(this.state.timer)
       this.setState({
         finish: 1000,
@@ -138,26 +139,28 @@ class Buff extends React.Component {
   }
 
   render() {
-    const { intl, Buffs } = this.props
+    const { intl, Buffs, URAPI } = this.props
 
     return (
       <div className={[styles['buff-group'], Buffs.length === 0 ? styles.disable : ''].join(' ')}>
         {
-          Buffs.map((bf, index) => {
+          Buffs.map((buf, index) => {
             let buff = new InterfaceBuff()
-            buff = bf
+            buff = buf
 
-            // const percent = Number(Number.parseFloat(buff.CDPercent * 100).toFixed(0))
+            const percent = buff.MaxDuration === 0 ? 0 : Number(Number.parseFloat((buff.MaxDuration - buff.Duration) / buff.MaxDuration * 100).toFixed(0))
+
+            URAPI.debug(`${buff.Duration} ${buff.MaxDuration}`)
 
             // 判斷 UE4 是否使用鍵盤觸發技能
-            // if (this.state.isRun === false && buff.CurrentCD !== buff.MaxCD) {
-            //   this.setState({
-            //     during: buf.MaxCD,
-            //     finish: percent * 10, // 要判斷當前的進度, 決定初始值 (0/1000) 度量衡使用千
-            //     isRun: true,
-            //     timer: setInterval(this.start, 50),
-            //   })
-            // }
+            if (this.state.isRun === false && buff.Duration !== 0) {
+              this.setState({
+                during: buf.MaxDuration,
+                finish: percent * 10, // 要判斷當前的進度, 決定初始值 (0/1000) 度量衡使用千
+                isRun: true,
+                timer: setInterval(this.start, 50),
+              })
+            }
 
             return (
               <div
@@ -174,7 +177,7 @@ class Buff extends React.Component {
                     <div className={styles.slice2} style={this.state.slice2style}></div>
                   </div>
                   <div className={styles.status}>
-                    {/* percent === 100 || percent === 0 ? '' : `${percent}% */}
+                    {percent === 100 || percent === 0 ? '' : `${percent}%`}
                   </div>
                 </div>
                 <Tooltip id={`bufftip${index}`} tooltip={buff.Tips} />
@@ -192,6 +195,7 @@ Buff.propTypes = {}
 function mapStateToProps(state) {
   return {
     Buffs: state.player.Buffs,
+    URAPI: state.status.URAPI,
   }
 }
 
