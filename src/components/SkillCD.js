@@ -155,7 +155,8 @@ class SkillCD extends React.Component {
         data-tip
         data-for={`skilltip${index}`}
       >
-        <div className={skill.Enabled ? styles['skill-active'] : ''} style={{ 'backgroundImage': 'url(assets/skill-active.png)' }}></div>
+        <div className={skill.Toggle ? styles['skill-active'] : ''} style={{ 'backgroundImage': 'url(assets/skill-active.png)' }}></div>
+
         <div className={styles.pie} style={{ 'backgroundImage': `url(${skill.Webpath}` }}>
           <div className={styles.clip1}>
             <div className={styles.slice1} style={this.state.slice1style}></div>

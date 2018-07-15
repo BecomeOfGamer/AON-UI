@@ -5,7 +5,7 @@ let skill
 
 skill = new Skill()
 skill.Name = '褶裙'
-skill.Enabled = true
+skill.Toggle = true
 skill.Webpath = 'skill/a02/a02_1.png'
 skill.CanLevelUp = true
 skill.MaxLevel = 4
@@ -19,7 +19,7 @@ mockSkills.push(skill)
 
 skill = new Skill()
 skill.Name = '三河魂'
-skill.Enabled = false
+skill.Toggle = false
 skill.Webpath = 'skill/a02/a02_2.png'
 skill.CanLevelUp = false
 skill.MaxLevel = 4
@@ -33,7 +33,7 @@ mockSkills.push(skill)
 
 skill = new Skill()
 skill.Name = '變硬'
-skill.Enabled = true
+skill.Toggle = true
 skill.Webpath = 'skill/a02/a02_3.png'
 skill.CanLevelUp = true
 skill.MaxLevel = 3
@@ -47,7 +47,7 @@ mockSkills.push(skill)
 
 skill = new Skill()
 skill.Name = '長槍'
-skill.Enabled = false
+skill.Toggle = false
 skill.CanLevelUp = false
 skill.MaxLevel = 4
 skill.CurrentLevel = 3

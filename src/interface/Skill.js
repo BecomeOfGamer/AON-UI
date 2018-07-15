@@ -13,7 +13,7 @@ class Skill {
   Name = ''
 
   /**
-   * 是否啟用
+   * 是否啟用(有效性)
    */
   Enabled = true
 
@@ -21,6 +21,11 @@ class Skill {
    * 是否顯示
    */
   Display = true
+
+  /**
+   * 是否開啟(持續性)
+   */
+  Toggle = false
 
   /**
    * 圖片路徑
