@@ -38,7 +38,7 @@ class Skill extends React.Component {
                       className={[styles['skill-up'], skill.CanLevelUp ? '' : styles.disable].join(' ')}
                       style={{ 'backgroundImage': 'url(assets/plus.png)' }}
                       alt={''}
-                      onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { URAPI: URAPI, id: `skillupimg${index + 1}`, canup: skill.CanLevelUp } })}
+                      onClick={() => this.dispatch({ type: 'player/skillLevelUp', payload: { URAPI: URAPI, id: `${index + 1}`, canup: skill.CanLevelUp } })}
                     >
                     </div>
 
@@ -69,7 +69,7 @@ class Skill extends React.Component {
             }
           </div>
 
-          { /* Hero Status ( 需要另移至新組件 ) */ }
+          { /* Hero Status ( 需要另移至新組件 ) */}
           <div className={styles.progress}>
             <div className={styles['progress-text']}>{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div>
             <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': `${this.percentCaculate(this.props.CurrentHP, this.props.CurrentMaxHP)}` }}>

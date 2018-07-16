@@ -66,7 +66,7 @@ class SkillCD extends React.Component {
   }
 
   render() {
-    const { index, Skills } = this.props
+    const { index, Skills, URAPI } = this.props
     let skill = new InterfaceSkill()
     skill = Skills[index]
 
@@ -87,6 +87,7 @@ class SkillCD extends React.Component {
         className={styles['skill-cd-group']}
         data-tip
         data-for={`skilltip${index}`}
+        onClick={() => this.dispatch({ type: 'player/skill', payload: { URAPI: URAPI, id: `${index + 1}`, cd: skill.CDPercent } })}
       >
         <div className={skill.Toggle ? styles['skill-active'] : ''} style={{ 'backgroundImage': 'url(assets/skill-active.png)' }}></div>
 
@@ -113,6 +114,7 @@ SkillCD.propTypes = {}
 
 function mapStateToProps(state) {
   return {
+    URAPI: state.status.URAPI,
     Skills: state.player.Skills,
   }
 }

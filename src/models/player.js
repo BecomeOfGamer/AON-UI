@@ -129,11 +129,29 @@ export default {
         Hero: hero,
       }
     },
+
+    /**
+     * 技能使用
+     * @param {*} state
+     * @param {*} param1
+     */
+    skill(state, { payload }) {
+      const URAPI = payload.URAPI
+      URAPI.emit(`skill${payload.id}`, '')
+      URAPI.debug(`技能使用 - skill${payload.id}`)
+      return state
+    },
+
+    /**
+     * 技能升級
+     * @param {*} state
+     * @param {*} param1
+     */
     skillLevelUp(state, { payload }) {
       const URAPI = payload.URAPI
       if (payload.canup) {
-        URAPI.emit(payload.id, '')
-        URAPI.debug(`技能升級 - ${payload.id}`)
+        URAPI.emit(`skillupimg${payload.id}`, '')
+        URAPI.debug(`技能升級 - skillupimg${payload.id}`)
       }
       return state
     },
