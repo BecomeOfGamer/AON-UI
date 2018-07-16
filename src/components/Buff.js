@@ -19,7 +19,10 @@ class Buff extends React.Component {
         {
           Buffs.map((buf, index) => {
             return (
-              <BuffCD index={index} />
+              <BuffCD
+                key={`buff-group-${index}`}
+                index={index}
+              />
             )
           })
         }
