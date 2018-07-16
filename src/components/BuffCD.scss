@@ -1,0 +1,86 @@
+$size: 70px;
+$font-color:#efefef;
+$font-size: 0.6rem;
+$percent-color:rgba(0, 0, 0, 0.5);
+
+.buff-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.3rem;
+    width: $size/2;
+    height: $size/2;
+    border:1px solid #222;
+
+    /* Buff圖片大小與文字屬性 */
+    .pie {
+      position: absolute;
+      width: $size;
+      height: $size;
+      background-repeat: no-repeat;
+      background-size: $size/2;
+      background-position: center;
+      -webkit-border-radius: $size/2;
+      -moz-border-radius: $size/2;
+      border-radius: $size/2;
+      clip: rect($size*0.25, $size*0.75, $size*0.75, $size*0.25);
+      .clip1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: $size;
+        height: $size;
+        clip: rect(0, $size, $size, $size*0.5);
+      }
+      .slice1 {
+        position: absolute;
+        width: $size;
+        height: $size;
+        background-color: $percent-color;
+        border-color: $percent-color;
+        -webkit-border-radius: $size/2;
+        -moz-border-radius: $size/2;
+        border-radius: $size/2;
+        clip: rect(0, $size*0.5, $size, 0);
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0);
+      }
+      .clip2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: $size;
+        height: $size;
+        clip: rect(0, $size*0.5, $size, 0);
+      }
+      .slice2 {
+        position: absolute;
+        width: $size;
+        height: $size;
+        background-color: $percent-color;
+        border-color: $percent-color;
+        -moz-border-radius: $size/2;
+        -webkit-border-radius: $size/2;
+        border-radius: $size/2;
+        clip: rect(0, $size, $size, $size*0.5);
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0);
+      }
+      .status {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $size;
+        height: $size;
+        color: $font-color;
+        font-size: $font-size;
+        font-weight: 600;
+      }
+    }
+}
+
