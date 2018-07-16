@@ -1,34 +1,11 @@
-@import '../scss/components/buff.scss';
-/* 使用技能的樣式組件 */
-
 .buff-group {
+  display: flex;
   position: absolute;
   bottom: 0;
   right: 40%;
   left: 35%;
-  /* align to skill */
-  padding: 0 0.6rem;
-  height: 220px;
-  /* align to skill */
+  height: 230px;
   &.disable {
     display: none;
-  }
-  .buff-list {
-    /* align to skill */
-    padding: 0 0.6rem;
-    /* align to skill */
-    display: flex;
-    &>div {
-      margin-right: 0.3rem;
-      width: 30px;
-      height: 30px;
-      .buff {
-        width: inherit;
-        height: inherit;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-    }
   }
 }

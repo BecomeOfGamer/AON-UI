@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'dva'
-import styles from './SkillCD.scss'
+import { injectIntl, FormattedMessage } from 'react-intl'
 import Tooltip from './Tooltip'
+import styles from './BuffCD.scss'
 
 import runReversal from '../utils/CDAnimation'
-import InterfaceSkill from '../interface/Skill'
+import InterfaceBuff from '../interface/Buff'
 
-class SkillCD extends React.Component {
+class BuffCD extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.dispatch = props.dispatch
@@ -35,16 +36,15 @@ class SkillCD extends React.Component {
   }
 
   start() {
-    const { index, Skills } = this.props
-    let skill = new InterfaceSkill()
-    skill = Skills[index]
+    const { index, Buffs } = this.props
+    const buff = Buffs[index]
 
     this.setState({
       finish: this.state.finish + (50 / this.state.during),
     })
 
     // 執行完畢 或是 可能切換角色
-    if (this.state.finish >= 1000 || skill.CurrentCD === skill.MaxCD) {
+    if (this.state.finish >= 1000 || buff.Duration === 0) {
       clearInterval(this.state.timer)
       this.setState({
         finish: 1000,
@@ -66,16 +66,17 @@ class SkillCD extends React.Component {
   }
 
   render() {
-    const { index, Skills } = this.props
-    let skill = new InterfaceSkill()
-    skill = Skills[index]
+    const { index, Buffs } = this.props
 
-    const percent = Number(Number.parseFloat(skill.CDPercent * 100).toFixed(0))
+    let buff = new InterfaceBuff()
+    buff = Buffs[index]
 
-    // 判斷 UE4 是否使用鍵盤觸發技能
-    if (this.state.isRun === false && skill.CurrentCD !== skill.MaxCD) {
+    const percent = buff.MaxDuration > 0 ? Number(Number.parseFloat((buff.MaxDuration - buff.Duration) / buff.MaxDuration * 100).toFixed(0)) : 0
+
+    // // 判斷 UE4 是否使用鍵盤觸發技能
+    if (this.state.isRun === false && buff.Duration > 0) {
       this.setState({
-        during: skill.MaxCD,
+        during: buff.MaxDuration,
         finish: percent * 10, // 要判斷當前的進度, 決定初始值 (0/1000) 度量衡使用千
         isRun: true,
         timer: setInterval(this.start, 50),
@@ -84,13 +85,12 @@ class SkillCD extends React.Component {
 
     return (
       <div
-        className={styles['skill-cd-group']}
+        className={styles['buff-box']}
+        key={`buff-${index}`}
         data-tip
-        data-for={`skilltip${index}`}
+        data-for={`bufftip${index}`}
       >
-        <div className={skill.Toggle ? styles['skill-active'] : ''} style={{ 'backgroundImage': 'url(assets/skill-active.png)' }}></div>
-
-        <div className={styles.pie} style={{ 'backgroundImage': `url(${skill.Webpath}` }}>
+        <div className={styles.pie} style={{ 'backgroundImage': `url(${buff.Webpath}` }}>
           <div className={styles.clip1}>
             <div className={styles.slice1} style={this.state.slice1style}></div>
           </div>
@@ -99,22 +99,20 @@ class SkillCD extends React.Component {
           </div>
           <div className={styles.status}>
             {percent === 100 || percent === 0 ? '' : `${percent}%`}
-            <br />
-            Lv.{skill.CurrentLevel}/{skill.MaxLevel}
           </div>
         </div>
-        {skill.Tips ? <Tooltip id={`skilltip${index}`} tooltip={skill.Tips} /> : null}
-      </div >
+        <Tooltip id={`bufftip${index}`} tooltip={buff.Tips} />
+      </div>
     )
   }
 }
 
-SkillCD.propTypes = {}
+BuffCD.propTypes = {}
 
 function mapStateToProps(state) {
   return {
-    Skills: state.player.Skills,
+    Buffs: state.player.Buffs,
   }
 }
 
-export default connect(mapStateToProps)(SkillCD)
+export default connect(mapStateToProps)(injectIntl(BuffCD))

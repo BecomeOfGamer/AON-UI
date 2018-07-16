@@ -1,8 +1,17 @@
-$size:100px;
+$size: 100px;
 $font-color:#efefef;
-$font-size:0.6rem;
+$font-size: 0.6rem;
 $percent-color:rgba(0, 0, 0, 0.5);
 /* 技能圖片大小與文字屬性 */
+
+.skill-active{
+  width: $size;
+  height: $size;
+  background-repeat: no-repeat;
+  background-size: $size/2;
+  background-position: center;
+  z-index: 1;
+}
 
 .skill-cd-group {
   display: flex;
@@ -28,7 +37,7 @@ $percent-color:rgba(0, 0, 0, 0.5);
     left: 0;
     width: $size;
     height: $size;
-    clip: rect(0px, $size, $size, $size*0.5);
+    clip: rect(0, $size, $size, $size*0.5);
   }
   .slice1 {
     position: absolute;
@@ -39,7 +48,7 @@ $percent-color:rgba(0, 0, 0, 0.5);
     -webkit-border-radius: $size/2;
     -moz-border-radius: $size/2;
     border-radius: $size/2;
-    clip: rect(0px, $size*0.5, $size, 0px);
+    clip: rect(0, $size*0.5, $size, 0);
     -webkit-transform: rotate(0);
     -moz-transform: rotate(0);
     -o-transform: rotate(0);
@@ -51,7 +60,7 @@ $percent-color:rgba(0, 0, 0, 0.5);
     left: 0;
     width: $size;
     height: $size;
-    clip: rect(0, $size*0.5, $size, 0px);
+    clip: rect(0, $size*0.5, $size, 0);
   }
   .slice2 {
     position: absolute;
@@ -62,7 +71,7 @@ $percent-color:rgba(0, 0, 0, 0.5);
     -moz-border-radius: $size/2;
     -webkit-border-radius: $size/2;
     border-radius: $size/2;
-    clip: rect(0px, $size, $size, $size*0.5);
+    clip: rect(0, $size, $size, $size*0.5);
     -webkit-transform: rotate(0);
     -moz-transform: rotate(0);
     -o-transform: rotate(0);

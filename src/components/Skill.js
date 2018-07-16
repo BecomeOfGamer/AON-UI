@@ -68,6 +68,8 @@ class Skill extends React.Component {
               })
             }
           </div>
+
+          { /* Hero Status ( 需要另移至新組件 ) */ }
           <div className={styles.progress}>
             <div className={styles['progress-text']}>{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div>
             <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': `${this.percentCaculate(this.props.CurrentHP, this.props.CurrentMaxHP)}` }}>

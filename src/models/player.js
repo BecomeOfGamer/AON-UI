@@ -62,6 +62,7 @@ export default {
         skill.Name = payload[`Skill${i}_Name`]
         skill.Enabled = payload[`Skill${i}_Enabled`]
         skill.Display = payload[`Skill${i}_Display`]
+        skill.Toggle = payload[`Skill${i}_Toggle`]
         skill.Webpath = pathPrefix + payload[`Skill${i}_Webpath`]
         skill.Description = payload[`Skill${i}_Description`]
         skill.CDPercent = payload[`Skill${i}_CDPercent`]
