@@ -19,56 +19,58 @@ progress-bars
  * http://github.com/cferdinandi/progress-bars
  */
 
-$default:#1E7EEC;
-$secondary:#808080;
-$success:#00B707;
+$default:#01438E;
+$success:#006A05;
 $danger:#880e14;
-$warning:#dba909;
+$info:#04C7FB;
 /* theme */
 
 .progress {
-  position: relative;
   overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
   /* margin: 0.5em 0; please edit in parent css */
+  width: 100%;
   height: 1rem;
   background-color: #222;
-  border-radius: 4px;
-  text-align: center;
   .progress-text {
-    position: absolute;
-    width: 100%;
     line-height: 1rem;
     font-size: 0.8rem;
-    text-align: center;
     color: #e5e5e5;
     text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444;
+    z-index: 3;
   }
   .progress-bar {
-    float: left;
-    width: 0;
-    height: 100%;
-    color: #ffffff;
-    box-sizing: border-box;
-    /* background-color: $default; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: inherit;
     background: linear-gradient(90deg, #01438E 26%, #149DF1 100%);
     background: -moz-linear-gradient(90deg, #01438E 26%, #149DF1 100%);
     background: -webkit-linear-gradient(90deg, #01438E 26%, #149DF1 100%);
     background: -o-linear-gradient(90deg, #01438E 26%, #149DF1 100%);
   }
-  .progress-bar-secondary {
-    background-color: $secondary;
-  }
   .progress-bar-success {
-    /* background-color: $success; */
-    background: linear-gradient(90deg, #006A05 26%, #00BB00 100%);
-    background: -moz-linear-gradient(90deg, #006A05 26%, #00BB00 100%);
-    background: -webkit-linear-gradient(90deg, #006A05 26%, #00BB00 100%);
-    background: -o-linear-gradient(90deg, #006A05 26%, #00BB00 100%);
+    background: linear-gradient(90deg, #006A05 26%, #0B0 100%);
+    background: -moz-linear-gradient(90deg, #006A05 26%, #0B0 100%);
+    background: -webkit-linear-gradient(90deg, #006A05 26%, #0B0 100%);
+    background: -o-linear-gradient(90deg, #006A05 26%, #0B0 100%);
   }
   .progress-bar-danger {
-    background-color: $danger;
+    background: linear-gradient(90deg, #880e14 26%, #B70907 100%);
+    background: -moz-linear-gradient(90deg, #880e14 26%, #B70907 100%);
+    background: -webkit-linear-gradient(90deg, #880e14 26%, #B70907 100%);
+    background: -o-linear-gradient(90deg, #880e14 26%, #B70907 100%);
   }
-  .progress-bar-warning {
-    background-color: $warning;
+  .progress-bar-info {
+    background: linear-gradient(90deg, #04C7FB 26%, #3FF4FF 100%);
+    background: -moz-linear-gradient(90deg, #04C7FB 26%, #3FF4FF 100%);
+    background: -webkit-linear-gradient(90deg, #04C7FB 26%, #3FF4FF 100%);
+    background: -o-linear-gradient(90deg, #04C7FB 26%, #3FF4FF 100%);
+  }
+  .progress-bar-under{
+    transition:  all .5s ease-in-out;
   }
 }

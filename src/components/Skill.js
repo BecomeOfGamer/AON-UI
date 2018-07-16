@@ -5,21 +5,13 @@ import styles from './Skill.scss'
 import SkillCD from './SkillCD'
 
 import InterfaceSkill from '../interface/Skill'
+import PlayerLife from './PlayerLife'
 
 class Skill extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.dispatch = props.dispatch
     this.state = {}
-  }
-
-  /**
-   * 計算當前血量或魔力比例
-   * @param {Number} now
-   * @param {Number} all
-   */
-  percentCaculate(now, all) {
-    return `${Number.parseFloat(now / all * 100).toFixed(2)}%`
   }
 
   render() {
@@ -69,17 +61,9 @@ class Skill extends React.Component {
             }
           </div>
 
-          { /* Hero Status ( 需要另移至新組件 ) */}
-          <div className={styles.progress}>
-            <div className={styles['progress-text']}>{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div>
-            <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': `${this.percentCaculate(this.props.CurrentHP, this.props.CurrentMaxHP)}` }}>
-            </div>
-          </div>
-          <div className={styles.progress}>
-            <div className={styles['progress-bar']} style={{ 'width': `${this.percentCaculate(this.props.CurrentMP, this.props.CurrentMaxMP)}` }}>
-            </div>
-            <div className={styles['progress-text']} >{this.props.CurrentMP} / {this.props.CurrentMaxMP}</div>
-          </div>
+          { /* Hero Status ( 血條與魔力 ) */}
+          <PlayerLife />
+
         </div>
       </div >
     )
@@ -91,10 +75,6 @@ Skill.propTypes = {}
 function mapStateToProps(state) {
   return {
     URAPI: state.status.URAPI,
-    CurrentMaxHP: state.player.CurrentMaxHP,
-    CurrentMaxMP: state.player.CurrentMaxMP,
-    CurrentHP: state.player.CurrentHP,
-    CurrentMP: state.player.CurrentMP,
     Skills: state.player.Skills,
   }
 }
