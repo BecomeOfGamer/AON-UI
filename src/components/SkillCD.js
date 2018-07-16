@@ -3,6 +3,9 @@ import { connect } from 'dva'
 import styles from './SkillCD.scss'
 import Tooltip from './Tooltip'
 
+import runReversal from '../utils/CDAnimation'
+import InterfaceSkill from '../interface/Skill'
+
 class SkillCD extends React.Component {
   constructor(props, context) {
     super(props, context)
@@ -13,7 +16,7 @@ class SkillCD extends React.Component {
       slice1style: {},
       slice2style: {},
       timer: undefined,
-      during: 0,// Math.floor(Math.random() * 9) + 2,
+      during: 0,
       isRun: false,
     }
     this.start = this.start.bind(this)
@@ -33,7 +36,8 @@ class SkillCD extends React.Component {
 
   start() {
     const { index, Skills } = this.props
-    const skill = Skills[index]
+    let skill = new InterfaceSkill()
+    skill = Skills[index]
 
     this.setState({
       finish: this.state.finish + (50 / this.state.during),
@@ -49,8 +53,8 @@ class SkillCD extends React.Component {
     }
 
     this.setState({ // eslint-disable-line
-      slice1style: this.runReversal(1, this.state.finish, this.state.total),
-      slice2style: this.runReversal(2, this.state.finish, this.state.total),
+      slice1style: runReversal(1, this.state.finish, this.state.total),
+      slice2style: runReversal(2, this.state.finish, this.state.total),
     })
 
     // 每秒換算範例
@@ -61,82 +65,11 @@ class SkillCD extends React.Component {
     // }
   }
 
-  /**
-   * Run caculateReversal
-   * @param {Number} id target
-   * @param {Number} finish finish percents
-   * @param {Number} total total percents
-   */
-  runReversal(id, finish, total) {
-    switch (id) {
-      case 1:
-        return this.rotate(this.caculateReversal(finish, total).first)
-      case 2:
-        return this.rotate(this.caculateReversal(finish, total).second)
-      default:
-        return {}
-    }
-  }
-
-  /**
-   * Set rotate
-   * @param {Number} degree rotate
-   */
-  rotate(degree) {
-    return {
-      'WebkitTransform': `rotate(${degree}deg)`,
-      'MozTransform': `rotate(${degree}degg)`,
-      'msTransform': `rotate(${degree}deg)`,
-      'OTransform': `rotate(${degree}deg)`,
-      'transform': `rotate(${degree}deg)`,
-      'zoom': 1,
-    }
-  }
-
-  /**
-   * CaculateReversal rotate
-   * @param {Number} finish finish percents
-   * @param {Number} total total percents
-   */
-  caculateReversal(finish, total) {
-    const remain = total - finish
-    let firstHalfAngle = 0
-    let secondHalfAngle = 180
-    const drawAngle = remain / total * 360
-    if (drawAngle >= 180) {
-      firstHalfAngle = (drawAngle - 180) * -1
-    } else {
-      secondHalfAngle = drawAngle * -1
-    }
-    return {
-      first: firstHalfAngle,
-      second: secondHalfAngle,
-    }
-  }
-
-  /**
-   * Caculate rotate
-   * @param {Number} finish finish percents
-   * @param {Number} all total percents
-   */
-  caculate(finish, total) {
-    let firstHalfAngle = 180
-    let secondHalfAngle = 0
-    const drawAngle = finish / total * 360
-    if (drawAngle <= 180) {
-      firstHalfAngle = drawAngle
-    } else {
-      secondHalfAngle = drawAngle - 180
-    }
-    return {
-      first: firstHalfAngle,
-      second: secondHalfAngle,
-    }
-  }
-
   render() {
     const { index, Skills } = this.props
-    const skill = Skills[index]
+    let skill = new InterfaceSkill()
+    skill = Skills[index]
+
     const percent = Number(Number.parseFloat(skill.CDPercent * 100).toFixed(0))
 
     // 判斷 UE4 是否使用鍵盤觸發技能
