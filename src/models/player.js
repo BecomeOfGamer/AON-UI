@@ -20,10 +20,10 @@ export default {
     TeamId: 0,
     IsAlive: 0,
     CurrentMoveSpeed: 0,
-    CurrentMaxHP: 3000,
-    CurrentHP: 2310,
-    CurrentMaxMP: 2000,
-    CurrentMP: 1680,
+    CurrentMaxHP: 0,
+    CurrentHP: 0,
+    CurrentMaxMP: 0,
+    CurrentMP: 0,
     CurrentAttackSpeed: 0,
     CurrentLevel: 0,
     CurrentEXP: 0,
@@ -56,6 +56,7 @@ export default {
       return { ...state, ...action.payload }
     },
     update(state, { payload }) {
+
       const Skills = []
       for (let i = 1; i <= payload.Skill_Amount; i += 1) {
         const skill = new Skill()
@@ -73,8 +74,6 @@ export default {
         skill.MaxLevel = payload[`Skill${i}_MaxLevel`]
         skill.Tips.header = payload[`Skill${i}_Name`]
         skill.Tips.content = payload[`Skill${i}_Description`]
-        skill.Tips.unic = ''
-        skill.Tips.nums = []
         Skills.push(skill)
       }
 
@@ -91,8 +90,6 @@ export default {
         buff.CanStacks = payload[`Buff${i}_CanStacks`]
         buff.Tips.header = payload[`Buff${i}_Name`]
         buff.Tips.content = payload[`Buff${i}_BuffTips`]
-        buff.Tips.unic = ''
-        buff.Tips.nums = []
         Buffs.push(buff)
       }
 

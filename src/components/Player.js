@@ -16,6 +16,8 @@ class Player extends React.Component {
     hero = Hero
     return (
       <div id="player" className={styles['player-group']}>
+
+        { /* 英雄基礎能力 */}
         <table className={styles.table}>
           <tbody>
             <tr>
@@ -52,6 +54,8 @@ class Player extends React.Component {
             </tr>
           </tbody>
         </table>
+
+        { /* 英雄附加能力 */}
         <table className={styles['table-hero']}>
           <tbody>
             <tr>
