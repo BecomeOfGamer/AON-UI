@@ -2,22 +2,12 @@
 progress-bars
 說明: 英雄的血條魔力顯示
 範例:
-<div className={styles.progress}>
-  <div className={styles['progress-text']} >{this.props.CurrentHP} / {this.props.CurrentMaxHP}</div> // 文字
-  <div
-    className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')}
-    style={{ 'width': `${this.percentCaculate(this.props.CurrentHP, this.props.CurrentMaxHP)}` }} // 進度
-  >
-  </div>
+<div className="progress">
+  <div className="progress-text">100 / 100</div>
+  <div className="progress-bar progress-bar-danger progress-bar-under"></div>
+  <div className="progress-bar progress-bar-success"></div>
 </div>
 */
-
-/*!
- * progress-bars v2.2.2: A small bit of CSS for adding progress bars to your website
- * (c) 2015 Chris Ferdinandi
- * MIT License
- * http://github.com/cferdinandi/progress-bars
- */
 
 $default:#01438E;
 $success:#006A05;
@@ -30,7 +20,6 @@ $info:#04C7FB;
   position: relative;
   display: flex;
   justify-content: center;
-  /* margin: 0.5em 0; please edit in parent css */
   width: 100%;
   height: 1rem;
   background-color: #222;
@@ -70,7 +59,10 @@ $info:#04C7FB;
     background: -webkit-linear-gradient(90deg, #04C7FB 26%, #3FF4FF 100%);
     background: -o-linear-gradient(90deg, #04C7FB 26%, #3FF4FF 100%);
   }
+
+  /* 底層動畫 */
   .progress-bar-under{
     transition:  all .5s ease-in-out;
   }
+
 }
