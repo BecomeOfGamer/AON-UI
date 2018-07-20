@@ -6,8 +6,6 @@ import styles from './PlayerLife.scss'
 class PlayerLife extends React.Component {
   constructor(props, context) {
     super(props, context)
-    this.dispatch = props.dispatch
-    const { CurrentHP, CurrentMaxHP } = this.props
     this.state = {}
   }
 
@@ -27,12 +25,24 @@ class PlayerLife extends React.Component {
       <div>
         <div className={styles.progress}>
           <div className={styles['progress-text']}>{CurrentHP} / {CurrentMaxHP}</div>
-          <div className={[styles['progress-bar'], styles['progress-bar-danger'], styles['progress-bar-under']].join(' ')} style={{ 'width': `${this.percentCaculate(CurrentHP, CurrentMaxHP)}` }}></div>
-          <div className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')} style={{ 'width': `${this.percentCaculate(CurrentHP, CurrentMaxHP)}` }}></div>
+          <div
+            className={[styles['progress-bar'], styles['progress-bar-danger'], styles['progress-bar-under']].join(' ')}
+            style={{ 'width': `${this.percentCaculate(CurrentHP, CurrentMaxHP)}` }}
+          >
+          </div>
+          <div
+            className={[styles['progress-bar'], styles['progress-bar-success']].join(' ')}
+            style={{ 'width': `${this.percentCaculate(CurrentHP, CurrentMaxHP)}` }}
+          >
+          </div>
         </div>
         <div className={styles.progress}>
           <div className={styles['progress-text']} >{CurrentMP} / {CurrentMaxMP}</div>
-          <div className={[styles['progress-bar'], styles['progress-bar-info'], styles['progress-bar-under']].join(' ')} style={{ 'width': `${this.percentCaculate(CurrentMP, CurrentMaxMP)}` }}></div>
+          <div
+            className={[styles['progress-bar'], styles['progress-bar-info'], styles['progress-bar-under']].join(' ')}
+            style={{ 'width': `${this.percentCaculate(CurrentMP, CurrentMaxMP)}` }}
+          >
+          </div>
           <div className={styles['progress-bar']} style={{ 'width': `${this.percentCaculate(CurrentMP, CurrentMaxMP)}` }}></div>
         </div>
       </div>
