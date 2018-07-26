@@ -16,7 +16,18 @@ git clone https://github.com/RemakeAONTeam/AON-UI.git
 yarn install
 ```
 
+If you don't have `skill` folder and `buff` folder, please create it before running script.
+
+```
+mkdir src\buff src\skill
+```
+
+Or you can download the folders from [AON/UI](https://github.com/RemakeAONTeam/AON/tree/master/UI).
+
+
 ## Usage
+
+Start the server on [http://localhost:8000](http://localhost:8000).
 
 ```bash
 yarn start
@@ -27,12 +38,6 @@ yarn start
 ```bash
 yarn build
 ```
-
-## Log
-
-#### 2018-06-08
-
-- `click event` 會有不明失效問題 ( `lose focus` ) , 似乎是因為 UE4 對於滑鼠座標的轉換異常。
 
 ## Design Pattern
 
