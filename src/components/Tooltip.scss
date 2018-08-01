@@ -3,6 +3,7 @@
     text-align: center;
     border-radius: 6px;
     background-color: rgba($color: #000, $alpha: 1) !important;
+    z-index: 9999;
     .tool {
         display: inline-block;
         max-width: 460px;
