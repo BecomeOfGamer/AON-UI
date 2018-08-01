@@ -1,7 +1,11 @@
 {
   "extends": [
     "stylelint-config-standard",
-    "stylelint-config-prettier"
+    "stylelint-config-prettier",
+    "stylelint-config-sass-guidelines"
+  ],
+  "plugins": [
+    "stylelint-scss"
   ],
   "rules": {
     "selector-pseudo-class-no-unknown": null,
@@ -27,6 +31,16 @@
     "unit-no-unknown": null,
     "no-descending-specificity": null,
     "no-missing-end-of-source-newline": null,
-    "value-list-max-empty-lines": null
+    "value-list-max-empty-lines": null,
+    "max-nesting-depth": 6,
+    "order/properties-alphabetical-order": null,
+    "order/order": null,
+    "property-no-vendor-prefix": null,
+    "selector-no-qualifying-type": null,
+    "selector-max-compound-selectors": null,
+    "scss/selector-no-redundant-nesting-selector": null,
+    "scss/at-extend-no-missing-placeholder": null,
+    "value-no-vendor-prefix": null,
+    "scss/at-import-partial-extension-blacklist": null
   }
 }
