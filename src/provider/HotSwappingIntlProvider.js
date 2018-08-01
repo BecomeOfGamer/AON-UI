@@ -15,13 +15,14 @@ class HotSwappingIntlProvider extends React.Component {
   }
 
   render() {
+    const { locale, key, messages, children } = this.props
     return (
       <IntlProvider
-        locale={this.props.locale}
-        key={this.props.ket}
-        messages={this.props.messages}
+        locale={locale}
+        key={key}
+        messages={messages}
       >
-        {this.props.children}
+        {children}
       </IntlProvider>
     )
   }

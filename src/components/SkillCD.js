@@ -105,7 +105,7 @@ class SkillCD extends React.Component {
           </div>
         </div>
         {skill.Tips ? <Tooltip id={`skilltip${index}`} tooltip={skill.Tips} /> : null}
-      </div >
+      </div>
     )
   }
 }

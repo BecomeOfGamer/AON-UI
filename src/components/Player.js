@@ -10,6 +10,7 @@ class Player extends React.Component {
     this.dispatch = props.dispatch
     this.state = {}
   }
+
   render() {
     const { intl, Hero } = this.props
     let hero = new HeroCharacter()

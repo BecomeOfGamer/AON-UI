@@ -37,7 +37,7 @@ class PlayerLife extends React.Component {
           </div>
         </div>
         <div className={styles.progress}>
-          <div className={styles['progress-text']} >{CurrentMP} / {CurrentMaxMP}</div>
+          <div className={styles['progress-text']}>{CurrentMP} / {CurrentMaxMP}</div>
           <div
             className={[styles['progress-bar'], styles['progress-bar-info'], styles['progress-bar-under']].join(' ')}
             style={{ 'width': `${this.percentCaculate(CurrentMP, CurrentMaxMP)}` }}

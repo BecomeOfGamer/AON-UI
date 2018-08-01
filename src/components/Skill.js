@@ -65,7 +65,7 @@ class Skill extends React.Component {
           <PlayerLife />
 
         </div>
-      </div >
+      </div>
     )
   }
 }
