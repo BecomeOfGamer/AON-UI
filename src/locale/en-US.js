@@ -1,8 +1,8 @@
 const en_US = { // eslint-disable-line
   'intl.lang': 'Language',
   'intl.lang.en': 'English',
-  'intl.lang.zh-tw': 'Traditional Chinese',
-  'intl.lang.zh-cn': 'Simplified Chinese',
+  'intl.lang.zh-tw': '繁體中文',
+  'intl.lang.zh-cn': '简体中文',
   'intl.hello': 'Hello',
   'intl.name': 'my name is {name}',
   'intl.player.UnitName': 'UnitName',
