@@ -1,7 +1,7 @@
 $size: 100px;
-$font-color:#efefef;
+$font-color: #efefef;
 $font-size: 0.6rem;
-$percent-color:rgba(0, 0, 0, 0.5);
+$percent-color: rgba(0, 0, 0, 0.5);
 
 @import '../scss/components/skill-cd.scss';
 
@@ -11,7 +11,7 @@ $percent-color:rgba(0, 0, 0, 0.5);
   align-items: center;
   height: 45px;
 
-  .skill-active{
+  .skill-active {
     /* 技能啟動(開關技) */
     width: $size;
     height: $size;

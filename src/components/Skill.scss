@@ -7,7 +7,7 @@
   width: 30%;
   .skill-panel {
     padding: 0.6rem;
-    background-color: #282A36;
+    background-color: #282a36;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     .progress {
@@ -16,7 +16,7 @@
     }
     .skill-list {
       padding: 0.6rem 0.6rem 0.4rem;
-      background-color: #44475A;
+      background-color: #44475a;
       border-radius: 6px;
       &>div {
         display: inline-block;
@@ -51,19 +51,20 @@
           max-width: 50px;
           height: 12px;
           border-radius: 2px;
-          border: 1px solid #2D3032;
-          background-color: #2D3032;
+          border: 1px solid #2d3032;
+          background-color: #2d3032;
           .skill-level-current {
             /* 技能當前等級 */
             flex: 4;
             margin: 0 1px;
             height: inherit;
-            background-color: #00001B;
+            background-color: #00001b;
+
             &.valid {
-              background: linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
-              background: -moz-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
-              background: -webkit-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
-              background: -o-linear-gradient(0deg, #B18A00 27%, #FFD339 67%);
+              background: linear-gradient(0deg, #b18a00 27%, #ffd339 67%);
+              background: -moz-linear-gradient(0deg, #b18a00 27%, #ffd339 67%);
+              background: -webkit-linear-gradient(0deg, #b18a00 27%, #ffd339 67%);
+              background: -o-linear-gradient(0deg, #b18a00 27%, #ffd339 67%);
             }
           }
         }

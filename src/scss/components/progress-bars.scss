@@ -9,10 +9,10 @@ progress-bars
 </div>
 */
 
-$default:#01438E;
-$success:#006A05;
-$danger:#880e14;
-$info:#04C7FB;
+$default: #01438e;
+$success: #006a05;
+$danger: #880e14;
+$info: #04c7fb;
 /* theme */
 
 .progress {
@@ -36,33 +36,33 @@ $info:#04C7FB;
     top: 0;
     bottom: 0;
     height: inherit;
-    background: linear-gradient(90deg, #01438E 26%, #149DF1 100%);
-    background: -moz-linear-gradient(90deg, #01438E 26%, #149DF1 100%);
-    background: -webkit-linear-gradient(90deg, #01438E 26%, #149DF1 100%);
-    background: -o-linear-gradient(90deg, #01438E 26%, #149DF1 100%);
+    background: linear-gradient(90deg, #01438e 26%, #149df1 100%);
+    background: -moz-linear-gradient(90deg, #01438e 26%, #149df1 100%);
+    background: -webkit-linear-gradient(90deg, #01438e 26%, #149df1 100%);
+    background: -o-linear-gradient(90deg, #01438e 26%, #149df1 100%);
   }
   .progress-bar-success {
-    background: linear-gradient(90deg, #006A05 26%, #0B0 100%);
-    background: -moz-linear-gradient(90deg, #006A05 26%, #0B0 100%);
-    background: -webkit-linear-gradient(90deg, #006A05 26%, #0B0 100%);
-    background: -o-linear-gradient(90deg, #006A05 26%, #0B0 100%);
+    background: linear-gradient(90deg, #006a05 26%, #0b0 100%);
+    background: -moz-linear-gradient(90deg, #006a05 26%, #0b0 100%);
+    background: -webkit-linear-gradient(90deg, #006a05 26%, #0b0 100%);
+    background: -o-linear-gradient(90deg, #006a05 26%, #0b0 100%);
   }
   .progress-bar-danger {
-    background: linear-gradient(90deg, #880e14 26%, #B70907 100%);
-    background: -moz-linear-gradient(90deg, #880e14 26%, #B70907 100%);
-    background: -webkit-linear-gradient(90deg, #880e14 26%, #B70907 100%);
-    background: -o-linear-gradient(90deg, #880e14 26%, #B70907 100%);
+    background: linear-gradient(90deg, #880e14 26%, #b70907 100%);
+    background: -moz-linear-gradient(90deg, #880e14 26%, #b70907 100%);
+    background: -webkit-linear-gradient(90deg, #880e14 26%, #b70907 100%);
+    background: -o-linear-gradient(90deg, #880e14 26%, #b70907 100%);
   }
   .progress-bar-info {
-    background: linear-gradient(90deg, #04C7FB 26%, #3FF4FF 100%);
-    background: -moz-linear-gradient(90deg, #04C7FB 26%, #3FF4FF 100%);
-    background: -webkit-linear-gradient(90deg, #04C7FB 26%, #3FF4FF 100%);
-    background: -o-linear-gradient(90deg, #04C7FB 26%, #3FF4FF 100%);
+    background: linear-gradient(90deg, #04c7fb 26%, #3ff4ff 100%);
+    background: -moz-linear-gradient(90deg, #04c7fb 26%, #3ff4ff 100%);
+    background: -webkit-linear-gradient(90deg, #04c7fb 26%, #3ff4ff 100%);
+    background: -o-linear-gradient(90deg, #04c7fb 26%, #3ff4ff 100%);
   }
 
   /* 底層動畫 */
-  .progress-bar-under{
-    transition:  all .5s ease-in-out;
+  .progress-bar-under {
+    transition: all .5s ease-in-out;
   }
 
 }
