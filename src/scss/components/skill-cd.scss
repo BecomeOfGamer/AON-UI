@@ -1,0 +1,96 @@
+/*
+progress-bars
+說明: 帶有CD減少動畫的技能或是增減益效果
+範例:
+
+### JS
+<div class="pie" style={{ 'backgroundImage': `url(${skill.Webpath}` }}>
+  <div class="clip1">
+    <div class"=slice1" style={this.state.slice1style}></div>
+  </div>
+  <div class="clip2">
+    <div class="slice2" style={this.state.slice2style}></div>
+  </div>
+  <div class="status">
+    {percent === 100 || percent === 0 ? '' : `${percent}%`}
+    <br />
+    Lv.{skill.CurrentLevel}/{skill.MaxLevel}
+  </div>
+</div>
+
+### SCSS
+$size: 100px;
+$font-color:#efefef;
+$font-size: 0.6rem;
+$percent-color:rgba(0, 0, 0, 0.5);
+*/
+
+.pie {
+  position: absolute;
+  width: $size;
+  height: $size;
+  background-repeat: no-repeat;
+  background-size: $size/2;
+  background-position: center;
+  -webkit-border-radius: $size/2;
+  -moz-border-radius: $size/2;
+  border-radius: $size/2;
+  clip: rect($size*0.25, $size*0.75, $size*0.75, $size*0.25);
+  .clip1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $size;
+    height: $size;
+    clip: rect(0, $size, $size, $size*0.5);
+  }
+  .slice1 {
+    position: absolute;
+    width: $size;
+    height: $size;
+    background-color: $percent-color;
+    border-color: $percent-color;
+    -webkit-border-radius: $size/2;
+    -moz-border-radius: $size/2;
+    border-radius: $size/2;
+    clip: rect(0, $size*0.5, $size, 0);
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0);
+  }
+  .clip2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $size;
+    height: $size;
+    clip: rect(0, $size*0.5, $size, 0);
+  }
+  .slice2 {
+    position: absolute;
+    width: $size;
+    height: $size;
+    background-color: $percent-color;
+    border-color: $percent-color;
+    -moz-border-radius: $size/2;
+    -webkit-border-radius: $size/2;
+    border-radius: $size/2;
+    clip: rect(0, $size, $size, $size*0.5);
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0);
+  }
+  .status {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $size;
+    height: $size;
+    color: $font-color;
+    font-size: $font-size;
+    font-weight: 600;
+  }
+}
