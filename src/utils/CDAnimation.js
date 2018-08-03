@@ -1,5 +1,5 @@
 /**
- * Run caculateReversal
+ * 執行CD動畫效果(遞減呈現)
  * @param {Number} id target
  * @param {Number} finish finish percents
  * @param {Number} total total percents
@@ -16,22 +16,22 @@ function runReversal(id, finish, total) {
 }
 
 /**
- * Set rotate
+ * 設定CSS樣式
  * @param {Number} degree rotate
  */
 function rotate(degree) {
   return {
-    'WebkitTransform': `rotate(${degree}deg)`,
-    'MozTransform': `rotate(${degree}degg)`,
-    'msTransform': `rotate(${degree}deg)`,
-    'OTransform': `rotate(${degree}deg)`,
     'transform': `rotate(${degree}deg)`,
+    'msTransform': `rotate(${degree}deg)`,
+    'MozTransform': `rotate(${degree}degg)`,
+    'WebkitTransform': `rotate(${degree}deg)`,
+    'OTransform': `rotate(${degree}deg)`,
     'zoom': 1,
   }
 }
 
 /**
- * CaculateReversal rotate
+ * 計算CSS角度(遞減呈現)
  * @param {Number} finish finish percents
  * @param {Number} total total percents
  */
@@ -52,7 +52,7 @@ function caculateReversal(finish, total) {
 }
 
 /**
- * Caculate rotate
+ * 計算CSS角度(遞增呈現)
  * @param {Number} finish finish percents
  * @param {Number} all total percents
  */

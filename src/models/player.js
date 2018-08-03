@@ -55,6 +55,11 @@ export default {
     save(state, action) {
       return { ...state, ...action.payload }
     },
+    /**
+     * 更新角色狀態
+     * @param {*} state
+     * @param {*} param1
+     */
     update(state, { payload }) {
 
       const Skills = []

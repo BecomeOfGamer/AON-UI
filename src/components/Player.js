@@ -7,7 +7,6 @@ import HeroCharacter from '../interface/HeroCharacter'
 class Player extends React.Component {
   constructor(props, context) {
     super(props, context)
-    this.dispatch = props.dispatch
     this.state = {}
   }
 

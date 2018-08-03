@@ -28,6 +28,11 @@ export default {
     save(state, action) {
       return { ...state, ...action.payload }
     },
+    /**
+     * 連線 Unreal Engine API
+     * @param {*} state
+     * @param {*} param1
+     */
     connectAPI(state, { payload }) {
       URAPI.connect(payload.dispatch)
       return {
@@ -35,6 +40,11 @@ export default {
         URAPI: URAPI,
       }
     },
+    /**
+     * 繪製可觸擊區域
+     * @param {*} state
+     * @param {*} param1
+     */
     rect(state, { payload }) {
 
       // Payload Example
@@ -61,6 +71,11 @@ export default {
         Elements: dataJSON,
       }
     },
+    /**
+     * 設定面板是否可顯示
+     * @param {}} state
+     * @param {*} param1
+     */
     setPanelVisible(state, { payload }) {
       return {
         ...state,

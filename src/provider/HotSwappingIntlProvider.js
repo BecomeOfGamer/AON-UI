@@ -3,15 +3,12 @@ import { connect } from 'dva'
 import { IntlProvider, addLocaleData } from 'react-intl'
 import en from 'react-intl/locale-data/en'
 import zh from 'react-intl/locale-data/zh'
-import zhTW from '../locale/zh-TW'
-import enUS from '../locale/en-US'
 
 addLocaleData([...en, ...zh])
 
 class HotSwappingIntlProvider extends React.Component {
   constructor(props, context) {
     super(props, context)
-    this.dispatch = props.dispatch
   }
 
   render() {

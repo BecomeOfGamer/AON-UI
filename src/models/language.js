@@ -48,6 +48,11 @@ export default {
     save(state, action) {
       return { ...state, ...action.payload }
     },
+    /**
+     * 更新語系來源
+     * @param {*} state
+     * @param {*} param1
+     */
     update(state, { payload }) {
       return {
         ...state,

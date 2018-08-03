@@ -38,6 +38,8 @@ class IndexPage extends React.Component {
     const elements = []
     if (this.props.PanelVisible) {
       // element.getBoundingClientRect() -> 在 UE4 中, 此 JS 涵式失效, 請勿使用
+
+      // 在底下新增可觸擊的面板元素
       elements.push({ id: 'skill', property: document.querySelector('#skill') })    // 技能資訊面板
       elements.push({ id: 'player', property: document.querySelector('#player') })  // 玩家狀態面板
     }
