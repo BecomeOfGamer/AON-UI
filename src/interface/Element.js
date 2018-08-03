@@ -1,5 +1,5 @@
 /**
- * Element 的座標屬性
+ * Element 的座標屬性, 用於繪製可觸擊區域
  *
  * @class Elements
  */
