@@ -41,6 +41,7 @@
     "scss/selector-no-redundant-nesting-selector": null,
     "scss/at-extend-no-missing-placeholder": null,
     "value-no-vendor-prefix": null,
-    "scss/at-import-partial-extension-blacklist": null
+    "scss/at-import-partial-extension-blacklist": null,
+    "declaration-block-trailing-semicolon": null
   }
 }

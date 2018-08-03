@@ -19,15 +19,14 @@ class Language extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.dispatch = props.dispatch
-    const { UnitName, locale, type } = this.props
+    const { locale, type } = this.props
     this.state = {
-      UnitName: UnitName,
       locale: locale,
     }
   }
 
   /**
-   * Change Locale
+   * 更換語系
    * @param {String} locale 地區設定, 參見 models
    * @param {Object} locale 語系檔, 參見 models
    */
@@ -39,24 +38,7 @@ class Language extends React.Component {
   render() {
     const { intl, lans } = this.props
 
-    // 渲染方法 1 - http://www.cnblogs.com/qiaojie/p/6411199.html
-    // const helloFormat = intl.formatMessage({ id: 'intl.hello' })
-    // const nameFormat = intl.formatMessage({ id: 'intl.name' }, { name: this.state.UnitName })
-    // <p>語系渲染方法 1 -{helloFormat},&nbsp;{nameFormat}.</p>
-
-    // 渲染方法 2
-    // <FormattedMessage />
-    // <p>語系渲染方法 1 -
-    //   <FormattedMessage
-    //     id="intl.hello"
-    //     defaultMessage={'hello'}
-    //   />,&nbsp;
-    //   <FormattedMessage
-    //     id="intl.name"
-    //     defaultMessage={'預設內容'}
-    //     values={{ name: this.state.unitname }}
-    //   />.
-    // </p>
+    // 渲染方法 - http://www.cnblogs.com/qiaojie/p/6411199.html
 
     return (
       <div className={styles['lan-group']}>
@@ -69,6 +51,7 @@ class Language extends React.Component {
           </Dropdown.Toggle>
           <Dropdown.Menu>
             {
+              // 請勿在本檔案新增語系
               // 欲增加語系請到 models / language.js
               lans.map((lan, index) => {
                 return (
@@ -99,7 +82,6 @@ function mapStateToProps(state) {
     messages: state.language.messages,
     type: state.language.type,
     lans: state.language.lans,
-    UnitName: state.player.UnitName,
   }
 }
 
