@@ -1,10 +1,8 @@
-const en_US = { // eslint-disable-line
+export default {
   'intl.lang': 'Language',
   'intl.lang.en': 'English',
-  'intl.lang.zh-tw': '繁體中文',
-  'intl.lang.zh-cn': '简体中文',
-  'intl.hello': 'Hello',
-  'intl.name': 'my name is {name}',
+  'intl.lang.zh-tw': 'Traditional Chinese',
+  'intl.lang.zh-cn': 'Simplified Chinese',
   'intl.player.UnitName': 'UnitName',
   'intl.player.CurrentMoveSpeed': 'MoveSpeed',
   'intl.player.CurrentHP': 'HP',
@@ -24,4 +22,3 @@ const en_US = { // eslint-disable-line
   'intl.player.CurrentLevel': 'Level',
   'intl.player.CurrentEXP': 'Experience',
 }
-export default en_US // eslint-disable-line

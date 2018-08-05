@@ -1,6 +1,6 @@
-import enUS from '../locale/en-US'
-import zhTW from '../locale/zh-TW'
-import zhCN from '../locale/zh-CN'
+import en from '../i18n/en'
+import zhTW from '../i18n/zh-tw'
+import zhCN from '../i18n/zh-cn'
 
 export default {
 
@@ -15,12 +15,12 @@ export default {
       // Example
       // {
       //   locale: 'en',    // 地區設定 https://github.com/yahoo/react-intl
-      //   messages: enUS,  // 要載入的語系檔, 請先 import
+      //   messages: en,  // 要載入的語系檔, 請先 import
       //   icon: 'us',      // 國家圖案 http://flag-icon-css.lip.is/
       // },
       {
         locale: 'en',
-        messages: enUS,
+        messages: en,
         icon: 'us',
       }, {
         locale: 'zh-tw',

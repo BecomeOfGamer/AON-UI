@@ -9,8 +9,6 @@ function RouterConfig({ history }) {
       <Router history={history}>
         <Switch>
           <Route path="/" exact component={IndexPage} />
-          <Route path="/zh" exact component={IndexPage} />
-          <Route path="/en" exact component={IndexPage} />
         </Switch>
       </Router>
     </HotSwappingIntlProvider>

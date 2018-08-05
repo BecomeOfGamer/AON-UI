@@ -1,10 +1,8 @@
-const zh_TW = { // eslint-disable-line
+export default {
   'intl.lang': '語系',
   'intl.lang.en': 'English',
   'intl.lang.zh-tw': '繁體中文',
   'intl.lang.zh-cn': '简体中文',
-  'intl.hello': '你好',
-  'intl.name': '我的名字是{name}',
   'intl.player.UnitName': '英雄名稱',
   'intl.player.CurrentMoveSpeed': '移動速度',
   'intl.player.CurrentHP': 'HP',
@@ -24,4 +22,3 @@ const zh_TW = { // eslint-disable-line
   'intl.player.CurrentLevel': '等級',
   'intl.player.CurrentEXP': '目前經驗值',
 }
-export default zh_TW // eslint-disable-line

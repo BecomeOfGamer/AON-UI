@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'dva'
 import { IntlProvider, addLocaleData } from 'react-intl'
+
+// Import i18n here
 import en from 'react-intl/locale-data/en'
 import zh from 'react-intl/locale-data/zh'
 
@@ -12,11 +14,11 @@ class HotSwappingIntlProvider extends React.Component {
   }
 
   render() {
-    const { locale, key, messages, children } = this.props
+    const { locale, messages, children } = this.props
     return (
       <IntlProvider
+        key={'intl'}
         locale={locale}
-        key={key}
         messages={messages}
       >
         {children}
