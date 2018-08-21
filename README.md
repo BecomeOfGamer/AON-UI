@@ -13,7 +13,7 @@ git clone https://github.com/RemakeAONTeam/AON-UI.git
 ```
 
 ```bash
-yarn install
+yarn
 ```
 
 如果你的 `src` 目錄中沒有 `buff` 以及 `skill`，請建立資料夾。 
